@@ -187,7 +187,7 @@ $$
 	-\infty<N_1;&N_2<\infty;&N_1\leq{N}_2
 	\end{matrix}
 	$$
-	– Duration (or length) of sequence is 
+	– Duration (or length) of sequence is
 	$$
 	N=N_2-N_1+1
 	$$

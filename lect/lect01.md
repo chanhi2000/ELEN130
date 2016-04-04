@@ -137,7 +137,7 @@ $$
 \{x[n]\}=\{−4,\:2.3,\:\underset{\uparrow}{1.4},\:3+j2,\:1.1\}
 $$
 	- this is a __complex sequence__ because $$3+j2$$ is complex
--  Complex sequence $$\{x[n]\} can be written at
+-  Complex sequence $$\{x[n]\}$$ can be written at
 $$
 \{x[n]\}=\{x_\Re[n]\}+j\{x_\Im[n]\}
 $$

@@ -486,7 +486,7 @@ r&=\left<25\right>_{8}\\
 $$
 where $$l=-3$$
 
-mentally think "add or subtract $$N$$ from $$m$$ until I get in the range $$0\leq{n}\leq{N}-1"
+mentally think "add or subtract $$N$$ from $$m$$ until I get in the range $$0\leq{n}\leq{N}-1$$"
 
 
 ## CIRCULAR TIME-REVERSAL

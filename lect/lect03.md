@@ -22,7 +22,7 @@
 
 
 ## OVERVIEW
-- Modulo operation and circular shift/time reversal 
+- Modulo operation and circular shift/time reversal
 - Classification of sequences
 - Basic sequences
 
@@ -210,7 +210,7 @@ $$
 
 
 ## REAL SINUSOIDAL SEQUENCE
-$$ 
+$$
 \begin{matrix}
 x[n]=A\cos{(\omega_0n+\varphi)}&
 \begin{cases}

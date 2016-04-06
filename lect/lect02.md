@@ -177,7 +177,6 @@ $$
 
 ## DISCRETE-TIME SYSTEMS
 A discrete-time system operates on an input sequence according to some prescribed rules and develops an output sequence.
-
 ![fig02](lect02/lect02-fig02.png)
 
 
@@ -193,8 +192,8 @@ A discrete-time system operates on an input sequence according to some prescribe
 
 
 ## PRODUCT (MODULATION) OPERATION
-
 ![fig03](lect02/lect02-fig03.png)
+
 One application is forming a finite-length sequence from an infinite-length sequence by multiplying the latter with a window sequence – this process is called *windowing*.
 
 
@@ -216,10 +215,12 @@ $$
 ,where $$N$$ is an integer
 - If $$N>0$$, it is a __delaying__ operation
     - Unit delay:
+    
     ![fig05a](lect02/lect02-fig05a.png)
 
 - If $$N<0$$, it is a __advance__ operation
     - Unit advance:
+    
     ![fig05b](lect02/lect02-fig05b.png)
 
 ### TIME REVERSAL
@@ -280,17 +281,19 @@ $$
 $$
 y[n]=cx[a(n+b)]+d
 $$
-![fig07](lect02/lect02-fig07.png)
 - Plot $$y[n]=2x[1-0.5n]$$
+![fig07](lect02/lect02-fig07.png)
 
 
 ## PAIR AND SHARE: BRANCING EXAMPLE
 ### 1.
 - What is the ouput to the system below?
+
 ![fig08a](lect02/lect02-fig08a.png)
 
 ### 2.
 - What is the ouput $$y[n]$$ o the system below?
+
 ![fig08b](lect02/lect02-fig08b.png)
 
 
@@ -333,56 +336,70 @@ $$
 
 ## EXAMPLE: CONVOLUTION
 What is the convolution of the following two signals:
+
 ![fig09a](lect02/lect02-fig09a.png)
 ![fig09b](lect02/lect02-fig09b.png)
-1. Put these on the $$k$$-axis
+
+__(1)__: Put these on the $$k$$-axis
+
 ![fig09c](lect02/lect02-fig09c.png)
 ![fig09d](lect02/lect02-fig09d.png)
-2. next flip $$h[k]$$ around $$k=0$$ to create $$h[-k]$$.
+
+__(2)__: next flip $$h[k]$$ around $$k=0$$ to create $$h[-k]$$.
+
+![fig09d](lect02/lect02-fig09d.png)
 ![fig09e](lect02/lect02-fig09e.png)
-3.  Now, line up $$x[k]$$ with $$h[-k]$$
+
+__(3)__:  Now, line up $$x[k]$$ with $$h[-k]$$
 ![fig09f](lect02/lect02-fig09f.png)
-4. What points overlap?
-	- multiply them
-	- add all of the products up
-5. In this case
-	- we have overlap at 0, so
-	$$
-	2\times1=2
-	$$
-	There is nothing else to add to it. since no more overlap.
-6. This value $$2$$ appears at $$y[0]$$, *i.e.* $$y[n]=2$$ at $$n=0$$. $$n=0$$ represents no shift.
+
+__(4)__: What points overlap?
+- multiply them
+- add all of the products up
+__(5)__: In this case
+- we have overlap at 0, so
+$$
+2\times1=2
+$$
+There is nothing else to add to it. since no more overlap.
+__(6)__: This value $$2$$ appears at $$y[0]$$, *i.e.* $$y[n]=2$$ at $$n=0$$. $$n=0$$ represents no shift.
 
 ### $$n=1$$
-1. Next, shift $$h[-k]$$ to the right $$1$$ *i.e.* $$h[1-k]$$. Thus, this situation is looking at $$n=1$$
+__(1)__: Next, shift $$h[-k]$$ to the right $$1$$ *i.e.* $$h[1-k]$$. Thus, this situation is looking at $$n=1$$
 ![fig09g](lect02/lect02-fig09g.png)
-2. Note that the convolution equation asks you to look at $$h[n-k]$$ and this can be re-written as $$h[-1(k-n)]$$ which should help understand why a positive $$n$$ shifts $$h[-k]$$ to the right.
-3. Anyway, for this example,
-	- the overlap at $$k=0$$, so
-	$$
-	2\times2=4
-	$$
-	This is the only overlap and thus is the only contribution to $$y[1]$$.
 
+__(2)__: Note that the convolution equation asks you to look at $$h[n-k]$$ and this can be re-written as $$h[-1(k-n)]$$ which should help understand why a positive $$n$$ shifts $$h[-k]$$ to the right.
+
+__(3)__: Anyway, for this example,
+- the overlap at $$k=0$$, so
+$$
+2\times2=4
+$$
+This is the only overlap and thus is the only contribution to $$y[1]$$.
+
+----
 ### $$n=2$$
-1. Shifting by $$2$$ yields the plots to the right.
+__(1)__: Shifting by $$2$$ yields the plots to the right.
 ![fig09h](lect02/lect02-fig09h.png)
-2. In this one,
-	- The only overlap appears at $$k=2$$
-	$$
-	1\times1=1;
-	$$
-3. We shifted $$2$$ to the right, thus $$y[2]=1$$
 
+__(2)__: In this one,
+- The only overlap appears at $$k=2$$
+$$
+1\times1=1;
+$$
+__(3)__: We shifted $$2$$ to the right, thus $$y[2]=1$$
+
+----
 ### $$n=3$$
-1. Shifting to the right $$3$$ yields our last shift to the right that will yield overlap. *i.e* again at position $$k=2$$.
+__(1)__: Shifting to the right $$3$$ yields our last shift to the right that will yield overlap. *i.e* again at position $$k=2$$.
 ![fig09i](lect02/lect02-fig09i.png)
-2. In this one,
-	- we have
-	$$
-	1\times2=2;
-	$$
-3. Thus, $$y[3]=2$$
+
+__(2)__: In this one,
+- we have
+$$
+1\times2=2;
+$$
+__(3)__: Thus, $$y[3]=2$$
 $$
 \begin{matrix}
 \therefore\:y[n]=\{2,\:4,\:1,\:2\}&\text{for }n=0,\:1,\:2,\:3
@@ -415,6 +432,7 @@ $$
 
 
 ## UNSAMPLING
+![fig10a](lect02/lect02-fig10a.png)
 - An integer $$L>1$$ describes unsampling as $$L-1$$ equidistant zero-valued samples are inserted by an up-sampler between each set of two consecutive samples of the input sequence.
 - Thus,
 $$
@@ -424,7 +442,7 @@ x\left[\tfrac{n}{L}\right],&n=0,\:\pm{L},\:\pm2L,\cdots\\
 0,&\text{otherwise}
 \end{cases}
 $$
-![fig10a](lect02/lect02-fig10a.png)
+
 
 ### EXAMPLE:
 $$
@@ -440,12 +458,13 @@ What is $$x_u[n]$$
 
 
 ## DOWNSAMPLING
+![fig10b](lect02/lect02-fig10b.png)
 - An integer $$M>1$$ describes downsampling as every $$M$$-th sample of the input sequence being kept and $$M-1$$ samples between them being removed.
 - Thus,
 $$
 x_x[n]=x[nM]
 $$
-![fig10b](lect02/lect02-fig10b.png)
+
 
 ### EXAMPLE:
 $$

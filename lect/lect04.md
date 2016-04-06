@@ -394,7 +394,7 @@ $$
 Since the system is linear, we can figure out individual outputs and add them up.
 
 so 
-$$\left\{}
+$$\left\{
 \begin{align*}
 \delta[n-2]&\to{h}[n-2]\\
 3\delta[n-1]&\to3{h}[n-1]\\
@@ -431,3 +431,39 @@ $$
 
 
 ## BIBO STABILITY CONDITION
+- [From a few slides ago](#stability):
+- Bounded Input, Bounded Output Stability
+	- If $$y[n]$$ is the response to an input $$x[n]$$ and if $$|x[n]|\leq{B}_x$$ for all values of $$n$$, then $$|y[n]|\leq{B}_y$$ for all values of $$n$$.
+- Now, this can be described as: BIBO stability exists for an LTI discrete-time system iff its impulse response, $$h[n]$$ is absolutely summable—that is:
+$$
+S=\sum_{n=-\infty}^{\infty}{|h[n]}<\infty
+$$
+- Proof in textbook and is conceptualized by replacing $$y[n]$$ with the convolution sum, bounding $$x$$ and looking at what must be true for $$y$$ to be bounded.
+
+
+## CAUSALITY
+- Earlier it was stated that a system is causal if the $$n_0$$-th output sample,      depends only on the input samples $$x[n]$$ for $$n\leq{n}_0$$. In a causal system changes in the output samples do NOT precede changes in the input samples.
+- This can now be stated as: An LTI discrete-time system is causal iff its impulse response, $$h[n]$$ is a causal sequence.
+
+
+## INTERCONNECTED SYSTEMS
+### Cascaded connection (Series) 
+- Two LTI discrete-time systems in series
+- These combine in the following way:
+![fig05a](lect04/lect04-fig05a.png)
+
+### Parallel connection
+- Two LTI discrete-time systems in parallel
+- These combine in the following way:
+![fig05a](lect04/lect04-fig05a.png)
+
+
+## FINITE-DIMENSIONAL LTI DISCRETE-TIME SYSTEMS
+- A very important subclass of LTI discrete-time systems are characterized by a linear constant coefficient difference equation of the form
+$$
+\sum_{k=0}^{N}{d_ky[n-k]}=\sum_{k=0}^{M}{p_kx[n-k]}
+$$
+- Here, $$x[n]$$ and $$y[n]$$ are the input and output of the system, respectively.
+- .$$\{d_k\}$$ and $$\{p_k\}$$ are constants characterizing the system
+- The __order__ of the system is given by $$\max{(N,\:M)}$$—which is the order of the difference equation.
+- 

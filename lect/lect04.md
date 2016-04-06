@@ -31,7 +31,7 @@
 For continuous time frequency
 $$
 \begin{align*}
-x(t)&=A\cos{(2\pi{f}_0t)}
+x(t)&=A\cos{(2\pi{f}_0t)}\\
 &=A\cos{(\Omega_0t)}
 \end{align*}
 $$
@@ -94,7 +94,7 @@ $$
 ## ALIASING (CONT'D)
 $$\omega_0=\frac{2\pi\Omega_0}{\Omega_T}$$
 - No ALIASING, If $$\Omega_T>2\Omega_0$$, then $$\omega_0$$ will be in the range $$-\pi<\omega_0<\pi$$
-- ALIASING, If $$\Omega_T<2\Omega_0, then $$\omega_0=\left<\tfrac{2\pi\Omega_0}{\Omega_T}\right>_{2\pi}$$ will be in the range $$-\pi<\omega_0<\pi$$
+- ALIASING, If $$\Omega_T<2\Omega_0$$, then $$\omega_0=\left<\tfrac{2\pi\Omega_0}{\Omega_T}\right>_{2\pi}$$ will be in the range $$-\pi<\omega_0<\pi$$
 > __NOTE__: This is inconsistent with the previous definition of modulo in the sense that we are looking for a final angular frequency in a different range than the definition of modulo would suggest.
 
 - To prevent aliasing, $$\Omega_T$$ should be greater than twice the frequency $$\Omega_0$$
@@ -387,3 +387,47 @@ $$
 - This means that knowing the impulse response, one can compute the output of the system for ANY ARBITRARY INPUT!!!
 
 ### EXAMPLE
+Say
+$$
+x[n]=\delta[n-2]+3\delta[n-1]-\frac{1}{2}\delta[n+3]
+$$
+Since the system is linear, we can figure out individual outputs and add them up.
+
+so 
+$$\left\{}
+\begin{align*}
+\delta[n-2]&\to{h}[n-2]\\
+3\delta[n-1]&\to3{h}[n-1]\\
+-\frac{1}{2}\delta[n+3]&\to-\frac{1}{2}{h}[n+3]\\
+\end{align*}\right\}
+$$
+
+$$
+\therefore\:y[n]=h[n-2]+3h[n-1]-\frac{1}{2}h[n+3]
+$$
+
+- NOW—think about the fact that any input can be written as a sum of weighted impulses.
+- So, the input can be expressed as a linear combination of delayed and advanced impulses in the form:
+$$
+x[n]=\sum_{k=-\infty}{\infty}{x[k]\delta[n-k]}
+$$
+- So the response would be...
+
+
+## CONVOLUTION PROPERTIES
+### COMMUTATIVE:
+$$
+x[n]\otimes{h}[n]=h[n]\otimes{x}[n]
+$$
+### ASSOCIATIVE:
+$$
+\left(x[n]\otimes{h}[n]\right)\otimes{y}[n]=x[n]\otimes\left(h[n]
+\otimes{y}[n]\right)
+$$
+### DISTRIBUTIVE:
+$$
+x[n]\otimes\left(h[n]+{y}[n]\right)=x[n]\otimes{h}[n]+x[n]\otimes{y}[n]
+$$
+
+
+## BIBO STABILITY CONDITION

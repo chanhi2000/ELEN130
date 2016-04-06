@@ -93,7 +93,7 @@ $$
 
 ## ALIASING (CONT'D)
 $$\omega_0=\frac{2\pi\Omega_0}{\Omega_T}$$
-- No ALIASING, If $$\Omega_T>2\Omega_0, then $$\omega_0$$ will be in the range $$-\pi<\omega_0<\pi$$
+- No ALIASING, If $$\Omega_T>2\Omega_0$$, then $$\omega_0$$ will be in the range $$-\pi<\omega_0<\pi$$
 - ALIASING, If $$\Omega_T<2\Omega_0, then $$\omega_0=\left<\tfrac{2\pi\Omega_0}{\Omega_T}\right>_{2\pi}$$ will be in the range $$-\pi<\omega_0<\pi$$
 > __NOTE__: This is inconsistent with the previous definition of modulo in the sense that we are looking for a final angular frequency in a different range than the definition of modulo would suggest.
 

@@ -210,13 +210,15 @@ $$
 
 
 ## REAL SINUSOIDAL SEQUENCE
-$$
+$$ 
+\begin{matrix}
 x[n]=A\cos{(\omega_0n+\varphi)}&
 \begin{cases}
 A,&\text{amplitude}\\
 \omega_0,&\text{angular frequency}\\
 \varphi,&\text{phase}
 \end{cases}
+\end{matrix}
 $$
 ![fig03](lect03/lect03-fig03.png)
 
@@ -237,8 +239,10 @@ A&=|A|e^{j\varphi}
 $$
 ,then we can express
 $$
+\begin{align*}
 x[n]&=|A|e^{j\varphi}e^{(\sigma_0+j\omega_0)n}\\
 &=x_{\Re}[n]+jx_{\Im}[n]
+\end{align*}
 $$
 where
 $$
@@ -253,7 +257,7 @@ $$
 
 ## PERIODICITY OF SINUSOIDALS AND EXPONENTIALS
 $$A\cos{\left(\omega_0n+\varphi\right)}$$ and $$Be^{(j\omega_0n)}$$ are periodic sequences of period $$N$$ if $$\omega_0N=2\pi{r}$$, where $$N$$ and $$r$$ are positive integers.
-- Smallest value of $$N$$ satisfying $$\oemga_0N=2\pi{r}$$ is the fundamental period.
+- Smallest value of $$N$$ satisfying $$\omega_0N=2\pi{r}$$ is the fundamental period.
 
 ### EXAMPLE:
 Is $$x[n]=\sin{(\sqrt{3}n+\varphi)}$$ a periodic sequence?

@@ -65,7 +65,7 @@ $$
 - Sampling frequency: $$F_T=\tfrac{1}{T}$$ (unit: $$\text{Hertz}$$, $$\text{Hz}$$ if $$T$$ is in seconds)
 ![fig01](lect04/lect04-fig01.png)
 
-### [EXAMPLE: SAMPLING-ALIASING](ex04.md/#1)
+### [EXAMPLE: SAMPLING-ALIASING][1]
 
 
 ## ALIASING
@@ -139,7 +139,7 @@ $$\omega_0=\frac{2\pi\Omega_0}{\Omega_T}$$
 - To prevent aliasing, $$\Omega_T$$ should be greater than twice the frequency $$\Omega_0$$
 - Generally speaking, an arbitrary signal composed of a weighted sum of sinusoids can be uniquely represented by its sampled version, $$x[n]$$, IF the sampling frequency is twice the highest frequency contained in the original signal.
 
-### [EXAMPLE: SAPPLE VOCABULARY](ex04.md/#2)
+### [EXAMPLE: SAPPLE VOCABULARY][2]
 
 
 ## RECONSTRUCTION
@@ -147,7 +147,7 @@ $$\omega_0=\frac{2\pi\Omega_0}{\Omega_T}$$
 - We’ve assumed reconstruction is perfect (in the sense that if the original signal is sampled properly, we can get back the original signal from its samples)
 - IF the original signal was not sampled properly—we are out of luck. The samples will *look* like a different signal than the original—it will *alias* to a new frequency!
 
-### [EXAMPLE: RECONSTRUCTION](ex04.md/#3)
+### [EXAMPLE: RECONSTRUCTION][3]
 
 
 ## RECONSTRUCTED FREQUENCIES
@@ -161,9 +161,9 @@ $$
 - The reconstructor solves this expression to find the frequency that is between
 $$-\tfrac{f_T}{2}$$ and $$\tfrac{f_T}{2}$$
 
-### [EXAMPLE: RECONSTRUCTED FREQUENCIES](ex04.md/#4)
+### [EXAMPLE: RECONSTRUCTED FREQUENCIES][4]
 
-### [EXAMPLE: SAMPLING AT RECONSTRUCTED FREQUENCIES](ex04.md/#5)
+### [EXAMPLE: SAMPLING AT RECONSTRUCTED FREQUENCIES][5]
 
 
 
@@ -301,7 +301,7 @@ interpolated (512x512)
 - And $$y_2[n]$$ is the output due to an input $$x_2[n]$$
 - Linearity is preserved if for $$x[n]=\alpha{x}_1[n]+\beta{x}_2[n]$$,                  the output is $$y[n]=\alpha{y}_1[n]+\beta{y}_2[n]\:\:\:\:\forall{\alpha,\:\beta}$$ for all possible inputs $$x_1[n]$$ and  $$x_2[n]$$
 
-### [EXAMPLE: LINEARITY TEST](ex04.md/#6)
+### [EXAMPLE: LINEARITY TEST][6]
 
 
 ## MORE ON INITIAL CONDITIONS
@@ -326,6 +326,13 @@ $$
 - When $$n$$ is related to discrete instants of time, this property is called time-invariance.
 - Time-invariance ensures that for a specified input, the output is independent of the time the input is being applied.
 
-### [EXAMPLE: SHIFT-INVARIANCE TEST](ex04.md/#7)
+### [EXAMPLE: SHIFT-INVARIANCE TEST][7]
 
 
+[1]: http://chanhi2000.gitbooks.io/elen133/content/lect/ex04.html#1
+[2]: http://chanhi2000.gitbooks.io/elen133/content/lect/ex04.html#2
+[3]: http://chanhi2000.gitbooks.io/elen133/content/lect/ex04.html#3
+[4]: http://chanhi2000.gitbooks.io/elen133/content/lect/ex04.html#4
+[5]: http://chanhi2000.gitbooks.io/elen133/content/lect/ex04.html#5
+[6]: http://chanhi2000.gitbooks.io/elen133/content/lect/ex04.html#6
+[7]: http://chanhi2000.gitbooks.io/elen133/content/lect/ex04.html#7

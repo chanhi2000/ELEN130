@@ -16,10 +16,8 @@ Plot these and sample each at $$4\:\text{Hz}$$
 see that the samples at $$4\:\text{Hz}$$ are identical for these two signals. There are an infinite number of signals that would result in the same sample
 
 $$
-\begin{cases}
-\nu_0=\frac{{f}_0}{{f}_T}&
-\text{normalized digital frequency }\left[\tfrac{\text{cycles}}{\text{sec}}\right]\\
-\omega_0=\frac{2\pi\Omega_0}{\Omega_T}&
-\text{normalized digital angular frequency }\left[\tfrac{\text{radians}}{sec}\right]
-\end{cases}
+\left\{\begin{matrix}
+\underset{\text{normalized digital frequency}}{\nu_0=\frac{{f}_0}{f_T}\:\left[\tfrac{\text{cycles}}{\text{sec}}\right]}\\
+\underset{\text{normalized digital angular frequency}}{\omega_0=\frac{2\pi\Omega_0}{\Omega_T}\:\left[\tfrac{\text{radians}}{\text{sec}}\right]}&
+\end{matrix}\right\}
 $$

@@ -91,7 +91,7 @@ $$
 	\end{matrix}
 	$$
 
-### [EXAMPLE: SAMPLING](ex02.md/#1)
+### [EXAMPLE: SAMPLING][1]
 
 
 ## $$L_p$$-norm: SIZE OF THE SIGNAL
@@ -170,7 +170,7 @@ y[n]=x[-n]
 $$
 
 
-### [EXAMPLE: SIGNAL MANIPULATION(1)](ex02.md/#2) 
+### [EXAMPLE: SIGNAL MANIPULATION(1)][2]
 
 ## SIGNAL OPERATIONS REVIEW
 ### TIME-SCALING:
@@ -212,9 +212,9 @@ y[n]=cx[a(n+b)]+d
 $$
 - Put them in this form and apply in $$a$$, $$b$$, $$c$$, $$d$$ order!
 
-### [EXAMPLE: SIGNAL MANIPULATION(2)](ex02.md/#3)
+### [EXAMPLE: SIGNAL MANIPULATION(2)][3]
 
-### [EXAMPLE: BRANCHING](ex02.md/#4)
+### [EXAMPLE: BRANCHING][4]
 
 
 ## LAST SYSTEM AS A MOVING AVERAGE
@@ -254,7 +254,7 @@ $$
 	- Keep track of the amount you slide as that is the index of $$y$$
 - Length of convolution sum, $$y[n]=\text{length of }\{x[n]\}+\text{length of }\{h[n]\}-1$$.
 
-### [EXAMPLE: CONVOLUTION](ex02.md/#5)
+### [EXAMPLE: CONVOLUTION][5]
 
 - Convolution is commutative. You can prove this through a substitution of variables.
 $$
@@ -291,7 +291,7 @@ x\left[\tfrac{n}{L}\right],&n=0,\:\pm{L},\:\pm2L,\cdots\\
 \end{cases}
 $$
 
-### [EXAMPLE: UPSAMPLING](ex02.md/#6)
+### [EXAMPLE: UPSAMPLING][6]
 
 
 ## DOWNSAMPLING
@@ -302,4 +302,12 @@ $$
 x_x[n]=x[nM]
 $$
 
-### [EXAMPLE: DOWNSAMPLING](ex02.md/#7)
+### [EXAMPLE: DOWNSAMPLING][7]
+
+[1]: http://chanhi2000.gitbooks.io/elen133/content/lect/ex02.html#1
+[2]: http://chanhi2000.gitbooks.io/elen133/content/lect/ex02.html#2
+[3]: http://chanhi2000.gitbooks.io/elen133/content/lect/ex02.html#3
+[4]: http://chanhi2000.gitbooks.io/elen133/content/lect/ex02.html#4
+[5]: http://chanhi2000.gitbooks.io/elen133/content/lect/ex02.html#5
+[6]: http://chanhi2000.gitbooks.io/elen133/content/lect/ex02.html#6
+[7]: http://chanhi2000.gitbooks.io/elen133/content/lect/ex02.html#7

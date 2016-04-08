@@ -27,7 +27,7 @@
 - Basic sequences
 
 
-## [EXAMPLE: OPERATIONS ON FINITE-LENGTH SEQUENCES](ex03.md/#1)
+## [EXAMPLE: OPERATIONS ON FINITE-LENGTH SEQUENCES][1]
 
 
 ## MODULO OPERATION (A BUILDING BLOCK)
@@ -43,13 +43,13 @@
     $$
 	, where $$l$$ is a positive or negative integer and $$r$$ is an anteger between $$0$$ and $$N-1$$
 
-### [EXAMPLE: MODULO OPERATION](ex03.md/#2)
+### [EXAMPLE: MODULO OPERATION][2]
 
 
 ## CIRCULAR TIME-REVERSAL
 - circular time-rerversal, $$\{y[n]\}$$ of a $$\text{length}-N$$ sequence $$\{x[n]\}$$ defined for $$0\leq{n}\leq{N}-1$$ is given by $$\{y[n]\}=\{x[\left<-n\right>_{N}]\}$$
 
-### [EXAMPLE: CIRCULAR TIME-REVERSAL](ex03.md/#3)
+### [EXAMPLE: CIRCULAR TIME-REVERSAL][3]
 
 
 ## CIRCULAR SHIFT OF A FINITE-LENGTH SEQUENCE
@@ -60,7 +60,7 @@
 - viewd as a an actual circle
 ![fig01b](lect03/lect03-fig01b.png)
 
-### [EXAMPLE: CIRCULAR SHIFT](ex03.md/#4)
+### [EXAMPLE: CIRCULAR SHIFT][4]
 
 ## CLASSIFICATION OF SEQUENCES
 - Number of samples (finite-length vs. inifinite-length – already discussed)
@@ -232,7 +232,7 @@ $$
 .$$A\cos{\left(\omega_0n+\varphi\right)}$$ and $$Be^{(j\omega_0n)}$$ are periodic sequences of period $$N$$ if $$\omega_0N=2\pi{r}$$, where $$N$$ and $$r$$ are positive integers.
 - Smallest value of $$N$$ satisfying $$\omega_0N=2\pi{r}$$ is the fundamental period.
 
-### [EXAMPLE: PERIODICITY](ex03.md/#5)
+### [EXAMPLE: PERIODICITY][5]
 
 
 ## INTERESTING PROPERTIES
@@ -240,3 +240,9 @@ $$
 - Frequency of oscillation of $$A\cos{(\omega_0n)}$$ increases as $$\omega_0$$ increases from $$0$$ to $$\pi$$ and decreases from $$\pi$$$ to $$2\pi$$
 	- Frequencies near $$0$$ or $$2\pi{k}$$ are called low frequencies.
 	- Frequencies near $$\pi$$ or $$\pi(2k+1)$$ are called high frequencies.
+
+[1]: http://chanhi2000.gitbooks.io/elen133/content/lect/ex03.html#1
+[2]: http://chanhi2000.gitbooks.io/elen133/content/lect/ex03.html#2
+[3]: http://chanhi2000.gitbooks.io/elen133/content/lect/ex03.html#3
+[4]: http://chanhi2000.gitbooks.io/elen133/content/lect/ex03.html#4
+[5]: http://chanhi2000.gitbooks.io/elen133/content/lect/ex03.html#5

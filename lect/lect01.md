@@ -92,7 +92,7 @@ $$
 - Sample value: $$x[n]$$, with $$n$$ being an integer in the range $$-\infty\leq{n}\leq\infty$$
 - $$x[n]$$ defined only for integer values of $$n$$ and __undefined for noninteger values of__ $$n$$.
 
-### [EXAMPLE: DT SIGNAL SAMPLES](ex01.md/#1)
+### [EXAMPLE: DT SIGNAL SAMPLES][1]
 
 
 ## DT SIGNAL: GRAPHICAL REPRESENTATION
@@ -115,9 +115,9 @@ $$
 - Real sequence:  $$x[n]$$ is real $$\forall{n}$$
 - Complex sequence: $$x[n]$$ is complex for any $$n$$
 
-### [EXAMPLE: REAL OR COMPLEX SEQUENCE?](ex01.md/#2)
+### [EXAMPLE: REAL OR COMPLEX SEQUENCE?][2]
 
-### [EXAMPLE: COMPLEX CONJUGATE](ex01.md/#3)
+### [EXAMPLE: COMPLEX CONJUGATE][3]
 
 
 ## CONTINUOUS-VALUED vs. DISCRETE-VALUED SIGNALS
@@ -154,4 +154,9 @@ $$
 	\end{matrix}
 	$$
 
-### [EXAMPLE: DIGITAL SIGNALS](ex01.md/#4)
+### [EXAMPLE: DIGITAL SIGNALS][4]
+
+[1]: http://chanhi2000.gitbooks.io/elen133/content/lect/ex01.html#1
+[2]: http://chanhi2000.gitbooks.io/elen133/content/lect/ex01.html#2
+[3]: http://chanhi2000.gitbooks.io/elen133/content/lect/ex01.html#3
+[4]: http://chanhi2000.gitbooks.io/elen133/content/lect/ex01.html#4

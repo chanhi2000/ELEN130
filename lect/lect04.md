@@ -329,10 +329,9 @@ $$
 
 ## SHIFT-INVARIANT SYSTEM
 - Assume $$y_1[n]$$ is the output due to an input $$x_1[n]$$
-- To be shift invariant, the response to $$x[n]=x_1[n-n_0]$$ must be $$y[n]=	y_1[n-n_0]$$ where $$n_0$$ is any positive or negative integer—for any arbitrary input and corresponding output.
+- To be shift invariant, the response to $$x[n]=x_1[n-n_0]$$ must be $$y[n]=y_1[n-n_0]$$ where $$n_0$$ is any positive or negative integer—for any arbitrary input and corresponding output.
 - When $$n$$ is related to discrete instants of time, this property is called time-invariance.
 - Time-invariance ensures that for a specified input, the output is independent of the time the input is being applied.
-
 
 ### [EXAMPLE: SHIFT-INVARIANCE TEST](ex04.md/#7)
 

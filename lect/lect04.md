@@ -63,7 +63,7 @@ x[n]=x_a(t)|_{t=nT}=x_a(nT),\:\:\:\:n\text{ is an integer}
 $$
 - Sampling interval or sampling period: $$T$$ (unit time)
 - Sampling frequency: $$F_T=\tfrac{1}{T}$$ (unit: $$\text{Hertz}$$, $$\text{Hz}$$ if $$T$$ is in seconds)
-![fig05a](lect03/lect03-fig05a.png)
+![fig01](lect04/lect04-fig01.png)
 
 ### [EXAMPLE: SAMPLING-ALIASING](ex04.md/#1)
 
@@ -107,13 +107,6 @@ x[n]&=A\cos{(2\pi{f}_0nT)}=A\cos{\left(\frac{2\pi{f}_0}{f_T}n\right)}\\
 \end{align*}
 $$
 where
-$$
-\begin{cases}
-\nu_0=\frac{{f}_0}{{f}_T}&\text{normalized digital frequency }\left[\tfrac{\text{cycles}}{\text{sec}}\right]\\
-\omega_0=\frac{2\pi\Omega_0}{\Omega_T}&\text{normalized digital angular frequency }\left[\tfrac{\text{radians}}{sec}\right]
-\end{cases}
-$$
-
 
 ## MORE ON ALIASING
 - Assertion:

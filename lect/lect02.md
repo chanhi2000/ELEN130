@@ -118,7 +118,7 @@ $$
 
 ## DISCRETE-TIME SYSTEMS
 A discrete-time system operates on an input sequence according to some prescribed rules and develops an output sequence.
-![fig03](lect02/lect02-fig03.png)
+![fig02](lect02/lect02-fig02.png)
 
 
 ## ELEMENTARY OPERATIONS ON SEQUENCES
@@ -133,16 +133,16 @@ A discrete-time system operates on an input sequence according to some prescribe
 
 
 ## PRODUCT (MODULATION) OPERATION
-![fig04](lect02/lect02-fig04.png)
+![fig03](lect02/lect02-fig03.png)
 
 One application is forming a finite-length sequence from an infinite-length sequence by multiplying the latter with a window sequence – this process is called *windowing*.
 
 
 ## MULTIPLICATION AND ADDITION
 
-![fig05a](lect02/lect02-fig05a.png)
+![fig04a](lect02/lect02-fig04a.png)
 
-![fig05b](lect02/lect02-fig05b.png)
+![fig04b](lect02/lect02-fig04b.png)
 
 Inverting all samples of $$w[n]$$ creates a subtraction operation
 
@@ -157,12 +157,12 @@ $$
 - If $$N>0$$, it is a __delaying__ operation
     - Unit delay:
 
-    ![fig06a](lect02/lect02-fig06a.png)
+    ![fig05a](lect02/lect02-fig05a.png)
 
 - If $$N<0$$, it is a __advance__ operation
     - Unit advance:
 
-    ![fig06b](lect02/lect02-fig06b.png)
+    ![fig05b](lect02/lect02-fig05b.png)
 
 ### TIME REVERSAL
 $$
@@ -280,7 +280,7 @@ $$
 
 
 ## UNSAMPLING
-![fig11a](lect02/lect02-fig11a.png)
+![fig06a](lect02/lect02-fig06a.png)
 - An integer $$L>1$$ describes unsampling as $$L-1$$ equidistant zero-valued samples are inserted by an up-sampler between each set of two consecutive samples of the input sequence.
 - Thus,
 $$
@@ -295,7 +295,7 @@ $$
 
 
 ## DOWNSAMPLING
-![fig11b](lect02/lect02-fig11b.png)
+![fig06b](lect02/lect02-fig06b.png)
 - An integer $$M>1$$ describes downsampling as every $$M$$-th sample of the input sequence being kept and $$M-1$$ samples between them being removed.
 - Thus,
 $$

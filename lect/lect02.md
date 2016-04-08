@@ -63,29 +63,6 @@ $$
 - Sampling frequency: $$F_T=\tfrac{1}{T}$$ (unit: $$\text{Hertz}$$, $$\text{Hz}$$ if $$T$$ is in seconds)
 
 
-## EXAMPLE(COMPLEX CONJUGATE): PAIR AND SHARE
-$$
-\{x[n]\}=\{e^{j\omega{n}}\}
-$$
-- Write an expression for the sequence $$\{x[n]\}$$ in terms of $$\sin$$ and $$\cos$$
-$$
-\{x[n]\}=\cos{(\omega{n})}+j\sin{(\omega{n})}
-$$
-- Write an expression for the sequence $$\{x^*[n]\}$$ in terms of $$\sin$$ and $$\cos$$
-$$
-\{x^*[n]\}=\cos{(\omega{n})}-j\sin{(\omega{n})}
-$$
-
-> __NOTE__:
-$$
-\begin{align*}
-e^{j\omega{n}}&=\cos{(\omega{n})}+j\sin{(\omega{n})}\\
-\cos{\omega{n}}&=\frac{1}{2}\left(e^{j\omega{n}}+e^{-j\omega{n}}\right)\\
-\sin{\omega{n}}&=\frac{1}{2j}\left(e^{j\omega{n}}-e^{-j\omega{n}}\right)
-\end{align*}
-$$
-
-
 ## FINITE-LENGTH vs. INFINITE-LENGTH
 - Finite-length sequence is defined for a finite period of time: $$N_1\leq{n}\leq{N}_2$$
 	- Where:
@@ -114,46 +91,8 @@ $$
 	\end{matrix}
 	$$
 
+### [EXAMPLE: SAMPLING](ex02.md/#1)
 
-## PAIR AND SHARE: DIGITAL SIGNALS
-- __Q__: Which of the following describe a digitial signal?
-	- Discrete-valued OR ~~Continuous-valued~~
-	- Discrete-time OR ~~Continous-time~~
-	- Real OR Complex
-	- Finite-length OR ~~__Infinite-length__~~
-> __CAVEAT__: Theoretical digital signals can have *infinite* lenght. Practical digital signals cannot.
-
-
-## PAIR AND SHARE: SAMPLING EXAMPLE
-### 1.
-You are given
-$$
-\begin{matrix}
-x[n]=\{1,\:2,\:3,\:4,\:5\}&\text{for }n=0:4
-\end{matrix}
-$$
-Plot the samples vs. $$n$$,
-![fig02a](lect02/lect02-fig02a.png)
-
-### 2.
-You are given
-$$
-\begin{matrix}
-x[n]=\{1,\:2,\:3,\:4,\:5\}&\text{for }n=0:4
-\end{matrix}
-$$
-Plot the samples vs. $$n$$, assuming that the sampling interval, $$T=1\:\text{sec}$$.
-![fig02a](lect02/lect02-fig02a.png)
-
-### 3.
-You are given
-$$
-\begin{matrix}
-x[n]=\{1,\:2,\:3,\:4,\:5\}&\text{for }n=0:4
-\end{matrix}
-$$
-Plot the samples vs. $$n$$, assuming that the sampling interval, $$T=0.5\:\text{sec}$$.
-![fig02b](lect02/lect02-fig02b.png)
 
 ## $$L_p$$-norm: SIZE OF THE SIGNAL
 - The size of the signal is given by the norm of the signal
@@ -231,11 +170,7 @@ y[n]=x[-n]
 $$
 
 
-## SIGNAL MANIPULATION
-Take the following continuous-time signal, $$x(t)$$ and plot: $$y(t)=2x(0.5t-1)$$
-
-![fig07](lect02/lect02-fig07.png)
-
+### [EXAMPLE: SIGNAL MANIPULATION(1)](ex02.md/#2) 
 
 ## SIGNAL OPERATIONS REVIEW
 ### TIME-SCALING:
@@ -277,32 +212,16 @@ y[n]=cx[a(n+b)]+d
 $$
 - Put them in this form and apply in $$a$$, $$b$$, $$c$$, $$d$$ order!
 
+### [EXAMPLE: SIGNAL MANIPULATION(2)](ex02.md/#3)
 
-## PAIR AND SHARE: SIGNAL MANIPULATION
-- Recall the standard:
-$$
-y[n]=cx[a(n+b)]+d
-$$
-- Plot $$y[n]=2x[1-0.5n]$$
-![fig08](lect02/lect02-fig08.png)
-
-
-## PAIR AND SHARE: BRANCING EXAMPLE
-### 1.
-- What is the ouput to the system below?
-
-![fig09a](lect02/lect02-fig09a.png)
-
-### 2.
-- What is the ouput $$y[n]$$ o the system below?
-
-![fig09b](lect02/lect02-fig09b.png)
+### [EXAMPLE: BRANCHING](ex02.md/#4)
 
 
 ## LAST SYSTEM AS A MOVING AVERAGE
 - If $$\propto_1=\propto_2=\propto_3=\propto_4=\tfrac{1}{4}$$, we end up with a moving average
 - Each entry in $$y[n]$$ is equal to the average of the previous four points
 - What have we created?
+- __LOW PASS FILTER!__
 
 
 ## AVERAGING TO REMOVE HIGH-FREQUENCY NOISE
@@ -335,81 +254,8 @@ $$
 	- Keep track of the amount you slide as that is the index of $$y$$
 - Length of convolution sum, $$y[n]=\text{length of }\{x[n]\}+\text{length of }\{h[n]\}-1$$.
 
+### [EXAMPLE: CONVOLUTION](ex02.md/#5)
 
-## EXAMPLE: CONVOLUTION
-What is the convolution of the following two signals:
-
-![fig10a](lect02/lect02-fig10a.png)
-![fig10b](lect02/lect02-fig10b.png)
-
-__(1)__: Put these on the $$k$$-axis
-
-![fig10c](lect02/lect02-fig10c.png)
-![fig10d](lect02/lect02-fig10d.png)
-
-__(2)__: next flip $$h[k]$$ around $$k=0$$ to create $$h[-k]$$.
-
-![fig10d](lect02/lect02-fig10d.png)
-![fig10e](lect02/lect02-fig10e.png)
-
-__(3)__:  Now, line up $$x[k]$$ with $$h[-k]$$
-![fig10f](lect02/lect02-fig10f.png)
-
-__(4)__: What points overlap?
-- multiply them
-- add all of the products up
-__(5)__: In this case
-- we have overlap at 0, so
-$$
-2\times1=2
-$$
-There is nothing else to add to it. since no more overlap.
-__(6)__: This value $$2$$ appears at $$y[0]$$, *i.e.* $$y[n]=2$$ at $$n=0$$. $$n=0$$ represents no shift.
-
-### $$n=1$$
-__(1)__: Next, shift $$h[-k]$$ to the right $$1$$ *i.e.* $$h[1-k]$$. Thus, this situation is looking at $$n=1$$
-![fig10g](lect02/lect02-fig10g.png)
-
-__(2)__: Note that the convolution equation asks you to look at $$h[n-k]$$ and this can be re-written as $$h[-1(k-n)]$$ which should help understand why a positive $$n$$ shifts $$h[-k]$$ to the right.
-
-__(3)__: Anyway, for this example,
-- the overlap at $$k=0$$, so
-$$
-2\times2=4
-$$
-This is the only overlap and thus is the only contribution to $$y[1]$$.
-
-----
-### $$n=2$$
-__(1)__: Shifting by $$2$$ yields the plots to the right.
-![fig10h](lect02/lect02-fig10h.png)
-
-__(2)__: In this one,
-- The only overlap appears at $$k=2$$
-$$
-1\times1=1;
-$$
-__(3)__: We shifted $$2$$ to the right, thus $$y[2]=1$$
-
-----
-### $$n=3$$
-__(1)__: Shifting to the right $$3$$ yields our last shift to the right that will yield overlap. *i.e* again at position $$k=2$$.
-![fig10i](lect02/lect02-fig10i.png)
-
-__(2)__: In this one,
-- we have
-$$
-1\times2=2;
-$$
-__(3)__: Thus, $$y[3]=2$$
-$$
-\begin{matrix}
-\therefore\:y[n]=\{2,\:4,\:1,\:2\}&\text{for }n=0,\:1,\:2,\:3
-\end{matrix}
-$$
-
-
-## CONVOLUTION (CONTINUED)
 - Convolution is commutative. You can prove this through a substitution of variables.
 $$
 x[n]\otimes{h}[n]=\sum_{k=-\infty}^{\infty}{x[k]h[n-k]}
@@ -445,18 +291,7 @@ x\left[\tfrac{n}{L}\right],&n=0,\:\pm{L},\:\pm2L,\cdots\\
 \end{cases}
 $$
 
-
-### EXAMPLE:
-$$
-\begin{matrix}
-x[n]=\{1,\:2,\:3,\:4\}&
-\begin{cases}
-\text{for }n=0:3\\
-L=2
-\end{cases}
-\end{matrix}
-$$
-What is $$x_u[n]$$
+### [EXAMPLE: UPSAMPLING](ex02.md/#6)
 
 
 ## DOWNSAMPLING
@@ -467,17 +302,4 @@ $$
 x_x[n]=x[nM]
 $$
 
-
-### EXAMPLE:
-$$
-\begin{matrix}
-x[n]=\{1,\:2,\:3,\:4,\:5,\:6,\:7,\:8\}&
-\begin{cases}
-\text{for }n=0:7\\
-L=2
-\end{cases}
-\end{matrix}
-$$
-What is $$x_d[n]$$
-
-
+### [EXAMPLE: DOWNSAMPLING](ex02.md/#7)

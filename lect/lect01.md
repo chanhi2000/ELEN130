@@ -92,25 +92,7 @@ $$
 - Sample value: $$x[n]$$, with $$n$$ being an integer in the range $$-\infty\leq{n}\leq\infty$$
 - $$x[n]$$ defined only for integer values of $$n$$ and __undefined for noninteger values of__ $$n$$.
 
-
-## DT SIGNAL SAMPLES
-$$
-\begin{matrix}
-x[n]=\{-0.4,\:3,\:2.1,\:-0.25,\:1.3,\:-1.5\:,8\}&\text{for }n=-3:3
-\end{matrix}
-$$
-- What is $$x[0]$$?
-$$
-x[0]=-0.25;
-$$
-- What is $$x[-2]$$?
-$$
-x[-2]=3;
-$$
-- What is $$x[1]$$?
-$$
-x[1]=1.3;
-$$
+### [EXAMPLE: DT SIGNAL SAMPLES](ex01.md/#1)
 
 
 ## DT SIGNAL: GRAPHICAL REPRESENTATION
@@ -132,45 +114,10 @@ $$
 ## REAL VS. COMPLEX SEQUENCES
 - Real sequence:  $$x[n]$$ is real $$\forall{n}$$
 - Complex sequence: $$x[n]$$ is complex for any $$n$$
-- Is this a real or complex sequence?
-$$
-\{x[n]\}=\{−4,\:2.3,\:\underset{\uparrow}{1.4},\:3+j2,\:1.1\}
-$$
-	- this is a __complex sequence__ because $$3+j2$$ is complex
--  Complex sequence $$\{x[n]\}$$ can be written at
-$$
-\{x[n]\}=\{x_\Re[n]\}+j\{x_\Im[n]\}
-$$
-where $$x_\Re[n]$$ and $$x_\Im[n]$$ are real and imaginary components of $$\{x[n]\}$$
-	- __SPECIAL DETAIL__: $$x_\Re[n]$$ and $$x_\Im[n]$$ are real.
-- Complex conjugate sequence of $$\{x[n]\}$$ is given by
-$$
-\{x^*[n]\}=\{x_\Re[n]\}-j\{x_\Im[n]\}
-$$
-	- Braces sometimes ignored if there is no ambiguity
 
+### [EXAMPLE: REAL OR COMPLEX SEQUENCE?](ex01.md/#2)
 
-## EXAMPLE(COMPLEX CONJUGATE): PAIR AND SHARE
-$$
-\{x[n]\}=\{e^{j\omega{n}}\}
-$$
-- Write an expression for the sequence $$\{x[n]\}$$ in terms of $$\sin$$ and $$\cos$$
-$$
-\{x[n]\}=\cos{(\omega{n})}+j\sin{(\omega{n})}
-$$
-- Write an expression for the sequence $$\{x^*[n]\}$$ in terms of $$\sin$$ and $$\cos$$
-$$
-\{x^*[n]\}=\cos{(\omega{n})}-j\sin{(\omega{n})}
-$$
-
-> __NOTE__:
-$$
-\begin{align*}
-e^{j\omega{n}}&=\cos{(\omega{n})}+j\sin{(\omega{n})}\\
-\cos{\omega{n}}&=\frac{1}{2}\left(e^{j\omega{n}}+e^{-j\omega{n}}\right)\\
-\sin{\omega{n}}&=\frac{1}{2j}\left(e^{j\omega{n}}-e^{-j\omega{n}}\right)
-\end{align*}
-$$
+### [EXAMPLE: COMPLEX CONJUGATE](ex01.md/#3)
 
 
 ## CONTINUOUS-VALUED vs. DISCRETE-VALUED SIGNALS
@@ -207,11 +154,4 @@ $$
 	\end{matrix}
 	$$
 
-
-## PAIR AND SHARE: DIGITAL SIGNALS
-- __Q__: Which of the following describe a digitial signal?
-	- Discrete-valued OR ~~Continuous-valued~~
-	- Discrete-time OR ~~Continous-time~~
-	- Real OR Complex
-	- Finite-length OR ~~__Infinite-length__~~
-> __CAVEAT__: Theoretical digital signals can have *infinite* lenght. Practical digital signals cannot.
+### [EXAMPLE: DIGITAL SIGNALS](ex01.md/#4)

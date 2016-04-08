@@ -207,6 +207,81 @@ samples.
 
 
 ## MORE ON FINITE IMPULSE RESPONSE (FIR)
+If impulse response $$h[n]$$ has finite length, then it is known as __a finite impulse response (FIR) discrete-time system__.
+Assuming
+$$
+\begin{matrix}
+h[n]=0\:\text{for}&
+\begin{cases}
+n<N_1,\\n>N_2,\\N_1<N_2
+\end{cases}
+\end{matrix}
+$$
+The convolution sum can be rewritten as:
+$$
+y[n]=\sum_{k=N_1}^{N_2}{h[k]x[n-k]}
+$$
+- Output of an FIR LTI discrete-time system can be computed directly from the convolution sum.
+- __example__: moving-average system and linear interpolators.
+
+### [EXAMPLE: DISCRETE-TIME ACCUMULATOR][3]
+
+
+## COURSE OVERVIEW: PART 1
+- ~~Discrete-Time Signals in the Time Domain~~
+	- ~~Operations, Classifications, Sampling~~
+- ~~Discrete-Time Systems~~
+	- ~~Impulse/Step Responses, LTI Classification, Stability,~~ __Response to sinusoidal input__
+- __Discrete-Time Signals in the Frequency Domain__
+	- __Transforms, Applications, Sampling and reconstruction__
+- Finite-Length Discrete Transforms
+	- DFT, FFT, Zero-padding, Fourier Domain filtering, Linear and Circular convolution
+- Z-transform
+- Basic filter structures: All pass, LPF, band pass, HPF, comb filter, prototype LPF
+-Digital filter structures and representations; 2nd order building blocks
+- FIR Design, Windowing
+- IIR Design, Bilinear transformation
+- IIR filter design with MATLAB
+- Review of signal acquisition and reconstruction from frequency domain perspective, interpolating filters, zero-padding, A/D and D/A converters, anti-aliasing filter, sample-and-hold, anti-imaging filter
+- Multirate DSP, up-sampling and down-sampling
+- Implementation considerations—quantization and dynamic range
+- Specific Applications (if time)
+
+
+## WHAT CAN WE DO?
+- Represent a discrete-time system by:
+	- Difference equation
+	- Block diagram
+	- Impulse response (if LTI)
+- Compute impulse response
+- Use convolution to compute response to any input (assuming system 
+is LTI
+- Analysis is good... we are in need of a tool to help with design. For example—say we wanted to design:
+	- A filter to remove 60Hz interference from power lines
+	- Pass all signals for channel 2 and suppress others
+	- Determine whether a signal is a 4 on the touch tone phone
+- __FREQUENCY ANALYSIS__
+
+
+## RESPONSE TO A SINUSOIDAL INPUT
+- Much like an impulse response says how a system will respond to an impulse, it may be useful to know how a system will respond to a sinusoidal input.
+- __Why?__ For that answer — we need to think back to Fourier analysis. A signal can be written as a sum of sinusoids at different frequencies.
+
+
+## FREQUENCY DOMAIN REPRESENTATION
+- What is the frequency domain? Physically 
+	- what does it mean and what does it represent?
+- Very useful to look at signals in the frequency domain (*i.e.* it is useful to look at signals in terms of their frequency content)
+![fig]()
+
+- Fourier Series and Fourier Transform are two mathematical approaches to looking at a signal in the frequency domain
+- The Fourier series can be used to represent __periodic__ signals in the frequency domain 
+- A periodic function $$x_p(t)$$ with fundamental period $$T_0$$ (where $$f_0=\tfrac{1}{T_0}$$ is called the __fundamental frequency__) can be represented by an __exponential__ Fourier series
+	- It uses superposition to express a signal as the summation of an infinite number of complex exponential waveforms
+	$$
+	
+	$$
 
 [1]: 
 [2]: 
+[3]: 

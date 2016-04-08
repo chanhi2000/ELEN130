@@ -6,18 +6,19 @@ $$
 x[n]=\{1,\:2,\:3,\:4,\:5\}
 $$
 and we are interested in the __circular time__-__reversal__, $$\{y[n]\}=\{x[\left<-n\right>_{N}]\}$$ what does the new sequence look like?
-- start one-by-one... 
+- start one-by-one...
 $$
 \begin{align*}
 y[0]&=x\left[\left<0\right>_5\right]\\
 &=x[0]=1
 \end{align*}
-
 $$
-- next, 
+- next,
 $$
+\begin{align*}
 y[1]&=x\left[\left<-1\right>_5\right]\\
 &=x[4]=5
+\end{align*}
 $$
 
 - Convince yourself the rest of the final sequence looks like this:

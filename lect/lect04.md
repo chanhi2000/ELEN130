@@ -323,9 +323,7 @@ $$
 - So, linearity only holds if $$y[-1]=\alpha{y}_1[-1]=\alpha{y}_1[-1]+\beta{y}_2[-1]$$
 - For the accumulator with a causal input to be linear – this must hold for all conditions $$y[-1]$$.
 - Thus, the accumulator must initially be at rest with zero initial condition.
-
-
-## EXAMPLE OF A NON-LINEAR SYSTEM
+- EXAMPLE OF A NON-LINEAR SYSTEM
 - Median Filter
 
 

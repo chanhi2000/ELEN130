@@ -11,7 +11,7 @@
 	- DFT, FFT, Zero-padding, Fourier Domain filtering, Linear and Circular convolution
 - Z-transform
 - Basic filter structures: All pass, LPF, band pass, HPF, comb filter, prototype LPF
--Digital filter structures and representations; 2nd order building blocks
+- Digital filter structures and representations; 2nd order building blocks
 - FIR Design, Windowing
 - IIR Design, Bilinear transformation
 - IIR filter design with MATLAB
@@ -69,7 +69,7 @@ $$
 where
 $$
 \begin{cases}
-\nu_0=\frac{{f}_0}{{f}_T}s&\text{normalized digital frequency }\left[\tfrac{\text{cycles}}{\text{sec}}\right]\\
+\nu_0=\frac{{f}_0}{{f}_T}&\text{normalized digital frequency }\left[\tfrac{\text{cycles}}{\text{sec}}\right]\\
 \omega_0=\frac{2\pi\Omega_0}{\Omega_T}&\text{normalized digital angular frequency }\left[\tfrac{\text{radians}}{sec}\right]
 \end{cases}
 $$
@@ -171,7 +171,6 @@ g_2(t)&=\cos{(6\pi{t})}\\
 \end{align*}
 $$
 Plot these and sample each at $$4\:\text{Hz}$$
--  aaaa
 ![fig01](lect04/lect04-fig01.png)
 
 ## COURSE OVERVIEW: PART 1
@@ -212,7 +211,7 @@ Plot these and sample each at $$4\:\text{Hz}$$
 
 ## EXAMPLES OF DISCRETE-TIME SYSTEMS
 ### ACCUMULATOR
-..$$y[n]$$ is the sum of $$x[n]+y[n-1]$$
+.$$y[n]$$ is the sum of $$x[n]+y[n-1]$$
 
 ### M-POINT MOVING-AVERAGE SYSTEM
 $$

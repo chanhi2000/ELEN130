@@ -11,7 +11,7 @@
 	- DFT, FFT, Zero-padding, Fourier Domain filtering, Linear and Circular convolution
 - Z-transform
 - Basic filter structures: All pass, LPF, band pass, HPF, comb filter, prototype LPF
--Digital filter structures and representations; 2nd order building blocks
+- Digital filter structures and representations; 2nd order building blocks
 - FIR Design, Windowing
 - IIR Design, Bilinear transformation
 - IIR filter design with MATLAB

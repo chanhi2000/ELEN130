@@ -11,7 +11,7 @@
 	- DFT, FFT, Zero-padding, Fourier Domain filtering, Linear and Circular convolution
 - Z-transform
 - Basic filter structures: All pass, LPF, band pass, HPF, comb filter, prototype LPF
--Digital filter structures and representations; 2nd order building blocks
+- Digital filter structures and representations; 2nd order building blocks
 - FIR Design, Windowing
 - IIR Design, Bilinear transformation
 - IIR filter design with MATLAB
@@ -217,12 +217,12 @@ $$
 ,where $$N$$ is an integer
 - If $$N>0$$, it is a __delaying__ operation
     - Unit delay:
-    
+
     ![fig06a](lect02/lect02-fig06a.png)
 
 - If $$N<0$$, it is a __advance__ operation
     - Unit advance:
-    
+
     ![fig06b](lect02/lect02-fig06b.png)
 
 ### TIME REVERSAL

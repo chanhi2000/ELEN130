@@ -23,7 +23,7 @@ where $$A$$ represents amplitude and $$\varphi$$ represents phase.
 $$
 x[n]=A\cos{(2\pi{f}_0(nT)+\varphi)}=A\cos{(2\pi\nu{n}+\varphi)}
 $$
-where $$\nu=f_0T=\tfrac{f_0}{F_T}$$ cycles per sample.
+where $$\nu=\tfrac{f_0}{F_T}=f_0T$$ cycles per sample.
 
 For sinusoidal signals, we will often use the normalized frequency, $$\nu$$. If the actual frequency of the sinusoid to be sampled is $$f_0$$ cycles per second, the *normalized frequency,* $$\nu$$, is the ratio of the actual frequency to the sampling frequency, $$\nu=\tfrac{f_0}{F_T}$$. Unit analysis shows that the units of the normalized frequency are:
 $$

@@ -83,18 +83,18 @@ x(t)&=A\cos{(2\pi{f}_0t)}\\
 $$
 where
 $$
-\begin{cases}
-f_0&\text{frequency (CT) }\left[\tfrac{\text{cycles}}{sec}\right]\\
-\Omega_0&\text{angular frequency (CT) }\left[\tfrac{\text{radians}}{sec}\right]
-\end{cases}
+\left\{\begin{matrix}
+\underset{\text{frequency (CT)}}{f_0\:\left[\tfrac{\text{cycles}}{sec}\right]}\\\\
+\underset{\text{angular frequency (CT)}}{\Omega_0\:\left[\tfrac{\text{radians}}{sec}\right]}
+\end{matrix}\right\}
 $$
 - Time variable $$t$$, of $$x_a(t)$$ is related to the discrete time variable $$n$$ of $$x[n]$$, only at discrete-time instants $$t_n$$ where $$t_n=nT$$
 - After sampling at rate $$f_T$$ or at rate $$\Omega_T$$, where
 $$
-\begin{cases}
-f_T=\tfrac{1}{T}&\text{sampling frequency/rate }\left[\tfrac{\text{samples}}{sec}\right]\\
-\Omega_T&\text{angular sampling frequency (CT) }\left[\tfrac{\text{radians}\cdots\text{samples}}{sec}\right]
-\end{cases}
+\left\{\begin{matrix}
+\underset{\text{sampling frequency/rate}}{f_T=\tfrac{1}{T}\:\left[\tfrac{\text{samples}}{sec}\right]}\\\\
+\underset{\text{angular sampling frequency (CT)}}{\Omega_T\:\left[\tfrac{\text{radians}\cdots\text{samples}}{sec}\right]}&
+\end{matrix}\right\}
 $$
 
 $$
@@ -107,6 +107,13 @@ x[n]&=A\cos{(2\pi{f}_0nT)}=A\cos{\left(\frac{2\pi{f}_0}{f_T}n\right)}\\
 \end{align*}
 $$
 where
+$$
+\left\{\begin{matrix}
+\underset{\text{normalized digital frequency}}{\nu_0=\frac{f_0}{f_T}\:\left[\tfrac{\text{cycles}}{\text{sec}}\right]}\\
+\underset{\text{normalized digital angular frequency}}{\omega_0=\frac{2\pi\Omega_0}{\Omega_T}\:\left[\tfrac{\text{radians}}{\text{sec}}\right]}&
+\end{matrix}\right\}
+$$
+
 
 ## MORE ON ALIASING
 - Assertion:

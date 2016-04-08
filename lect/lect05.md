@@ -62,17 +62,7 @@ $$
 - The response of a discrete-time system to a unit sample sequence, $$\delta[n]$$, is called the unit sample response, or simply, the impulse response, and is denoted by $$h[n]$$.
 - The response of a discrete-time system to a unit sample sequence, $$\mu[n]$$, is called the unit step response, or simply, the step response, and is denoted by $$s[n]$$.
 
-
-## PAIR AND SHARE: IMPULSE RESPONSE EXAMPLE
-- What is the impulse response of this system
-$$
-y[n]=x[n]+0.5x[n-1]
-$$
-- What is the impulse response of this system
-$$
-y[n]=x[n]+0.5y[n-1]
-$$
-- What is the impulse response of the accumulator?
+### [EXAMPLE: IMPULSE RESPONSE][1]
 
 
 ## LTI DISCRETE-TIME SYSTEM
@@ -159,4 +149,64 @@ $$
 - Here, $$x[n]$$ and $$y[n]$$ are the input and output of the system, respectively.
 - .$$\{d_k\}$$ and $$\{p_k\}$$ are constants characterizing the system
 - The __order__ of the system is given by $$\max{(N,\:M)}$$—which is the order of the difference equation.
--
+- An LTI system characterized by a constant coefficient difference equation (as above) as two finite sums of products.
+- Assuming causality, the output can be written as:
+$$
+\begin{align*}
+y[n]&=-\sum_{k=1}^{N}{\left(\frac{d_k}{d_0}y[n-k]\right)}+\sum_{k=0}^{M}{\left(\frac{p_k}{d_0}x[n-k]\right)}\\
+&\left<\text{assuming }d_0\neq0\right>
+\end{align*}
+$$
+
+
+## SOLVING THE LCCDE
+$$
+\sum_{k=0}^{N}{\left(d_ky[n-k]\right)}=\sum_{k=0}^{M}{\left(p_kx[n-k]\right)}
+$$
+where
+$$
+\begin{matrix}
+y[n]=y_c[n]+y_p[n]\\
+\left\{\begin{matrix}
+y_c[n],&\text{complementary/homogeneous solution (no input)}\\
+y_p[n],&\text{particular solution resulting from the input, }x[n]
+\end{matrix}\right\}
+\end{matrix}
+$$
+
+### STEP 1
+Find the complementary solution, $$y_c[n]$$ by assuming it has the form: $$\lambda^n$$
+so
+$$
+\begin{align*}
+\sum_{k=0}^{N}{\left(d_ky[n-k]\right)}&=\sum_{k=0}^{N}{\left(d_k\left(\lambda^{n-k}\right)\right)}\\
+&=\lambda^{n-N}\underset{\text{characteristic polynomial}}{\left(d_0\lambda^{N}+d_1\lambda^{N-1}+\cdots+d_{N-1}\lambda+d_N\right)}\\
+&=0
+\end{align*}
+$$
+Assume the above has $$N$$ roots: call them $$\lambda_1,\:\lambda_2,\:\lambda_3,\:\cdots,\lambda_N$$. If all of the roots are unique, the complementary solution is given by
+$$
+y_c[n]=\alpha_1\lambda_1^{n}+\alpha_2\lambda_2^{n}+\alpha_3\lambda_3^{n}+\cdots+\alpha_N\lambda_N^{n}
+$$
+And the constants $$\alpha_1,\:\alpha_2,\cdots,\alpha_N$$ are determined from the initial conditions. The __particular__ solution, $$y_p[n]$$, matches the form of the input, $$x[n]$$.
+
+### [EXAMPLE: SOLVING THE LCCDE][2]
+
+
+## CLASSIFICATIONS OF LTI DISCRETE-TIME SYSTEMS
+- Based on impulse response length
+	- Finite Impulse Response: impulse response $$h[n]$$ has finite length
+	- Infinite Impulse Response: impulse response $$h[n]$$ has infinite length
+- Based on Output Calculation Process
+	- __Nonrecursive System__: Output can be calculated sequentially knowing only the present and past input
+samples.
+	- __Recursive System__: Output computation involves past output samples in addition to the present and past input samples
+- Based on the Impulse Response Coefficients
+	- __Real Discrete-Time System__: The impulse response samples are real-valued
+	- __Complex Discrete-Time System__: The impulse response samples are complex-valued
+
+
+## MORE ON FINITE IMPULSE RESPONSE (FIR)
+
+[1]: 
+[2]: 

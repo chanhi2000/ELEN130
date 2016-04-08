@@ -133,6 +133,7 @@ x[n]=\{1,\:2,\:3,\:4,\:5\}&\text{for }n=0:4
 \end{matrix}
 $$
 Plot the samples vs. $$n$$,
+![fig02a](lect02/lect02-fig02a.png)
 
 ### 2.
 You are given
@@ -142,6 +143,7 @@ x[n]=\{1,\:2,\:3,\:4,\:5\}&\text{for }n=0:4
 \end{matrix}
 $$
 Plot the samples vs. $$n$$, assuming that the sampling interval, $$T=1\:\text{sec}$$.
+![fig02a](lect02/lect02-fig02a.png)
 
 ### 3.
 You are given
@@ -151,7 +153,7 @@ x[n]=\{1,\:2,\:3,\:4,\:5\}&\text{for }n=0:4
 \end{matrix}
 $$
 Plot the samples vs. $$n$$, assuming that the sampling interval, $$T=0.5\:\text{sec}$$.
-
+![fig02b](lect02/lect02-fig02b.png)
 
 ## $$L_p$$-norm: SIZE OF THE SIGNAL
 - The size of the signal is given by the norm of the signal
@@ -177,7 +179,7 @@ $$
 
 ## DISCRETE-TIME SYSTEMS
 A discrete-time system operates on an input sequence according to some prescribed rules and develops an output sequence.
-![fig02](lect02/lect02-fig02.png)
+![fig03](lect02/lect02-fig03.png)
 
 
 ## ELEMENTARY OPERATIONS ON SEQUENCES
@@ -192,16 +194,16 @@ A discrete-time system operates on an input sequence according to some prescribe
 
 
 ## PRODUCT (MODULATION) OPERATION
-![fig03](lect02/lect02-fig03.png)
+![fig04](lect02/lect02-fig04.png)
 
 One application is forming a finite-length sequence from an infinite-length sequence by multiplying the latter with a window sequence – this process is called *windowing*.
 
 
 ## MULTIPLICATION AND ADDITION
 
-![fig04a](lect02/lect02-fig04a.png)
+![fig05a](lect02/lect02-fig05a.png)
 
-![fig04b](lect02/lect02-fig04b.png)
+![fig05b](lect02/lect02-fig05b.png)
 
 Inverting all samples of $$w[n]$$ creates a subtraction operation
 
@@ -216,12 +218,12 @@ $$
 - If $$N>0$$, it is a __delaying__ operation
     - Unit delay:
     
-    ![fig05a](lect02/lect02-fig05a.png)
+    ![fig06a](lect02/lect02-fig06a.png)
 
 - If $$N<0$$, it is a __advance__ operation
     - Unit advance:
     
-    ![fig05b](lect02/lect02-fig05b.png)
+    ![fig06b](lect02/lect02-fig06b.png)
 
 ### TIME REVERSAL
 $$
@@ -232,7 +234,7 @@ $$
 ## SIGNAL MANIPULATION
 Take the following continuous-time signal, $$x(t)$$ and plot: $$y(t)=2x(0.5t-1)$$
 
-![fig06](lect02/lect02-fig06.png)
+![fig07](lect02/lect02-fig07.png)
 
 
 ## SIGNAL OPERATIONS REVIEW
@@ -282,19 +284,19 @@ $$
 y[n]=cx[a(n+b)]+d
 $$
 - Plot $$y[n]=2x[1-0.5n]$$
-![fig07](lect02/lect02-fig07.png)
+![fig08](lect02/lect02-fig08.png)
 
 
 ## PAIR AND SHARE: BRANCING EXAMPLE
 ### 1.
 - What is the ouput to the system below?
 
-![fig08a](lect02/lect02-fig08a.png)
+![fig09a](lect02/lect02-fig09a.png)
 
 ### 2.
 - What is the ouput $$y[n]$$ o the system below?
 
-![fig08b](lect02/lect02-fig08b.png)
+![fig09b](lect02/lect02-fig09b.png)
 
 
 ## LAST SYSTEM AS A MOVING AVERAGE
@@ -337,21 +339,21 @@ $$
 ## EXAMPLE: CONVOLUTION
 What is the convolution of the following two signals:
 
-![fig09a](lect02/lect02-fig09a.png)
-![fig09b](lect02/lect02-fig09b.png)
+![fig10a](lect02/lect02-fig10a.png)
+![fig10b](lect02/lect02-fig10b.png)
 
 __(1)__: Put these on the $$k$$-axis
 
-![fig09c](lect02/lect02-fig09c.png)
-![fig09d](lect02/lect02-fig09d.png)
+![fig10c](lect02/lect02-fig10c.png)
+![fig10d](lect02/lect02-fig10d.png)
 
 __(2)__: next flip $$h[k]$$ around $$k=0$$ to create $$h[-k]$$.
 
-![fig09d](lect02/lect02-fig09d.png)
-![fig09e](lect02/lect02-fig09e.png)
+![fig10d](lect02/lect02-fig10d.png)
+![fig10e](lect02/lect02-fig10e.png)
 
 __(3)__:  Now, line up $$x[k]$$ with $$h[-k]$$
-![fig09f](lect02/lect02-fig09f.png)
+![fig10f](lect02/lect02-fig10f.png)
 
 __(4)__: What points overlap?
 - multiply them
@@ -366,7 +368,7 @@ __(6)__: This value $$2$$ appears at $$y[0]$$, *i.e.* $$y[n]=2$$ at $$n=0$$. $$n
 
 ### $$n=1$$
 __(1)__: Next, shift $$h[-k]$$ to the right $$1$$ *i.e.* $$h[1-k]$$. Thus, this situation is looking at $$n=1$$
-![fig09g](lect02/lect02-fig09g.png)
+![fig10g](lect02/lect02-fig10g.png)
 
 __(2)__: Note that the convolution equation asks you to look at $$h[n-k]$$ and this can be re-written as $$h[-1(k-n)]$$ which should help understand why a positive $$n$$ shifts $$h[-k]$$ to the right.
 
@@ -380,7 +382,7 @@ This is the only overlap and thus is the only contribution to $$y[1]$$.
 ----
 ### $$n=2$$
 __(1)__: Shifting by $$2$$ yields the plots to the right.
-![fig09h](lect02/lect02-fig09h.png)
+![fig10h](lect02/lect02-fig10h.png)
 
 __(2)__: In this one,
 - The only overlap appears at $$k=2$$
@@ -392,7 +394,7 @@ __(3)__: We shifted $$2$$ to the right, thus $$y[2]=1$$
 ----
 ### $$n=3$$
 __(1)__: Shifting to the right $$3$$ yields our last shift to the right that will yield overlap. *i.e* again at position $$k=2$$.
-![fig09i](lect02/lect02-fig09i.png)
+![fig10i](lect02/lect02-fig10i.png)
 
 __(2)__: In this one,
 - we have
@@ -432,7 +434,7 @@ $$
 
 
 ## UNSAMPLING
-![fig10a](lect02/lect02-fig10a.png)
+![fig11a](lect02/lect02-fig11a.png)
 - An integer $$L>1$$ describes unsampling as $$L-1$$ equidistant zero-valued samples are inserted by an up-sampler between each set of two consecutive samples of the input sequence.
 - Thus,
 $$
@@ -458,7 +460,7 @@ What is $$x_u[n]$$
 
 
 ## DOWNSAMPLING
-![fig10b](lect02/lect02-fig10b.png)
+![fig11b](lect02/lect02-fig11b.png)
 - An integer $$M>1$$ describes downsampling as every $$M$$-th sample of the input sequence being kept and $$M-1$$ samples between them being removed.
 - Thus,
 $$

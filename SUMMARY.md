@@ -7,3 +7,5 @@
 * [lect04](lect/lect04.md)
 * [hw01](hw/hw01.md)
 * [lab01](lab/lab01.md)
+* [lab02](lab/lab02.md)
+* [q01](q/q01.md)

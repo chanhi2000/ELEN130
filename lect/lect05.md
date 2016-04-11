@@ -279,9 +279,25 @@ is LTI
 - A periodic function $$x_p(t)$$ with fundamental period $$T_0$$ (where $$f_0=\tfrac{1}{T_0}$$ is called the __fundamental frequency__) can be represented by an __exponential__ Fourier series
 	- It uses superposition to express a signal as the summation of an infinite number of complex exponential waveforms
 	$$
-	
+	\begin{matrix}
+	\tilde{x}(t)=\sum_{n=-\infty}^{\infty}{c_ne^{j2\pi{f}_0nt}}\\
+	c_n=\frac{1}{T_0}\int_{0}^{T_0}{\tilde{x}(t)e^{-j2\pi{f}_0nt}dt}
+	\end{matrix}
 	$$
+- The term $$c_0$$ represents the __DC__ component of the signal:
+$$
+c_0=\frac{1}{T_0}\int_{0}^{T_0}{\tilde{x}(t)dt}
+$$
 
-[1]: 
-[2]: 
-[3]: 
+## FOUREIR SERIES (EXTRA INFO)
+$$
+\begin{matrix}
+\tilde{x}(t)=\sum_{n=-\infty}^{\infty}{c_ne^{j2\pi{f}_0nt}}\\
+c_n=\frac{1}{T_0}\int_{0}^{T_0}{\tilde{x}(t)e^{-j2\pi{f}_0nt}dt}
+\end{matrix}
+$$
+### COEFFICIENTS
+
+[1]: http://chanhi2000.gitbooks.io/elen133/content/lect/ex05.html#1
+[2]: http://chanhi2000.gitbooks.io/elen133/content/lect/ex05.html#2
+[3]: http://chanhi2000.gitbooks.io/elen133/content/lect/ex05.html#3

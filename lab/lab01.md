@@ -48,25 +48,17 @@ A discrete time signal in MATLAB is represented as an array or vector. Many oper
 
 Start MATLAB on your workstation. Create a directory for this class, and move to it for all lab work. In the “Command Window” type the statements listed in the left column of the table below and observe the responses. Then answer the associated questions. Note that semicolons are not placed at the end of these statements, so the result of each statement will be displayed in the command window. This is sometimes useful for short vectors, but should be avoided for larger data vectors.
 
-#### STATEMENTS#1
-```matlab
-test1=0:8
-test1(4)
-```
-
 #### QUESTION#1:
 How long is the vector `test1`? (Look in the workspace window or type "whos" in response to the >> prompt.
 
 Is element 4 of vector test1 equal to 4? Why or why not?
 
-----
-#### STATEMENTS#2
 ```matlab
-powv = 2 .^ test1;
-cosv = cos(2 * pi * (1/8) * test1)
-expv1 = exp(2 * pi * (1/8) * test1)
-expv2 = exp(2 * pi * j*(1/8) * test1)
+test1=0:8
+test1(4)
 ```
+
+----
 
 #### QUESTION#2:
 Explain each of the vectors created with these four statements.
@@ -75,54 +67,60 @@ How is `expv1` different from `expv2`?
 
 > It is generally easier to view the structure of a signal by viewing its plot rather than reading a sequence of numbers.
 
-----
-#### STATEMENT#3
 ```matlab
-plot(expv1)
+powv = 2 .^ test1;
+cosv = cos(2 * pi * (1/8) * test1)
+expv1 = exp(2 * pi * (1/8) * test1)
+expv2 = exp(2 * pi * j*(1/8) * test1)
 ```
+
+----
 
 #### QUESTION#3
 What does this plot show?
 
 What is the horizontal axis?
 
-----
-#### STATEMENT#4
 ```matlab
-plot(test1, expv1)
+plot(expv1)
 ```
+
+----
 
 #### QUESTION#4
 How is this plot different from the previous plot?
 
-----
-#### STATEMENT#5
 ```matlab
-stem(test1, expv1)
+plot(test1, expv1)
 ```
+
+----
 
 #### QUESETION #5
 Describe this plot and differences from the previous ones.
 
-----
-#### STATEMENT#6
 ```matlab
-plot(expv2)
+stem(test1, expv1)
 ```
 
+----
 #### QUESTION#6
 What does this plot show?
 
 Explain it in terms of the values displayed when it was created.
 
+```matlab
+plot(expv2)
+```
+
+
 ----
-#### STATEMENT#7
+#### QUESTION#7
+How is this plot different from the previous one?
+
 ```matlab
 plot( test1, real(expv2), test1, imag(expv2) )
 ```
-
-#### QUESTION#7
-How is this plot different from the previous one?
 
 ----
 ### Part 2 - Interactive creation of vectors and plots Interactive Mode statements:
@@ -178,8 +176,8 @@ title([ 'Cosine at frequency = ' num2str(freq1/Ts) ...
 ```
 
 __(4)__: Use the two `m`files to do the following.
-- Reproduce the plots from part 2, step 1 above. How many statements do you need to type in the interactive mode? If you get error messages on the screen from either m-file, edit the m- file to correct the error and then run it again.
-- After you have successfully reproduced the results from step 1, use the two m-files to make plots of the signals specified below. In each case answer the following questions:
+- Reproduce the plots from part 2, step 1 above. How many statements do you need to type in the interactive mode? If you get error messages on the screen from either `m`-file, edit the `m`-file to correct the error and then run it again.
+- After you have successfully reproduced the results from step 1, use the two `m`-files to make plots of the signals specified below. In each case answer the following questions:
 	- What is the sampling interval?
 	- What is the sampling frequency?
 	- How many samples are there per cycle of the input signal?

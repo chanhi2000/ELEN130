@@ -36,8 +36,7 @@
 ## CASUAL SYSTEM
 Recall from [lecture 1]() : $$x[n]=0$$ for $$n<N_1$$—this is called a __causal__ signal
 - A causal system, the  $$n_0$$-th output sample, $$y[n_0]$$ depends only on the input samples $$x[n]$$ for $$n\leq{n}_0$$.
-- In a causal system changes in the output samples do NOT precede changes in the input
-samples.
+- In a causal system changes in the output samples do NOT precede changes in the input samples.
 - A non-causal system CAN be implemented, but, it requires delaying the output by an appropriate number of samples.
 
 
@@ -195,8 +194,8 @@ And the constants $$\alpha_1,\:\alpha_2,\cdots,\alpha_N$$ are determined from th
 
 ## CLASSIFICATIONS OF LTI DISCRETE-TIME SYSTEMS
 - Based on impulse response length
-	- Finite Impulse Response: impulse response $$h[n]$$ has finite length
-	- Infinite Impulse Response: impulse response $$h[n]$$ has infinite length
+	- __F__inite __I__mpulse __R__esponse: impulse response $$h[n]$$ has finite length
+	- __I__nfinite __I__mpulse __R__esponse: impulse response $$h[n]$$ has infinite length
 - Based on Output Calculation Process
 	- __Nonrecursive System__: Output can be calculated sequentially knowing only the present and past input
 samples.
@@ -289,6 +288,7 @@ $$
 c_0=\frac{1}{T_0}\int_{0}^{T_0}{\tilde{x}(t)dt}
 $$
 
+
 ## FOUREIR SERIES (EXTRA INFO)
 $$
 \begin{matrix}
@@ -296,6 +296,7 @@ $$
 c_n=\frac{1}{T_0}\int_{0}^{T_0}{\tilde{x}(t)e^{-j2\pi{f}_0nt}dt}
 \end{matrix}
 $$
+
 ### COEFFICIENTS
 
 [1]: http://chanhi2000.gitbooks.io/elen133/content/lect/ex05.html#1

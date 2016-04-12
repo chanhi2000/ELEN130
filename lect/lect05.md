@@ -321,7 +321,7 @@ $$
 - __DTFT__:
 $$
 \begin{matrix}
-\underset{\text{DT time-doamain}}{n}&\to&\underset{\text{DF frequency-doamain}}{\omega}
+\underset{\text{DT time-doamain}}{n}&\to&\underset{\text{CF frequency-doamain}}{\omega}
 \end{matrix}
 $$
 

@@ -22,9 +22,9 @@
 
 
 ## OVERVIEW
-- Sampling/Alisainsg
-- Discrete-Time Systems
-- LInearity
+- Linearity, Shift-Invariance/Time-Invariance 
+- Cascaded Systems
+- Fourier Transform
 
 
 ## LINEAR TIME-INVARIANT (LTI) SYSTEM
@@ -132,12 +132,12 @@ $$
 ### Cascaded connection (Series)
 - Two LTI discrete-time systems in series
 - These combine in the following way:
-![fig05a](lect04/lect04-fig05a.png)
+![fig01a](lect04/lect04-fig01a.png)
 
 ### Parallel connection
 - Two LTI discrete-time systems in parallel
 - These combine in the following way:
-![fig05a](lect04/lect04-fig05a.png)
+![fig01b](lect04/lect04-fig01b.png)
 
 
 ## FINITE-DIMENSIONAL LTI DISCRETE-TIME SYSTEMS
@@ -253,7 +253,7 @@ $$
 	- Block diagram
 	- Impulse response (if LTI)
 - Compute impulse response
-- Use convolution to compute response to any input (assuming system 
+- Use convolution to compute response to any input (assuming system
 is LTI
 - Analysis is good... we are in need of a tool to help with design. For example—say we wanted to design:
 	- A filter to remove 60Hz interference from power lines
@@ -268,13 +268,13 @@ is LTI
 
 
 ## FREQUENCY DOMAIN REPRESENTATION
-- What is the frequency domain? Physically 
+- What is the frequency domain? Physically
 	- what does it mean and what does it represent?
 - Very useful to look at signals in the frequency domain (*i.e.* it is useful to look at signals in terms of their frequency content)
-![fig]()
+![fig02](lect05/lect05-fig02.png)
 
 - Fourier Series and Fourier Transform are two mathematical approaches to looking at a signal in the frequency domain
-- The Fourier series can be used to represent __periodic__ signals in the frequency domain 
+- The Fourier series can be used to represent __periodic__ signals in the frequency domain
 - A periodic function $$x_p(t)$$ with fundamental period $$T_0$$ (where $$f_0=\tfrac{1}{T_0}$$ is called the __fundamental frequency__) can be represented by an __exponential__ Fourier series
 	- It uses superposition to express a signal as the summation of an infinite number of complex exponential waveforms
 	$$
@@ -296,9 +296,129 @@ $$
 c_n=\frac{1}{T_0}\int_{0}^{T_0}{\tilde{x}(t)e^{-j2\pi{f}_0nt}dt}
 \end{matrix}
 $$
+$$
+\left\{\begin{aligned}
+n&=\pm1&&\text{the fundamental frequency component in }x_p(t)\\
+n&=\pm2,\:\pm3,\:\cdots&&\text{the harmonic component in }x_p(t)
+\end{aligned}\right\}
+$$
+- Each phasor term in FS can be written as
+$$
+c_ne^{j2\pi{f}_0nt}=|c_n|e^{j\left(2\pi{f}_0nt+\angle{\left(c_n\right)}\right)}
+$$
+- Plots of $$|c_n|$$ and $$\angle{c_n}$$ versus *discrte* frequency values $$ \left(\begin{matrix}nf_0,&n=0,\:\pm1,\:\pm2,\:\cdots\end{matrix}\right)$$ are called the __magnitude__ and the __phase line spectra__ of the signal, respectively.
 
-### COEFFICIENTS
+
+## FREQUENCY DOMAIN REPRESENTATION
+- start with a reveiw of the __C__ontinuous-__t__ime __F__ourier __T__ransform (__CTFT__)
+- __CTFT__:
+$$
+\begin{matrix}
+\underset{\text{CT time-doamain}}{t}&\to&\underset{\text{CT frequency-doamain}}{f}
+\end{matrix}
+$$
+- This will let us transition smoothly into the __D__iscrete-__t__ime __F__ourier __T__ransform (__DTFT__)
+- __DTFT__:
+$$
+\begin{matrix}
+\underset{\text{DT time-doamain}}{n}&\to&\underset{\text{DF frequency-doamain}}{\omega}
+\end{matrix}
+$$
+
+
+## FOURIER TRANSFORM
+- CTFT is given by:
+$$
+\underset{\text{Fourier spectrum}}{X_a(j\Omega)}=\int_{-\infty}^{\infty}{x_a(t)e^{-j\Omega{t}}dt}\\
+$$
+- Inverse CTFT is given by:
+$$
+x_a(t)=\frac{1}{2\pi}\int_{-\infty}^{\infty}{X_a(j\Omega)e^{j\Omega{t}}d\Omega}
+$$
+- The pair is denoted as:
+$$
+\begin{matrix}
+x_a(t)&\overset{\text{CTFT}}{\longleftrightarrow}&X_a(j\Omega)
+\end{matrix}
+$$
+where
+$$
+\left\{\begin{matrix}
+\underset{\text{CT angular frequency}}{\Omega}&-\infty<\Omega<\infty
+\end{matrix}\right\}
+$$
+- polar form:
+$$
+X_a(j\Omega)=|X_a(j\Omega)|e^{j\theta_a(\Omega)}
+$$
+where
+$$
+\left\{\begin{matrix}
+\underset{\text{magnitude}}{|X_a(j\Omega)|}\\
+\underset{\text{phase}}{\theta_a(\Omega)|}\\
+\end{matrix}\right\}
+$$
+
+
+## DIRAC DELTA FUNCTION
+- The unit impulse signal $$\delta(t)$$ is defined by the equations
+$$
+\begin{align*}
+\delta(t)&=0,&&t\neq0\\
+\int_{-\epsilon}^{\epsilon}{\delta(t)dt}&=1,&&\forall{\epsilon>0},\:\:\left(\epsilon\in\Re\right)
+\end{align*}
+$$
+![fig03](lect05/lect05-fig03.png)
+- Zero everywhere except the origin
+- has unit area
+- The value of $$\left.\delta(t)\right|_{t=0}$$ is not defiend. In particular $$\delta(0)\neq\infty$$
+- The unit impulse signal can be viewed as a narrow pulse with large amplitude and having a unit area
+- Another definition:
+$$
+\delta(f)=\int_{-\infty}^{\infty}{e^{j2\pi{f}t}dt}
+$$
+
+## PROPERTIES OF A DIRECT DELTA FUNCTION
+$$
+x(t)\delta(t-t_0)=x(t_0)\delta(t-t_0)
+$$
+$$
+\delta(\alpha{t})=\frac{1}{|\alpha|}\delta(t)
+$$
+- sampling (or sifting) property:
+$$
+\begin{align*}
+\int_{-\infty}^{\infty}{x(t)\delta(t-t_0)dt}&=\int_{-\infty}^{\infty}{x(t_0)\delta(t-t_0)dt}\\
+&=x(t_0)\int_{-\infty}^{\infty}{\delta(t-t_0)dt}\\
+&=x(t_0)
+\end{align*}
+$$
+- convolution property:
+$$
+\begin{align*}
+x(t)\otimes\delta(t)&=\int_{-\infty}^{\infty}{x(\tau)\delta(t-\tau)dt}\\
+&=x(t)
+\end{align*}
+$$
+
+### [EXAMPLE: DIRAC DELTA][4]
+
+### [EXAMPLE: CTFT][5]
+
+### [EXAMPLE: INVERSE CTFT][6]
+
+## CTFT LIMITATIONS
+- __DIRICHLET CONDITIONS__
+	- the CT function, $$x_a(t)$$ should have a finite number of discontiunities and a finite number of maxima and minima in any finite interval
+	- The signal is absolutely integrable, *i.e.*
+	$$
+	\int_{-\infty}^{\infty}{|x_a(t)|dt}<\infty
+	$$
+
 
 [1]: http://chanhi2000.gitbooks.io/elen133/content/lect/ex05.html#1
 [2]: http://chanhi2000.gitbooks.io/elen133/content/lect/ex05.html#2
 [3]: http://chanhi2000.gitbooks.io/elen133/content/lect/ex05.html#3
+[4]: http://chanhi2000.gitbooks.io/elen133/content/lect/ex05.html#4
+[5]: http://chanhi2000.gitbooks.io/elen133/content/lect/ex05.html#5
+[6]: http://chanhi2000.gitbooks.io/elen133/content/lect/ex05.html#6

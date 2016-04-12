@@ -221,23 +221,23 @@ __output__:
 ```
 Name       Size              Bytes  Class     Attributes
 
-  N1         1x1                   8  double              
-  ans        1x1                   8  double              
-  cosv       1x9                  72  double              
-  expv1      1x9                  72  double              
-  expv2      1x9                 144  double    complex   
-  freq1      1x1                   8  double              
-  phase      1x1                   8  double              
-  powv       1x9                  72  double              
-  sig1       1x2001            16008  double              
-  svec1      1x2001            16008  double              
-  test1      1x9                  72  double   
+  N1         1x1                   8  double
+  ans        1x1                   8  double
+  cosv       1x9                  72  double
+  expv1      1x9                  72  double
+  expv2      1x9                 144  double    complex
+  freq1      1x1                   8  double
+  phase      1x1                   8  double
+  powv       1x9                  72  double
+  sig1       1x2001            16008  double
+  svec1      1x2001            16008  double
+  test1      1x9                  72  double
 ```
 
 ![fig06](lab01sub/lab01sub-fig06.png)
 
 #### QUESTION#1
-Reproduce the plots from part 2, step 1 above with two `m`-files, `getCosSig.m` and `plotCogsig.m`. How many statements do you need to type in the interactive mode? 
+Reproduce the plots from part 2, step 1 above with two `m`-files, `getCosSig.m` and `plotCogsig.m`. How many statements do you need to type in the interactive mode?
 
 #### ANSWER#1
 1. Type 'getCosSig' on the '>>' prompt, and enter
@@ -246,7 +246,7 @@ Reproduce the plots from part 2, step 1 above with two `m`-files, `getCosSig.m` 
 ```
 2. When the 1st prompt is asked, like the following
 ```
->> Enter number of samples: 
+>> Enter number of samples:
 ```
 type the correct number, which is $$N_\text{tot}=2000$$
 ```
@@ -254,11 +254,11 @@ type the correct number, which is $$N_\text{tot}=2000$$
 ```
 3. When the 2nd prompt is asked, like the following
 ```
->> Enter normalized frequency in cycles/sample: 
+>> Enter normalized frequency in cycles/sample:
 ```
 type the correct number, which is $$\nu=0.02\:\left[\tfrac{\text{cycles}}{\text{sample}}\right]$$
 ```
->> Enter normalized frequency in cycles/sample: 0.02 
+>> Enter normalized frequency in cycles/sample: 0.02
 ```
 4. Type 'getCosSig' on the '>>' prompt, and enter
 ```
@@ -266,7 +266,7 @@ type the correct number, which is $$\nu=0.02\:\left[\tfrac{\text{cycles}}{\text{
 ```
 5. When the 3rd prompt is asked, like the following
 ```
->> Enter sample time interval in seconds: 
+>> Enter sample time interval in seconds:
 ```
 type the correct number, which is $$T_s=0.005\:\left[\tfrac{\text{sec}}{\text{sample}}\right]$$
 ```
@@ -287,12 +287,12 @@ __(c)__ How many samples are there per cycle of the input signal?
 
 __(d)__ What is the time duration of one cycle on your plot?
 
-__(e)__ What parameters values should be used for `getCosSig` and `plotCosSig`? 
-- For $$N_\text{tot}=1000$$, find the correct parameters to plot $$10\:\text{sec}$$ of a $$2.5\:\text{Hz}$$ signal. 
+__(e)__ What parameters values should be used for `getCosSig` and `plotCosSig`?
+- For $$N_\text{tot}=1000$$, find the correct parameters to plot $$10\:\text{sec}$$ of a $$2.5\:\text{Hz}$$ signal.
 ![fig07](lab01sub/lab01sub-fig07.png)
-- For $$T_S=0.002$$, find the correct parameters to plot $$5\:\text{sec}$$ of a $$1.2\:\text{Hz}$$ signal. 
+- For $$T_S=0.002$$, find the correct parameters to plot $$5\:\text{sec}$$ of a $$1.2\:\text{Hz}$$ signal.
 ![fig08](lab01sub/lab01sub-fig08.png)
-- For $$\nu=0.1$$, find the correct parameters to plot $$0.4\:\text{sec}$$ of a $$5\:\text{Hz}$$ signal. 
+- For $$\nu=0.1$$, find the correct parameters to plot $$0.4\:\text{sec}$$ of a $$5\:\text{Hz}$$ signal.
 ![fig09](lab01sub/lab01sub-fig09.png)
 - For $$N_\text{tot}=20$$, find the correct parameters to plot $$0.4\:\text{sec}$$ of a $$55\:\text{Hz}$$ signal. Does this plot match its labels? Why or why not?
 ![fig10](lab01sub/lab01sub-fig10.png)
@@ -300,7 +300,7 @@ __(e)__ What parameters values should be used for `getCosSig` and `plotCosSig`?
 
 ### PART3: Sound Output
 #### QUESTION#1:
-Using `getCosSig`, create `sig1` with $$N_\text{tot}=8000$$ and $$\nu=0.075\:\left[\tfrac{text{cycle}}{\text{sample}}\right]$$.
+Using `getCosSig`, create `sig1` with $$N_\text{tot}=8000$$ and $$\nu=0.075\:\left[\tfrac{\text{cycle}}{\text{sample}}\right]$$.
 
 #### ANSWER#1:
 1. Type 'getCosSig' on the '>>' prompt, and enter
@@ -313,7 +313,7 @@ Using `getCosSig`, create `sig1` with $$N_\text{tot}=8000$$ and $$\nu=0.075\:\le
 ```
 3. When the 2nd prompt is asked, type the correct number, which is $$\nu=0.02\:\left[\tfrac{\text{cycles}}{\text{sample}}\right]$$
 ```
->> Enter normalized frequency in cycles/sample: 0.075 
+>> Enter normalized frequency in cycles/sample: 0.075
 ```
 
 > Type `help sound` to learn how to make sound output.
@@ -428,34 +428,34 @@ sound(5.0*sig1, FT1); pause(2.5);
 ## APPENDIX
 #### getCosSig.m
 ```matlab
-N1=input('Enter number of samples: '); 
-freq1=input('Enter normalized frequency in cycles/sample: '); 
-phase=0.0; 
-svec1=0:(N1-1); 
+N1=input('Enter number of samples: ');
+freq1=input('Enter normalized frequency in cycles/sample: ');
+phase=0.0;
+svec1=0:(N1-1);
 sig1=cos(2 * pi * freq1 * svec1+phase);
 ```
 
 #### plotCosSig.m
 ```matlab
-subplot(2,1,1) 
-plot(svec1,sig1) 
-xlabel('sample number') 
-title([ 'cosine at normalized frequency = ' num2str(freq1) ' cycles/sample']) 
-% 
-subplot(2,1,2) 
-Ts=input('Enter sample time interval in seconds: ') 
+subplot(2,1,1)
+plot(svec1,sig1)
+xlabel('sample number')
+title([ 'cosine at normalized frequency = ' num2str(freq1) ' cycles/sample'])
+%
+subplot(2,1,2)
+Ts=input('Enter sample time interval in seconds: ')
 plot(svec1*Ts, sig1)
-xlabel('time in seconds') 
-title([ 'Cosine at frequency = ' num2str(freq1/Ts) ... 
+xlabel('time in seconds')
+title([ 'Cosine at frequency = ' num2str(freq1/Ts) ...
     ' Hz with Ts = ' num2str(1000*Ts) ' ms'])
 ```
 
 #### SOUND FILES:
-- [soune01.wav][1]
-- [soune02.wav][2]
-- [soune03.wav][3]
-- [soune04.wav][4]
-- [soune05.wav][5]
+- [sound01.wav][1]
+- [sound02.wav][2]
+- [sound03.wav][3]
+- [sound04.wav][4]
+- [sound05.wav][5]
 
 [1]: https://github.com/chanhi2000/ELEN133/tree/master/lab/lab01sub/sound01.wav
 [2]: https://github.com/chanhi2000/ELEN133/tree/master/lab/lab01sub/sound02.wav

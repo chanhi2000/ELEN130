@@ -22,9 +22,9 @@
 
 
 ## OVERVIEW
-- Sampling/Alisainsg
+- Sampling / Alisainsg
 - Discrete-Time Systems
-- Linearity, Shift-Invariance/Time-Invariance 
+- Linearity, Shift-Invariance / Time-Invariance 
 - Cascaded Systems
 
 

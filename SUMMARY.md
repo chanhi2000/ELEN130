@@ -38,6 +38,8 @@
 	* [ex05d](lect/ex05/ex05d.md)
 	* [ex05e](lect/ex05/ex05e.md)
 * [lect06](lect/lect06.md)
+* [ex06](lect/ex06.md)
+	* [ex06a](lect/ex06/ex06a.md)
 * [hw01](hw/hw01.md)
 * [hw02](hw/hw02.md)
 * [lab01](lab/lab01.md)

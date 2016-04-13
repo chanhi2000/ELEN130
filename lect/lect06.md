@@ -272,6 +272,41 @@ g_p(t)&=g_a(t)p(t)\\
 $$
 
 ## SHAH FUNCTION: TRAIN OF IMPULSES
+- the shah function is defined as:
+$$
+Ш_T(t)=\sum_{n=-\infty}^{\infty}\delta(t-nT)
+$$
+Where $$T$$ is some interval spacing (conveniently labeled as the sampling period is a useful separation for these deltas).
+- The CTFT of the shah function is .. the shah function ... well, close:
+$$
+Ш_{f_T}(t)=\frac{1}{T}\sum_{n=-\infty}^{\infty}\delta\left(f-\frac{n}{T}\right)
+$$
 
+
+## SAMPLING: FREQUENCY DOMAIN PERSPECTIVE
+- So
+$$
+\begin{align*}
+g_p(t)&=g_a(t)p(t)\\
+&=\sum_{n=-\infty}^{\infty}{g_a(nT)\delta(t-nT)}\\
+&=g_a(t)Ш_T(t)
+\end{align*}
+$$
+- and
+$$
+G_p(j\Omega)=?
+$$
+- So, if $$f_T$$ is $$\times2$$ the highest frequency, there will be __no aliasing__ (*i.e.* no disturbance to the baseband spectrum) and the original signal can be recovered exactly by passing the sampled signal through an ideal lowpass filter with a gain of $$T$$ and a cutoff frequency greater than the maximum frequency of the original signal and less than $$f_T-\max{\left(f_\text{original}\right)}$$.
+
+
+## RECONSTRUCTION
+- Frequency domain perspective is to use an ideal low pass filter that contains the frequencies of interest.
+- What is this in the time domain?
+
+
+## ALIASING
+- The relationship between input and reconstructed frequencies in the sampling process is displayed below.
+
+![fig02](lect06/lect06-fig02.png)
 
 [1]: http://chanhi2000.gitbooks.io/elen133/content/lect/ex06.html#1

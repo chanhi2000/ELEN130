@@ -45,6 +45,7 @@
 * [lab01](lab/lab01.md)
 	* [lab01sub](lab/lab01sub.md)
 * [lab02](lab/lab02.md)
+	* [lab02sub](lab/lab02sub.md)
 * [q01](q/q01.md)
 * [q02](q/q02.md)
 

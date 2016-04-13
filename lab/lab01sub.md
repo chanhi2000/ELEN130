@@ -185,9 +185,21 @@ plot( test1, real(expv2), test1, imag(expv2) )
 ![fig05](lab01sub/lab01sub-fig05.png)
 
 #### ANSWER#7
-Euler's form is consisted of real and imaginary parts...
-> USE LATEX TO REPRESENT IT
-
+Euler's form is consisted of real and imaginary parts
+$$
+\begin{align*}
+e^{j2\pi{f}t}&=\cos{\left(2\pi{f}t\right)}+j\sin{\left(2\pi{f}t\right)}\\
+e^{j\omega{t}}&=\cos{\left(\omega{t}\right)}+j\sin{\left(\omega{t}\right)}
+\end{align*}
+$$
+Thus, the plot displays the real and imaginary component of the following signal, $$x[n]=\exp{\left(j2\pi\left(\tfrac{1}{8}\right)n\right)}$$, that is,
+$$
+\begin{align*}
+x_\Re[n]&=\cos{\left(2\pi\left(\tfrac{1}{8}\right)n\right)}\\
+x_\Im[n]&=\sin{\left(2\pi\left(\tfrac{1}{8}\right)n\right)}
+\end{align*}
+$$
+For this plot, the blue line represents $$x_\Re[n]$$ and the green line, $$x_\Im[n]$$
 
 ### PART2: Interactive creation of vectors and plot
 
@@ -711,7 +723,7 @@ Likewise, but contrary to the previous example, our new sound output has __five 
 ----
 
 ## DISCUSSION / FINAL REMARKS
-This lab is to teach you basic techniques of MATLAB to get familiar with computing what we desire in digital signal processing. It also teaches you to understand new concepts (sampling intervals, sampling frequency, number of samples observed, signal frequency, normalized frequency, and property of aliasing) that will play a big role in the next lab and how each relate to one another both mathematically and physically.
+This lab is to teach you basic techniques of MATLAB to get familiar with computing what we desire in digital signal processing. It also teaches you to understand new concepts (sampling intervals, sampling frequency, number of samples observed, signal frequency, normalized frequency, and property of aliasing) that will play a big role in the next lab and how the each relates to one another both mathematically and physically.
 
 
 ## APPENDIX

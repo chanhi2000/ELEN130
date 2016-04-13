@@ -274,18 +274,52 @@ type the correct number, which is $$T_s=0.005\:\left[\tfrac{\text{sec}}{\text{sa
 ```
 
 ![fig06](lab01sub/lab01sub-fig06.png)
+
 Total 5 steps are needed to reproduce the plot above.
 
 > __NOTE__: See the appendix section for the details of two m-files.
 
-#### Q&A#2
+#### QUESTION & ANSWER#2
 __(a)__ What is the sampling interval?
+- given
+$$
+\begin{align*}
+N_\text{tot}&=2000\:\text{sample}\\
+\nu&=0.02\:\tfrac{\text{cycle}}{\text{sample}}\\
+T&=0.005\:\tfrac{\text{sec}}{\text{sample}}\\
+\end{align*}
+$$
+Sample interval is
+$$
+T=0.005\:\tfrac{\text{sec}}{\text{sample}}
+$$
 
 __(b)__ What is the sampling frequency
+- given quantities above, __the sampling frequency__ is
+$$
+\begin{align*}
+f_T&=\frac{1}{T}\\
+&=\frac{1}{0.005\:\left[\tfrac{\text{sec}}{\text{sample}}\right]}=200\:\tfrac{\text{sample}}{\text{sec}}
+\end{align*}
+$$
 
 __(c)__ How many samples are there per cycle of the input signal?
+- given quantities above, the __sample rate per cycle__ is
+$$
+\frac{1}{\nu}=\frac{1}{0.02\:\left[\tfrac{\text{cycle}}{\text{sample}}\right]}=50\:\tfrac{\text{sample}}{\text{cycle}}
+$$
 
 __(d)__ What is the time duration of one cycle on your plot?
+- given quantities above, the __time duration per cycle__ is
+$$
+\require{cancel}
+\begin{align*}
+f_0&=(\nu)(f_T)\\
+\frac{1}{f_0}&=\frac{1}{(\nu)(f_T)}\\
+&=\frac{1}{(0.02)\left(\frac{1}{0.005}\right)\:\left[\tfrac{\text{cycle}}{\cancel{\text{sample}}}\right]\left[\tfrac{\cancel{\text{sample}}}{\text{sec}}\right]}\\
+&=4\:\tfrac{\text{sec}}{\text{cycle}};
+\end{align*}
+$$
 
 __(e)__ What parameters values should be used for `getCosSig` and `plotCosSig`?
 - For $$N_\text{tot}=1000$$, find the correct parameters to plot $$10\:\text{sec}$$ of a $$2.5\:\text{Hz}$$ signal.
@@ -320,7 +354,7 @@ __(e)__ What parameters values should be used for `getCosSig` and `plotCosSig`?
 	\begin{align*}
 	N_\text{tot}&=1000;\\
 	\nu&=0.025;\\
-	T&=0.01
+	T&=0.01;
 	\end{align*}
 	$$
 	- To generate the correct plot, do a similar execution like above
@@ -369,8 +403,8 @@ __(e)__ What parameters values should be used for `getCosSig` and `plotCosSig`?
 	\therefore\:
 	\begin{align*}
 	N_\text{tot}&=20;\\
-	\nu&=0.1;\\
-	T&=0.02
+	\nu&=0.024;\\
+	T&=0.02;
 	\end{align*}
 	$$
 	- To generate the correct plot, do a similar execution like above
@@ -382,9 +416,9 @@ __(e)__ What parameters values should be used for `getCosSig` and `plotCosSig`?
 		```
 		>> Enter number of samples: 20
 		```
-		3. When the 2nd prompt appears, type the correct number, which is $$\nu=0.1\:\left[\tfrac{\text{cycles}}{\text{sample}}\right]$$
+		3. When the 2nd prompt appears, type the correct number, which is $$\nu=0.024\:\left[\tfrac{\text{cycles}}{\text{sample}}\right]$$
 		```
-		>> Enter normalized frequency in cycles/sample: 0.1
+		>> Enter normalized frequency in cycles/sample: 0.024
 		```
 		4. Type 'getCosSig' on the '>>' prompt, and enter
 		```
@@ -416,11 +450,11 @@ __(e)__ What parameters values should be used for `getCosSig` and `plotCosSig`?
 	$$
 	Therefore,
 	$$
-	\therefore 
+	\therefore
 	\begin{align*}
 	N_\text{tot}&=20;\\
 	\nu&=0.1;\\
-	T&=0.02
+	T&=0.02;
 	\end{align*}
 	$$
 	- To generate the correct plot, do a similar execution like above
@@ -459,19 +493,19 @@ __(e)__ What parameters values should be used for `getCosSig` and `plotCosSig`?
 	\require{cancel}
 	\begin{align*}
 	T&=\frac{t_\text{tot}}{N_\text{tot}}\\
-	&=\frac{(0.4)\:\left[\text{sec}\right]}{\left(20\right)\:\left[\text{sample}\right]}=0.02\:\left[\tfrac{\text{sec}}{\text{samples}}\right];\\
+	&=\frac{(0.4)\:\left[\text{sec}\right]}{\left(20\right)\:\left[\text{sample}\right]}=0.02\:\tfrac{\text{sec}}{\text{samples}};\\
 	\nu&=\frac{f_0}{f_T}\\
-	&=\frac{(55)\:\left[\tfrac{\text{cycle}}{\cancel{\text{sec}}}\right]}{\left(\tfrac{1}{0.02}\right)\:\left[\tfrac{\text{sample}}{\cancel{\text{sec}}}\right]}=1.1\:\tfrac{\text{sample}}{\text{sec}};
+	&=\frac{(55)\:\left[\tfrac{\text{cycle}}{\cancel{\text{sec}}}\right]}{\left(\tfrac{1}{0.02}\right)\:\left[\tfrac{\text{sample}}{\cancel{\text{sec}}}\right]}=1.1\:\tfrac{\text{cycle}}{\text{sample}};
 	\end{align*}
 	$$
 	Therefore,
 	$$
-	\therefore 
-	\begin{cases}
-	N_\text{tot}=20;\\
-	\nu=1.1;\\
-	T_s=0.02
-	\end{cases}
+	\therefore
+	\begin{align*}
+	N_\text{tot}&=20;\\
+	\nu&=1.1;\\
+	T&=0.02;
+	\end{align*}
 	$$
 	- To generate the correct plot, do a similar execution like above
 		1. Type 'getCosSig' on the '>>' prompt, and enter
@@ -495,8 +529,24 @@ __(e)__ What parameters values should be used for `getCosSig` and `plotCosSig`?
 		>> Enter sample time interval in seconds: 0.02
 		```
 	![fig10](lab01sub/lab01sub-fig10.png)
-	- Does this plot match its labels? Why or why not.
-
+	To review how __aliasing__ works, let's suppose we have a DT signal like the following
+	$$
+	\begin{align*}
+	x[n]&=\cos{\left(2\pi{f}_0nT\right)}\\
+	&=\cos{\left(2\pi{n}T\left(f_0+kf_T\right)\right)}
+	\end{align*}
+	$$
+	This implies that an original continuous time domain signal with frequency $$f_0+kf_T$$ is indistinguishable from one with a frequnect $$f_0$$ after it has been sampled at sampling rate $$f_T$$. For our case, we have
+	$$
+	\begin{align*}
+	f_0&=5\:\text{Hz}\\
+	f_T&=\tfrac{1}{0.02\:\left[\tfrac{\text{sec}}{\text{sample}}\right]}=50\:\tfrac{\text{sample}}{\text{sec}}\\
+	f^\prime&=f_0+kf_T\\
+	&=5+k\left.\left(50\right)\right|_{k=1}\\
+	&=55\:\text{Hz}\\
+	\end{align*}
+	$$
+	This relation shows that our new frequency $$55\:\text{Hz}$$ was, in fact, the aliasing frequency. *i.e.* it will yield the same looking plot. when we sample at the same rate.
 
 
 ### PART3: Sound Output
@@ -512,11 +562,11 @@ Using `getCosSig`, create `sig1` with $$N_\text{tot}=8000$$ and $$\nu=0.075\:\le
 ```
 >> Enter number of samples: 8000
 ```
-3. When the 2nd prompt appears, type the correct number, which is $$\nu=0.02\:\left[\tfrac{\text{cycles}}{\text{sample}}\right]$$
+3. When the 2nd prompt appears, type the correct number, which is $$\nu=0.075\:\left[\tfrac{\text{cycles}}{\text{sample}}\right]$$
 ```
 >> Enter normalized frequency in cycles/sample: 0.075
 ```
-4. 
+4.
 > Type `help sound` to learn how to make sound output.
 
 ----
@@ -524,28 +574,33 @@ Using `getCosSig`, create `sig1` with $$N_\text{tot}=8000$$ and $$\nu=0.075\:\le
 #### QUESTION#2:
 Listen to the output sound using `sound(sig1, 8000)`. Estimate the duration of the tone and a relative frequency. Is this consistent with $$F_T=8000\:\text{Hz}$$?
 
-#### ANSWER#2
 ```matlab
 % getCosSig
 % % 1st input: 8000,
 % % 2nd input: 0.075
+%
+% uncomment the codes above if necessary
 FT1=8000;
 filename1='sound01.wav';
 audiowrite(filename1, sig1, FT1);
 sound(sig1, FT1);
 ```
 
+#### ANSWER#2
+I think the sound it generated is consistent with our sample frequency $$F_T=8000\:\text{Hz}$$, since we know the second parameter `FT1` we insert into the function `sound()` represents the sampling frequnecy.
+
 ----
 
 #### QUESTION#3:
 Listen to the output sound using `sound(sig1, 4000)`. Compare the duration and frequency to the previous sound output. Is this consistent with $$F_T=4000\:\text{Hz}$$? Explain.
 
-#### ANSWER#3
 ```matlab
 % getCosSig
 % % 1st input: 8000,
 % % 2nd input: 0.075
 % FT1=8000;
+%
+% uncomment the codes above if necessary
 FT2=4000;
 filename2='sound02.wav';
 audiowrite(filename2, sig1, FT2)
@@ -557,18 +612,23 @@ sound(sig1, FT1); pause(2.5);
 sound(sig1, FT2); pause(2.5);
 ```
 
+#### ANSWER#3
+Now we have a relativistic point of view to compare two differnet sound output with different sampling frequency.  The second sound output generates the sound that reside in the lower frequency. As a result, this new output
+	- generates __lower tone__ of sound (it sounds like it plays 'octave down' of the original sound), and
+	- plays __twice__ longer, in duration, than the original one, .
+
 ----
 
 #### QUESTION#4:
 Listen to the output sound using `sound(sig1, 12000)`. Compare the duration and frequency to the previous sound output. Is this consistent with $$F_T=12,000\:\text{Hz}$$? Explain.
 
-#### ANSWER#4
 ```matlab
 % getCosSig
 % % 1st input: 8000,
 % % 2nd input: 0.075
-% FT1=8000;
 % FT2=4000;
+%
+% uncomment the codes above if necessary
 FT3=12000;
 filename3='sound03.wav';
 audiowrite(filename3, sig1, FT3)
@@ -576,27 +636,42 @@ sound(sig1, FT3);
 pause(2.5)
 
 % sound compare
-sound(sig1, FT1); pause(2.5);
 sound(sig1, FT2); pause(2.5);
 sound(sig1, FT3); pause(2.5);
 ```
+#### ANSWER#4
+It seems the third sound output represents the signal with 3 times higher frequency, relative to the previous one.  To describe the difference, this new output
+	- generates __higher tone__ of sound (in this one, I did not hear the octave relationship)
+	- plays __three times__ shorter, in duration, than the original one.
+
+----
 
 #### QUESTION#5:
 What is the relationship of $$\nu$$ to the actual frequency of the tone you hear?  How can the same sequence of data points make different frequency sounds?
 
 
 #### ANSWER#5:
+To simply put, $$\nu$$ represents the normalized frequency, and it has this general relation
+$$
+\begin{align*}
+\nu&=\frac{f_0}{f_T}=(f_0)T\\
+f_0&=\frac{\nu}{T}=\nu(f_T)
+\end{align*}
+$$
+Since we know the quantity of $$\nu=0.075\:\left[\tfrac{\text{cycle}}{\text{sample}}\right]$$ the sound output of frequnecy $$f_0$$ will vary with the sampling frequency $$f_T$$. Therefore, it's expected that, with different sample frequency, each output will make different sound with different duration.
 
+----
 
 #### QUESTION#6:
 Listen to the output sound using `sound(0.5*sig1, 8000)`. Compare it to the first sound output you created. What is different? Why?
 
-#### ANSWER#6
 ```matlab
 % getCosSig
 % % 1st input: 8000,
 % % 2nd input: 0.075
 % FT1=8000;
+%
+% uncomment the codes above if necessary
 filename4='sound04.wav';
 audiowrite(filename4, 0.5*sig1, FT1)
 sound(0.5*sig1, FT1);
@@ -606,25 +681,38 @@ pause(2.5);
 sound(sig1, FT1); pause(2.5);
 sound(0.5*sig1, FT1); pause(2.5);
 ```
+#### ANSWER#6
+From inspection with our hearing and even how the code looks, the frequency of the sound output stays the same but the difference can be detected in the __amplitude__ of sound. It's fair to say that the amplitude of sound is reduced by *half*.
+
+----
 
 #### QUESTION#7:
 Listen to the output sound using `sound(5.0*sig1, 8000)`. Compare it to the first sound output you created. What is different? Why? (You may want to reread the information about the sound function by typing `help sound`.)
 
-#### ANSWER#7
 ```matlab
 % getCosSig
 % % 1st input: 8000,
 % % 2nd input: 0.075
 % FT1=8000;
+%
+% uncomment the codes above if necessary
 filename5='sound05.wav';
 audiowrite(filename5, 5.0*sig1, FT1) % FT1=8000
-sound(8.0*sig1, FT1);
+sound(5.0*sig1, FT1);
 pause(2.5);
 
 % sound compare
 sound(sig1, FT1); pause(2.5);
 sound(5.0*sig1, FT1); pause(2.5);
 ```
+#### ANSWER#7
+Likewise, but contrary to the previous example, our new sound output has __five times__ higher, in amplitude, than the original sound. 
+
+----
+
+## DISCUSSION / FINAL REMARKS
+This lab is to teach you basic techniques of MATLAB to get familiar with computing what we desire in digital signal processing. It also teaches you to understand new concepts (sampling intervals, sampling frequency, number of samples observed, signal frequency, normalized frequency, and property of aliasing) that will play a big role in the next lab and how each relate to one another both mathematically and physically.
+
 
 ## APPENDIX
 #### getCosSig.m

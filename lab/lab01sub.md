@@ -626,8 +626,8 @@ sound(sig1, FT2); pause(2.5);
 
 #### ANSWER#3
 Now we have a relativistic point of view to compare two differnet sound output with different sampling frequency.  The second sound output generates the sound that reside in the lower frequency. As a result, this new output
-	- generates __lower tone__ of sound (it sounds like it plays 'octave down' of the original sound), and
-	- plays __twice__ longer, in duration, than the original one, .
+- generates __lower tone__ of sound (it sounds like it plays 'octave down' of the original sound), and
+- plays __twice__ longer, in duration, than the original one, .
 
 ----
 
@@ -653,8 +653,8 @@ sound(sig1, FT3); pause(2.5);
 ```
 #### ANSWER#4
 It seems the third sound output represents the signal with 3 times higher frequency, relative to the previous one.  To describe the difference, this new output
-	- generates __higher tone__ of sound (in this one, I did not hear the octave relationship)
-	- plays __three times__ shorter, in duration, than the original one.
+- generates __higher tone__ of sound (in this one, I did not hear the octave relationship)
+- plays __three times__ shorter, in duration, than the original one.
 
 ----
 

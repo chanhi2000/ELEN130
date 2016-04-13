@@ -244,7 +244,7 @@ Reproduce the plots from part 2, step 1 above with two `m`-files, `getCosSig.m` 
 ```
 >> getCosSig
 ```
-2. When the 1st prompt is asked, like the following
+2. When the 1st prompt appears, like the following
 ```
 >> Enter number of samples:
 ```
@@ -252,7 +252,7 @@ type the correct number, which is $$N_\text{tot}=2000$$
 ```
 >> Enter number of samples: 2000
 ```
-3. When the 2nd prompt is asked, like the following
+3. When the 2nd prompt appears, like the following
 ```
 >> Enter normalized frequency in cycles/sample:
 ```
@@ -260,11 +260,11 @@ type the correct number, which is $$\nu=0.02\:\left[\tfrac{\text{cycles}}{\text{
 ```
 >> Enter normalized frequency in cycles/sample: 0.02
 ```
-4. Type 'getCosSig' on the '>>' prompt, and enter
+4. Type 'plotCosSig' on the '>>' prompt, and enter
 ```
 >> plotCosSig
 ```
-5. When the 3rd prompt is asked, like the following
+5. When the 3rd prompt appears, like the following
 ```
 >> Enter sample time interval in seconds:
 ```
@@ -289,13 +289,214 @@ __(d)__ What is the time duration of one cycle on your plot?
 
 __(e)__ What parameters values should be used for `getCosSig` and `plotCosSig`?
 - For $$N_\text{tot}=1000$$, find the correct parameters to plot $$10\:\text{sec}$$ of a $$2.5\:\text{Hz}$$ signal.
-![fig07](lab01sub/lab01sub-fig07.png)
+	- given
+	$$
+	\begin{align*}
+	f_0&=2.5\:\text{Hz}\\
+	t_\text{tot}&=10\:\text{sec}\\
+	N_\text{tot}&=1000\:\text{samples}
+	\end{align*}
+	$$
+	we can use this set of relation
+	$$
+	\begin{align*}
+	\nu&=\frac{f_0}{f_T}\\
+	T&=\frac{t_\text{tot}}{N_\text{tot}}\\
+	\end{align*}
+	$$
+	to determine our desired quantities.
+	$$
+	\require{cancel}
+	\begin{align*}
+	T&=\frac{t_\text{tot}}{N_\text{tot}}\\
+	&=\frac{(10)\:\left[\text{sec}\right]}{(1000)\:\left[\text{samples}\right]}=0.01\:\tfrac{\text{sec}}{\text{sample}};\\
+	\nu&=\frac{f_0}{f_T}\\
+	&=\frac{(2.5)\:\left[\tfrac{\text{cycle}}{\cancel{\text{sec}}}\right]}{\left(\frac{1}{0.01}\right)\:\left[\tfrac{\text{sample}}{\cancel{\text{sec}}}\right]}=0.025\:\tfrac{\text{cycle}}{\text{sample}};\\
+	\end{align*}
+	$$
+	Therefore,
+	$$
+	\therefore\:
+	\begin{align*}
+	N_\text{tot}&=1000;\\
+	\nu&=0.025;\\
+	T&=0.01
+	\end{align*}
+	$$
+	- To generate the correct plot, do a similar execution like above
+		1. Type 'getCosSig' on the '>>' prompt, and enter
+		```
+		>> getCosSig
+		```
+		2. When the 1st prompt appears, type the correct number, which is $$N_\text{tot}=1000$$
+		```
+		>> Enter number of samples: 1000
+		```
+		3. When the 2nd prompt appears, type the correct number, which is $$\nu=0.025\:\left[\tfrac{\text{cycles}}{\text{sample}}\right]$$
+		```
+		>> Enter normalized frequency in cycles/sample: 0.025
+		```
+		4. Type 'getCosSig' on the '>>' prompt, and enter
+		```
+		>> plotCosSig
+		```
+		5. When the 3rd prompt appears, type the correct number, which is $$T=0.01\:\left[\tfrac{\text{sec}}{\text{sample}}\right]$$
+		```
+		>> Enter sample time interval in seconds: 0.01
+		```
+	![fig07](lab01sub/lab01sub-fig07.png)
 - For $$T_S=0.002$$, find the correct parameters to plot $$5\:\text{sec}$$ of a $$1.2\:\text{Hz}$$ signal.
+	- given
+	$$
+	\begin{align*}
+	f_0&=1.2\:\text{Hz}\\
+	t_\text{tot}&=5\:\text{sec}\\
+	T&=0.002\:\tfrac{\text{sec}}{\text{sample}}
+	\end{align*}
+	$$
+	- we can use the set of relation (mentioned above) to determine our desired quantities.
+	$$
+	\require{cancel}
+	\begin{align*}
+	N_\text{tot}&=\frac{t_\text{tot}}{T}\\
+	&=\frac{(5)\:\left[\cancel{\text{sec}}\right]}{\left(0.002\right)\:\left[\tfrac{\cancel{\text{sec}}}{\text{sample}}\right]}=20\:\text{samples};\\
+	\nu&=\frac{f_0}{f_T}\\
+	&=\frac{(1.2)\:\left[\tfrac{\text{cycle}}{\cancel{\text{sec}}}\right]}{\left(\tfrac{1}{0.002}\right)\:\left[\tfrac{\text{sample}}{\cancel{\text{sec}}}\right]}=0.024:\tfrac{\text{cycle}}{\text{sample}};\\
+	\end{align*}
+	$$
+	Therefore,
+	$$
+	\therefore\:
+	\begin{align*}
+	N_\text{tot}&=20;\\
+	\nu&=0.1;\\
+	T&=0.02
+	\end{align*}
+	$$
+	- To generate the correct plot, do a similar execution like above
+		1. Type 'getCosSig' on the '>>' prompt, and enter
+		```
+		>> getCosSig
+		```
+		2. When the 1st prompt appears, type the correct number, which is $$N_\text{tot}=20$$
+		```
+		>> Enter number of samples: 20
+		```
+		3. When the 2nd prompt appears, type the correct number, which is $$\nu=0.1\:\left[\tfrac{\text{cycles}}{\text{sample}}\right]$$
+		```
+		>> Enter normalized frequency in cycles/sample: 0.1
+		```
+		4. Type 'getCosSig' on the '>>' prompt, and enter
+		```
+		>> plotCosSig
+		```
+		5. When the 3rd prompt appears, type the correct number, which is $$T=0.02\:\left[\tfrac{\text{sec}}{\text{sample}}\right]$$
+		```
+		>> Enter sample time interval in seconds: 0.002
+		```
 ![fig08](lab01sub/lab01sub-fig08.png)
 - For $$\nu=0.1$$, find the correct parameters to plot $$0.4\:\text{sec}$$ of a $$5\:\text{Hz}$$ signal.
-![fig09](lab01sub/lab01sub-fig09.png)
+	- given
+	$$
+	\begin{align*}
+	f_0&=5\:\text{Hz}\\
+	t_\text{tot}&=0.4\:\text{sec}\\
+	\nu&=0.1\:\tfrac{\text{cycle}}{\text{sample}}
+	\end{align*}
+	$$
+	we can use the set of relation (mentioned above) to determine our desired quantities.
+	$$
+	\require{cancel}
+	\begin{align*}
+	f_T&=\frac{f_0}{\nu}\\
+	&=\frac{(5)\:\left[\tfrac{\cancel{\text{cycle}}}{\text{sec}}\right]}{(0.1)\:\left[\tfrac{\cancel{\text{cycle}}}{\text{sample}}\right]}=50\:\tfrac{\text{sample}}{\text{sec}};\\
+	N_\text{tot}&=\frac{t_\text{tot}}{T}\\
+	&=\frac{(0.4)\:\left[\cancel{\text{sec}}\right]}{\left(\tfrac{1}{50}\right)\:\left[\tfrac{\cancel{\text{sec}}}{\text{sample}}\right]}=20\:\text{samples};
+	\end{align*}
+	$$
+	Therefore,
+	$$
+	\therefore 
+	\begin{align*}
+	N_\text{tot}&=20;\\
+	\nu&=0.1;\\
+	T&=0.02
+	\end{align*}
+	$$
+	- To generate the correct plot, do a similar execution like above
+		1. Type 'getCosSig' on the '>>' prompt, and enter
+		```
+		>> getCosSig
+		```
+		2. When the 1st prompt appears, type the correct number, which is $$N_\text{tot}=20$$
+		```
+		>> Enter number of samples: 20
+		```
+		3. When the 2nd prompt appears, type the correct number, which is $$\nu=0.1\:\left[\tfrac{\text{cycles}}{\text{sample}}\right]$$
+		```
+		>> Enter normalized frequency in cycles/sample: 0.1
+		```
+		4. Type 'getCosSig' on the '>>' prompt, and enter
+		```
+		>> plotCosSig
+		```
+		5. When the 3rd prompt appears, type the correct number, which is $$T_s=0.02\:\left[\tfrac{\text{sec}}{\text{sample}}\right]$$
+		```
+		>> Enter sample time interval in seconds: 0.02
+		```
+	![fig09](lab01sub/lab01sub-fig09.png)
 - For $$N_\text{tot}=20$$, find the correct parameters to plot $$0.4\:\text{sec}$$ of a $$55\:\text{Hz}$$ signal. Does this plot match its labels? Why or why not?
-![fig10](lab01sub/lab01sub-fig10.png)
+	- given
+	$$
+	\begin{align*}
+	f_0&=55\:\text{Hz}\\
+	t_\text{tot}&=0.4\:\text{sec}\\
+	N_\text{tot}&=20\:\text{sample}
+	\end{align*}
+	$$
+	we can use the set of relation (mentioned above) to determine our desired quantities.
+	$$
+	\require{cancel}
+	\begin{align*}
+	T&=\frac{t_\text{tot}}{N_\text{tot}}\\
+	&=\frac{(0.4)\:\left[\text{sec}\right]}{\left(20\right)\:\left[\text{sample}\right]}=0.02\:\left[\tfrac{\text{sec}}{\text{samples}}\right];\\
+	\nu&=\frac{f_0}{f_T}\\
+	&=\frac{(55)\:\left[\tfrac{\text{cycle}}{\cancel{\text{sec}}}\right]}{\left(\tfrac{1}{0.02}\right)\:\left[\tfrac{\text{sample}}{\cancel{\text{sec}}}\right]}=1.1\:\tfrac{\text{sample}}{\text{sec}};
+	\end{align*}
+	$$
+	Therefore,
+	$$
+	\therefore 
+	\begin{cases}
+	N_\text{tot}=20;\\
+	\nu=1.1;\\
+	T_s=0.02
+	\end{cases}
+	$$
+	- To generate the correct plot, do a similar execution like above
+		1. Type 'getCosSig' on the '>>' prompt, and enter
+		```
+		>> getCosSig
+		```
+		2. When the 1st prompt appears, type the correct number, which is $$N_\text{tot}=20$$
+		```
+		>> Enter number of samples: 20
+		```
+		3. When the 2nd prompt appears, type the correct number, which is $$\nu=1.1\:\left[\tfrac{\text{cycles}}{\text{sample}}\right]$$
+		```
+		>> Enter normalized frequency in cycles/sample: 1.1
+		```
+		4. Type 'getCosSig' on the '>>' prompt, and enter
+		```
+		>> plotCosSig
+		```
+		5. When the 3rd prompt appears, type the correct number, which is $$T_s=0.02\:\left[\tfrac{\text{sec}}{\text{sample}}\right]$$
+		```
+		>> Enter sample time interval in seconds: 0.02
+		```
+	![fig10](lab01sub/lab01sub-fig10.png)
+	- Does this plot match its labels? Why or why not.
+
 
 
 ### PART3: Sound Output
@@ -307,15 +508,15 @@ Using `getCosSig`, create `sig1` with $$N_\text{tot}=8000$$ and $$\nu=0.075\:\le
 ```
 >> getCosSig
 ```
-2. When the 1st prompt is asked, type the correct number, which is $$N_\text{tot}=8000$$
+2. When the 1st prompt appears, type the correct number, which is $$N_\text{tot}=8000$$
 ```
 >> Enter number of samples: 8000
 ```
-3. When the 2nd prompt is asked, type the correct number, which is $$\nu=0.02\:\left[\tfrac{\text{cycles}}{\text{sample}}\right]$$
+3. When the 2nd prompt appears, type the correct number, which is $$\nu=0.02\:\left[\tfrac{\text{cycles}}{\text{sample}}\right]$$
 ```
 >> Enter normalized frequency in cycles/sample: 0.075
 ```
-
+4. 
 > Type `help sound` to learn how to make sound output.
 
 ----
@@ -457,9 +658,9 @@ title([ 'Cosine at frequency = ' num2str(freq1/Ts) ...
 - [sound04.wav][4]
 - [sound05.wav][5]
 
-[1]: https://github.com/chanhi2000/ELEN133/tree/master/lab/lab01sub/sound01.wav
-[2]: https://github.com/chanhi2000/ELEN133/tree/master/lab/lab01sub/sound02.wav
-[3]: https://github.com/chanhi2000/ELEN133/tree/master/lab/lab01sub/sound03.wav
-[4]: https://github.com/chanhi2000/ELEN133/tree/master/lab/lab01sub/sound04.wav
-[5]: https://github.com/chanhi2000/ELEN133/tree/master/lab/lab01sub/sound05.wav
+[1]: https://raw.githubusercontent.com/chanhi2000/ELEN133/master/lab/lab01sub/sound01.wav
+[2]: https://raw.githubusercontent.com/chanhi2000/ELEN133/master/lab/lab01sub/sound02.wav
+[3]: https://raw.githubusercontent.com/chanhi2000/ELEN133/master/lab/lab01sub/sound03.wav
+[4]: https://raw.githubusercontent.com/chanhi2000/ELEN133/master/lab/lab01sub/sound04.wav
+[5]: https://raw.githubusercontent.com/chanhi2000/ELEN133/master/lab/lab01sub/sound05.wav
 

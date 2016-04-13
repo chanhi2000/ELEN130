@@ -438,7 +438,7 @@ __(e)__ What parameters values should be used for `getCosSig` and `plotCosSig`?
 		```
 		5. When the 3rd prompt appears, type the correct number, which is $$T=0.02\:\left[\tfrac{\text{sec}}{\text{sample}}\right]$$
 		```
-		>> Enter sample time interval in seconds: 0.002
+		>> Enter sample time interval in seconds: 0.02
 		```
 ![fig08](lab01sub/lab01sub-fig08.png)
 - For $$\nu=0.1$$, find the correct parameters to plot $$0.4\:\text{sec}$$ of a $$5\:\text{Hz}$$ signal.

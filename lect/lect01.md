@@ -46,6 +46,7 @@
 - Easy to duplicate
 - Stability. Robust—not varying with temperature, storage without deterioration
 - Flexibility and upgrade—use a general computer or microprocessor
+
 ### Cons:
 - Limitations of ADC and DAC
 - High power consumption and complexity of a DSP implementation: unsuitable for simply, low-power applications
@@ -121,9 +122,12 @@ $$
 
 
 ## CONTINUOUS-VALUED vs. DISCRETE-VALUED SIGNALS
-- Continuous-valued: generally sampled data signals
-	– Signals can be any value
-- Discrete-valued: sample values are quantized
+### Continuous-valued: 
+- generally sampled data signals
+– Signals can be any value
+
+### Discrete-valued: 
+- sample values are quantized
 
 
 ## FINITE-LENGTH vs. INFINITE-LENGTH

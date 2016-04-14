@@ -27,4 +27,4 @@ $$
 $$
 X(e^{j\omega})=\frac{1}{1-\alpha{e}^{-j\omega}}
 $$
-![fig01](lect06/lect06-fig01.png)
+![fig01](ex06-fig01.png)

@@ -140,8 +140,10 @@ One application is forming a finite-length sequence from an infinite-length sequ
 
 ## MULTIPLICATION AND ADDITION
 
+### MULTIPLICATION
 ![fig04a](lect02/lect02-fig04a.png)
 
+### ADDITION
 ![fig04b](lect02/lect02-fig04b.png)
 
 Inverting all samples of $$w[n]$$ creates a subtraction operation

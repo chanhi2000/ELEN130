@@ -22,9 +22,100 @@
 
 
 ## OVERVIEW
-- ?
-- ?
-- ?
+- Correlation / utocorrelation (inadvertently missed in a previous lecture)
+- CTFT Review
+- DTFT
+- Sampling: Frequency Domain Perspective
+- Bandpass Signal Sampling
+
+
+## CORRELATION
+- __Goal__: Compare one reference signal to one or more signals to determine similarity.
+- Application
+	- __digital communications__ (different symbols need different things)
+	- __radar/sonar__ - reflected signal is a delayed version of transmitted signal - can be used to determine the location of the target (divide by speed of signal traversing through the medium)
+	- this problm is harder in reality due to random noise
+- Cross-correlation compares two energy signals and is given by:
+$$
+\begin{matrix}
+r_{xy}[l]=\sum_{n=-\infty}^{\infty}{x[n]y[n-l]}&\text{for }\underset{\text{lag}}{l}=0,\:\pm1,\:\pm2,\:\cdots
+\end{matrix}
+$$
+- The ordering of the subscripts indicates $$x[n]$$ is the reference signal and remains "fixed".
+- You can convince yourself that $$r_{yx}[l]=r_{xy}[-l]$$
+
+
+## AUTOCORRELATION
+- Specail case where you correlate a signal with itself
+$$
+\begin{matrix}
+r_{xx}[l]=_{n=-\infty}^{\infty}{x[n]x[n-l]}&\text{for }\underset{\text{lag}}{l}=0,\:\pm1,\:\pm2,\:\cdots
+\end{matrix}
+$$
+- What is $$r_{xx}[0]$$ equal to? ENERGY
+- What can you say is true about evenness and oddness of $$r_{xx}[l]$$? EVEN
+
+
+## CORRELATION WRITTEN AS A CONVOLUTION
+$$
+\begin{align*}
+r_{xy}[l]&=\sum_{n=-\infty}^{\infty}{x[n]y[n-l]}\\
+&=r_{xy}[l]=\sum_{n=-\infty}^{\infty}{x[n]y[-(l-n)]}
+\end{align*}
+$$
+Convolution expression:
+$$
+\begin{align*}
+y[n]&=x[n]\otimes{h}[n]\\
+&=\sum_{k=-\infty}^{\infty}{x[n]h[n-k]}
+\end{align*}
+$$
+- Convince yourself that
+$$
+r_{xy}[l]=x[l]\otimes{y}[-l]
+$$
+therefore
+$$
+\begin{align*}
+r_{xy}[l]&=x[n]\otimes{y}[-l]\\
+&=\sum_{n=-\infty}^{\infty}{x[n]h[-(l-n)]}
+\end{align*}
+$$
+
+
+## PROPERTIES OF AUTOCORRELATION / CROSS-CORRELATION
+
+### 1.
+$$
+\begin{matrix}
+r_{xx}[0]\geq{r}_{xx}[l]&\forall{l}\in\mathbb{I}
+\end{matrix}
+$$
+
+### 2.
+$$
+underset{\text{evenness for autocorelation}}{r_{xx}[l]=r_{xx}[-l]}
+$$
+
+### 3.
+$$
+r_{xx}[l]\text{ is periodic for a periodic function }x[n]
+$$
+
+### 4.
+$$
+E_{x}=r_{xx}[0]
+$$
+
+### 5.
+$$
+r_{xy}[l]=x[l]\otimes{y}[-l]
+$$
+
+### 6.
+$$
+r_{xy}[l]=r_{yx}[-l]
+$$
 
 
 ## ENERGY
@@ -150,12 +241,6 @@ $$
 - Because of this, discontinuities of $$2\pi$$ can appear in the phase response and are often removed to produce an alternate type of phase function: this is called __unwrapping__.
 
 ### [EXAMPLE: DTFT][1]
-
-## MAGNITUDE AND PHASE OF THE SOLUTION
-$$
-X(e^{j\omega})=\frac{1}{1-\alpha{e}^{-j\omega}}
-$$
-![fig01](lect06/lect06-fig01.png)
 
 
 ## PERIODICITY OF DTFT
@@ -307,6 +392,34 @@ $$
 ## ALIASING
 - The relationship between input and reconstructed frequencies in the sampling process is displayed below.
 
+![fig01](lect06/lect06-fig01.png)
+
+
+## DIGITAL PROCESSING OF CT SIGNALS
+1. ### CONVERSION OF CT to DT (sampling, quantization)
+	- usually happens with an __a__nalog-to-__d__igital converter (A/D)
+	- Sample and Hold circuit is usually used to minimize error
+2. ### PROCESSING OF DT signal (filtering, convolving, etc.)
+3. ### CONVERSION OF DT to CT (reconstruction)
+	- usually occurs using a __d__igital-to-__a__nalog converter (D/A)
+
+
+## RECONSTRUCTION
+- Frequency domain perspective is to use an ideal low pass filter that contains the frequencies of interest.
+- What is this in the time domain?
+
+
+## ANTI-ALIASING FILTER
+- Removes out-of-band frequency content BEFORE sampling takes place to avoid aliasing.
+- In theory, this removes all of the things that we have been worried about in terms of aliasing. It doesn’t make aliasing a non-issue—you can still have unintended aliasing or things that come AFTER the anti-aliasing filter that cause problems.
+
 ![fig02](lect06/lect06-fig02.png)
 
+## ANTI-IMAGING FILTER
+- This is another word for the reconstruction filter as it blocks out anything that may introduce out-of-band frequency content on the reconstruction side.
+
+![fig02](lect06/lect06-fig02.png)
+
+
 [1]: http://chanhi2000.gitbooks.io/elen133/content/lect/ex06.html#1
+

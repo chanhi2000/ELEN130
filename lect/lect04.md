@@ -24,7 +24,7 @@
 ## OVERVIEW
 - Sampling / Alisainsg
 - Discrete-Time Systems
-- Linearity, Shift-Invariance / Time-Invariance 
+- Linearity, Shift-Invariance / Time-Invariance
 - Cascaded Systems
 
 
@@ -146,7 +146,7 @@ $$\omega_0=\frac{2\pi\Omega_0}{\Omega_T}$$
 - To prevent aliasing, $$\Omega_T$$ should be greater than twice the frequency $$\Omega_0$$
 - Generally speaking, an arbitrary signal composed of a weighted sum of sinusoids can be uniquely represented by its sampled version, $$x[n]$$, IF the sampling frequency is twice the highest frequency contained in the original signal.
 
-### [EXAMPLE: SAPPLE VOCABULARY][2]
+### [EXAMPLE: SAMPLE VOCABULARY][2]
 
 
 ## RECONSTRUCTION
@@ -160,11 +160,11 @@ $$\omega_0=\frac{2\pi\Omega_0}{\Omega_T}$$
 ## RECONSTRUCTED FREQUENCIES
 - We learned that a continuous time signal with frequency $$f_0+kf_T$$ will result in the same samples as a continuous time signal with frequency $$f_0$$ when sampled at $$f_T$$.
 - We can think of this another way and use it to determine what frequency the reconstructor will end up with after reconstruction.
-- If we said 
+- If we said
 $$
 f_{0_{\text{new}}}=f_{0_{\text{unaliased}}}+kf_T
-$$ 
-Then, 
+$$
+Then,
 $$
 f_{0_{\text{unaliased}}}=f_{0_{new}}+kf_T(k-\text{integer})
 $$
@@ -219,7 +219,9 @@ $$-\tfrac{f_T}{2}$$ and $$\tfrac{f_T}{2}$$
 
 ## EXAMPLES OF DISCRETE-TIME SYSTEMS
 ### ACCUMULATOR
-.$$y[n]$$ is the sum of $$x[n]+y[n-1]$$
+$$
+y[n]=x[n]+y[n-1]
+$$
 
 ### M-POINT MOVING-AVERAGE SYSTEM
 $$

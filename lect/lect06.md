@@ -52,8 +52,14 @@ $$
 r_{xx}[l]=_{n=-\infty}^{\infty}{x[n]x[n-l]}&\text{for }\underset{\text{lag}}{l}=0,\:\pm1,\:\pm2,\:\cdots
 \end{matrix}
 $$
-- What is $$r_{xx}[0]$$ equal to? ENERGY
-- What can you say is true about evenness and oddness of $$r_{xx}[l]$$? EVEN
+- What is $$r_{xx}[0]$$ equal to?
+$$
+\text{ENERGY}
+$$
+- What can you say is true about evenness and oddness of $$r_{xx}[l]$$?
+$$
+\text{EVEN}
+$$
 
 
 ## CORRELATION WRITTEN AS A CONVOLUTION
@@ -94,7 +100,7 @@ $$
 
 ### 2.
 $$
-underset{\text{evenness for autocorelation}}{r_{xx}[l]=r_{xx}[-l]}
+\underset{\text{evenness for autocorelation}}{r_{xx}[l]=r_{xx}[-l]}
 $$
 
 ### 3.
@@ -175,7 +181,7 @@ $$
 	- occupying $$0<f_p\leq|f|<\infty$$
 	- and has a bandwidth from $$f_p$$ to $$\infty$$
 - __band-pass__: a CT signal  has spectrum
-	- occupying $$0<f_L\leq|f|<\leq{f}_H<\infty$$
+	- occupying $$0<f_L\leq|f|\leq{f}_H<\infty$$
 	- and has a bandwidth $$f_H-f_L$$.
 
 
@@ -336,7 +342,7 @@ $$
 - Once again, $$T$$ is the sampling period and $$F_T$$ is the sampling frequency.
 - Frequency domain representation of  $$g_a(t)$$ is given by CTFT:
 $$
-G_a(f)=\int_{-\infty}{\infty}{g_a(t)e^{-j2\pi{f}t}dt}
+G_a(f)=\int_{-\infty}^{\infty}{g_a(t)e^{-j2\pi{f}t}dt}
 $$
 - And, the frequency domain representation of $$g[n]$$ is given by DTFT:
 $$

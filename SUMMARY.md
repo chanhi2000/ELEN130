@@ -31,6 +31,8 @@
 	* [ex04c](lect/ex04/ex04c.md)
 	* [ex04d](lect/ex04/ex04d.md)
 	* [ex04e](lect/ex04/ex04e.md)
+	* [ex04f](lect/ex04/ex04f.md)
+	* [ex04g](lect/ex04/ex04g.md)
 * [lect05](lect/lect05.md)
 * [ex05](lect/ex05.md)
 	* [ex05a](lect/ex05/ex05a.md)

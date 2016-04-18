@@ -122,11 +122,11 @@ $$
 
 
 ## CONTINUOUS-VALUED vs. DISCRETE-VALUED SIGNALS
-### CONTINUOUS-VALUED: 
+### CONTINUOUS-VALUED:
 - generally sampled data signals
 – Signals can be any value
 
-### DISCRETE-VALUED: 
+### DISCRETE-VALUED:
 - sample values are quantized
 
 

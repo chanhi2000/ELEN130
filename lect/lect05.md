@@ -22,7 +22,7 @@
 
 
 ## OVERVIEW
-- Linearity, Shift-Invariance/Time-Invariance 
+- Linearity, Shift-Invariance/Time-Invariance
 - Cascaded Systems
 - Fourier Transform
 
@@ -41,7 +41,7 @@ Recall from [lecture 1]() : $$x[n]=0$$ for $$n<N_1$$—this is called a __causal
 
 
 ## STABILITY
-- Bounded Input, Bounded Output Stability
+- __B__ounded __I__nput, __B__ounded __O__utput Stability
 	- If $$y[n]$$ is the response to an input $$x[n]$$ and if $$|x[n]|\leq{B}_x$$ for all values of $$n$$, then $$|y[n]|\leq{B}_y$$ for all values of $$n$$.
 - Convince yourself that this is easy to verify for a case like the moving filter.
 
@@ -73,9 +73,7 @@ Say
 $$
 x[n]=\delta[n-2]+3\delta[n-1]-\frac{1}{2}\delta[n+3]
 $$
-Since the system is linear, we can figure out individual outputs and add them up.
-
-so
+Since the system is linear, we can figure out individual outputs and add them up. so
 $$\left\{
 \begin{align*}
 \delta[n-2]&\to{h}[n-2]\\
@@ -132,12 +130,12 @@ $$
 ### Cascaded connection (Series)
 - Two LTI discrete-time systems in series
 - These combine in the following way:
-![fig01a](lect04/lect04-fig01a.png)
+![fig01a](lect05/lect05-fig01a.png)
 
 ### Parallel connection
 - Two LTI discrete-time systems in parallel
 - These combine in the following way:
-![fig01b](lect04/lect04-fig01b.png)
+![fig01b](lect05/lect05-fig01b.png)
 
 
 ## FINITE-DIMENSIONAL LTI DISCRETE-TIME SYSTEMS

@@ -10,7 +10,7 @@ $$
 &=\delta[0]=1;
 \end{align*}
 $$
-__(b)__ the causal sequence, $$ \begin{matrix}x[n]=\alpha^n\mu[n],&|alpha|<1\end{matrix}$$.
+__(b)__ the causal sequence, $$ \begin{matrix}x[n]=\alpha^n\mu[n],&|\alpha|<1\end{matrix}$$.
 $$
 \begin{align*}
 X\left(e^{j\omega}\right)&=\sum_{n=-\infty}^{\infty}{\alpha^{n}\mu[n]e^{-j\omega{n}}}\\

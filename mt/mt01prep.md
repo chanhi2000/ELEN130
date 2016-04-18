@@ -45,27 +45,27 @@
 	- [__Unit Step__][26]
 	- [__Real Sinusoidal/Exponential__][27]
 		- [__Periodicity of Sinusoidal/Exponential sequences__][28]
-	- __Sampling/Aliasing__
-	- __Correlation__
-	- __Autocorrelation__
+	- [__Sampling/Aliasing__][29]
+	- [__Correlation__][43]
+	- [__Autocorrelation__][44]
 
 ### DISCRETE-TIME SYSTEMS
 - __Some common DT systems__
-	- __Accumulator__
-	- __M-Point Moving Average__
-	- __Exponentially Weighted Running Average__
-	- __Factor-of-n Interpolation__
+	- [__Accumulator__][30]
+	- [__M-Point Moving Average__][31]
+	- [__Exponentially Weighted Running Average__][32]
+	- [__Factor-of-n Interpolation__][33]
 	- Median Filter
 - __Classification of Systems__
-	- __Linear__
-	- __Shift-Invariant__
-	- __Causal__
-	- __Stable__
+	- [__Linear__][34]
+	- [__Shift-Invariant__][35]
+	- [__Causal__][36]
+	- [__Stable__][37]
 	- Passive/Lossless
-- __Impulse Responses/Step Responses__
+- [__Impulse Responses/Step Responses__][38]
 	- __Stability/Causality determination from impulse response, $$h[n]$$__
-- __LTI Systems -> Convolution as a means to obtain output__
-- __Interconnected Systems__
+- [__LTI Systems -> Convolution as a means to obtain output__][39]
+- [__Interconnected Systems__][40]
 	- __Parallel__
 	- __Series__
 - Finite-dimensional LTI DT Systems
@@ -73,8 +73,8 @@
 	- Total Solution
 	- Zero-Input Response and Zero-State Responses 
 	- Impulse Response Calculation from the above
-- __Classification of LTI DT Systems__
-	- __Impulse Response Length (FIR vs. IIR)__
+- [__Classification of LTI DT Systems__][41]
+	- [__Impulse Response Length (FIR vs. IIR)__][42]
 	- Output Calculation Process
 	- Impulse Response Coefficients
 
@@ -88,18 +88,18 @@
 	- Energy Density Spectrum 
 	- Parseval’s Theorem
 - __Classifications based on frequency-domain__
-	- __Band-limited or not__
-	- __Ideal vs. practical__
-	- __Low Pass, Band Pass, High Pass__
+	- [__Band-limited or not__][https://chanhi2000.gitbooks.io/elen133/content/lect/lect06.html#bandlimited-ct-signals]
+	- [__Ideal vs. practical__][https://chanhi2000.gitbooks.io/elen133/content/lect/lect06.html#ideal-vs-practical]
+	- [__Low Pass, Band Pass, High Pass__][https://chanhi2000.gitbooks.io/elen133/content/lect/lect06.html#signal-classification-by-frequency-content]
 - __Discrete-Time Fourier Transform (DTFT)__
-	- __Definition and how to calculate it__
-	- __Inverse DTFT__
-	- __Magnitude and Phase Spectra__
+	- [__Definition and how to calculate it__][https://chanhi2000.gitbooks.io/elen133/content/lect/lect06.html#discretetime-fourier-transform-dtft]
+	- [__Inverse DTFT__][https://chanhi2000.gitbooks.io/elen133/content/lect/lect06.html#periodicity-of-dtft]
+	- [__Magnitude and Phase Spectra__][https://chanhi2000.gitbooks.io/elen133/content/lect/lect06.html#discretetime-fourier-transform-dtft]
 	- __Manipulating the Summation __
-	- __DTFT Properties__
+	- [__DTFT Properties__][https://chanhi2000.gitbooks.io/elen133/content/lect/lect06.html#dtft-properties]
 		- __Convolution property__
 - Phase wrapping (more on this later)
-- __Sampling in the frequency domain__
+- [__Sampling in the frequency domain__][https://chanhi2000.gitbooks.io/elen133/content/lect/lect06.html#sampling-frequency-domain-perspective]
 
 [1]: https://chanhi2000.gitbooks.io/elen133/content/lect/lect01.html#representation-of-discretetime-signals
 [2]: https://chanhi2000.gitbooks.io/elen133/content/lect/lect01.html#sampling-continuous-to-discrete-time
@@ -129,3 +129,19 @@
 [26]: https://chanhi2000.gitbooks.io/elen133/content/lect/lect03.html#unit-step-sequence
 [27]: https://chanhi2000.gitbooks.io/elen133/content/lect/lect03.html#real-sinusoidal-sequence
 [28]: https://chanhi2000.gitbooks.io/elen133/content/lect/lect03.html#periodicity-of-sinusoidals-and-exponentials
+[29]: https://chanhi2000.gitbooks.io/elen133/content/lect/lect04.html#aliasing
+[30]: https://chanhi2000.gitbooks.io/elen133/content/lect/lect04.html#accumulator
+[31]: https://chanhi2000.gitbooks.io/elen133/content/lect/lect04.html#mpoint-movingaverage-system
+[32]: https://chanhi2000.gitbooks.io/elen133/content/lect/lect04.html#exponentially-weighted-running-average-filter
+[33]: https://chanhi2000.gitbooks.io/elen133/content/lect/lect04.html#factorof-interpolator-linear
+[34]: https://chanhi2000.gitbooks.io/elen133/content/lect/lect04.html#linearity
+[35]: https://chanhi2000.gitbooks.io/elen133/content/lect/lect04.html#shiftinvariant-system
+[36]: https://chanhi2000.gitbooks.io/elen133/content/lect/lect05.html#casual-system
+[37]: https://chanhi2000.gitbooks.io/elen133/content/lect/lect05.html#stability
+[38]: https://chanhi2000.gitbooks.io/elen133/content/lect/lect05.html#impulse-and-step-responses
+[39]: https://chanhi2000.gitbooks.io/elen133/content/lect/lect05.html#linear-timeinvariant-lti-system
+[40]: https://chanhi2000.gitbooks.io/elen133/content/lect/lect05.html#interconnected-systems
+[41]: https://chanhi2000.gitbooks.io/elen133/content/lect/lect05.html#classifications-of-lti-discretetime-systems
+[42]: https://chanhi2000.gitbooks.io/elen133/content/lect/lect05.html#more-on-finite-impulse-response-fir
+[43]: https://chanhi2000.gitbooks.io/elen133/content/lect/lect06.html#correlation
+[44]: https://chanhi2000.gitbooks.io/elen133/content/lect/lect06.html#autocorrelation

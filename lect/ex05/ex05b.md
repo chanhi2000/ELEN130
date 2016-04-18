@@ -15,7 +15,7 @@ $$
 &=\lambda^{n-N}\left(d_0\lambda^{N}+d_1\lambda^{N-1}+\cdots+d_{N-1}\lambda+d_N\right)=0
 \end{align*}
 $$
-So 
+So
 $$
 \begin{matrix}
 \lambda^n+\lambda^{n-1}-6\lambda^{n-2}=\lambda^{n-2}\left(\lambda^2+\lambda-6\right)

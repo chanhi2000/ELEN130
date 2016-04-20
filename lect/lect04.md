@@ -92,8 +92,8 @@ $$
 - After sampling at rate $$f_T$$ or at rate $$\Omega_T$$, where
 $$
 \left\{\begin{matrix}
-\underset{\text{sampling frequency/rate}}{f_T=\tfrac{1}{T}\:\left[\tfrac{\text{samples}}{sec}\right]}\\\\
-\underset{\text{angular sampling frequency (CT)}}{\Omega_T\:\left[\tfrac{\text{radians}\cdots\text{samples}}{sec}\right]}&
+\underset{\text{sampling frequency/rate}}{f_T=\tfrac{1}{T}\:\left[\tfrac{\text{samples}}{\text{sec}}\right]}\\\\
+\underset{\text{angular sampling frequency (CT)}}{\Omega_T\:\left[\tfrac{\text{radians}\cdot\text{samples}}{\text{sec}}\right]}&
 \end{matrix}\right\}
 $$
 
@@ -166,7 +166,10 @@ f_{0_{\text{new}}}=f_{0_{\text{unaliased}}}+kf_T
 $$
 Then,
 $$
-f_{0_{\text{unaliased}}}=f_{0_{new}}+kf_T(k-\text{integer})
+\begin{matrix}
+f_{0_{\text{unaliased}}}=f_{0_{new}}+kf_T\\
+k:\text{ integer})
+\end{matrix}
 $$
 - SO—we can replace $$-$$ with $$+$$ and have the same expression:
 $$

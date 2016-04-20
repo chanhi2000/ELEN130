@@ -235,8 +235,8 @@ are ODD functions of $$\omega$$
 ## AMBIGUITY OF PHASE
 $$
 \begin{align*}
-X(e^{j\omega})&=|X(e^{j\omega})e^{j\theta(\omega)}\\
-&=|X(e^{j\omega})e^{j\theta(\omega)+2\pi{k}}\\
+X(e^{j\omega})&=|X(e^{j\omega})|e^{j\theta(\omega)}\\
+&=|X(e^{j\omega})|e^{j\theta(\omega)+2\pi{k}}\\
 \end{align*}
 $$
 - The phase function, $$\theta(\omega)$$, cannot be uniquely specified for any DTFT

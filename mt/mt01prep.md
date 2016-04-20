@@ -33,7 +33,7 @@
 	- [__Periodic or aperiodic__][22]
 	- [Summability][23]
 		- Bounded
-		- Absolutely Summable 
+		- Absolutely Summable
 		- Square Summable
 	- [__Energy/Power__][24]
 		- __Energy__
@@ -71,7 +71,7 @@
 - Finite-dimensional LTI DT Systems
 	- Difference Equation Manipulation
 	- Total Solution
-	- Zero-Input Response and Zero-State Responses 
+	- Zero-Input Response and Zero-State Responses
 	- Impulse Response Calculation from the above
 - [__Classification of LTI DT Systems__][41]
 	- [__Impulse Response Length (FIR vs. IIR)__][42]
@@ -85,7 +85,7 @@
 	- __Inverse CTFT__
 	- Dirichlet Conditions
 	- __Properties__
-	- Energy Density Spectrum 
+	- Energy Density Spectrum
 	- Parseval’s Theorem
 - __Classifications based on frequency-domain__
 	- [__Band-limited or not__][https://chanhi2000.gitbooks.io/elen133/content/lect/lect06.html#bandlimited-ct-signals]

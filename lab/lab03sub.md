@@ -12,7 +12,7 @@ For each of the seven frequencies used for DTMF dialing signals, compute the fol
 - The number of samples per cycle if the sampling rate is $$8000\:\text{Hz}$$
 - The number of cycles in the minimum $$50\:\text{ms}$$ interval
 
-#### 1(a)
+#### 1(a) ANSWER
 The number of samples per cycle if the sampling rate is $$8000\:\text{Hz}$$
 $$
 \begin{align*}
@@ -33,7 +33,7 @@ $$
 | 1477 Hz | 0.184625 | 5.4163845633 |
 
 
-#### 1(b)
+#### 1(b) ANSWER
 The number of cycles in the minimum $$50\:\text{ms}$$ interval
 $$
 \require{cancel}
@@ -55,7 +55,7 @@ $$
 
 
 ### 2.
-Review the signal generating m-files you used in previous laboratories. Draw a flow chart for a function that will create a signal vector for a telephone dialing signal. The function will have four inputs and one output as defined below. (You will write and test your function in the lab.)
+Review the signal generating `m`-files you used in previous laboratories. Draw a flow chart for a function that will create a signal vector for a telephone dialing signal. The function will have four inputs and one output as defined below. (You will write and test your function in the lab.)
 ```matlab
 function dial_sig = my_dtmf(tone_time, quiet_time, fs, dial_vals)
 % INPUTS:
@@ -68,26 +68,30 @@ function dial_sig = my_dtmf(tone_time, quiet_time, fs, dial_vals)
 % dial_sig is the vector of sampled values of the DTMF output signal for the number sequence
 ```
 
+#### 2. ANSWER
+![fig02](lab03sub/lab03sub-fig02.png)
+
+
 ### 3.
 Determine the output vector created by the following MATLAB instructions where concatenation is used to build up a vector by computing components and appending them.
 ```matlab
-out_vec = [ ]; 
+out_vec = [ ];
 for k = 1:4
-	out_vec = [out_vec k*ones(1,5) ]; 
+	out_vec = [out_vec k*ones(1,5) ];
 end
 out_vec
 ```
 
 __output__:
 ```
-out_vec = 
+out_vec =
 
 	Columns 1 through 6
-	
+
 	1	1	1	1	1	2
 
 	Columns 7 through 12
-	
+
 	2	2	2	2	3	3
 
 	Columns 13 through 18
@@ -99,21 +103,22 @@ out_vec =
 	4	4
 ```
 
+#### 3. ANSWER
 It will create the vector of $$1\times20$$ matrix that has five sets of 1, 2, 3, 4, and 5 concatenated respectively.
 
 
-### 4. 
+### 4.
 Determine the length in samples of the vector created by the following MATLAB instruction using your function. Determine the time duration of the sound created. (__NOTE__: You will create the function in the lab period, but you can answer this question based on the function description.)
 ```matlab
 sample_freq = 8000;
 dt = 0.2;
 qt = 0.1;
-dial_scu = [ 1 4 11 8 5 5 4 4 11 11 11 ] ; % note that dialed 0 is button 11 
+dial_scu = [ 1 4 11 8 5 5 4 4 11 11 11 ] ; % note that dialed 0 is button 11
 sig_1 = my_dtmf( dt, qt, sample_freq, dial_scu);
 sound( sig_1, sample_freq);
 ```
 
-#### 4
+#### 4. ANSWER
 __length in samples of the vector__ and __time duration of the sound__
 $$
 \require{cancel}

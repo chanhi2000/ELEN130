@@ -1,7 +1,6 @@
 # Summary
 
 * [Introduction](README.md)
-* [mt01prep](mt/mt01prep.md)
 * [lect01](lect/lect01.md)
 * [ex01](lect/ex01.md)
 	* [ex01a](lect/ex01/ex01a.md)
@@ -43,6 +42,8 @@
 * [lect06](lect/lect06.md)
 * [ex06](lect/ex06.md)
 	* [ex06a](lect/ex06/ex06a.md)
+* [mt01prep](mt/mt01prep.md)
+* [lect07](lect/lect07.md)
 * [hw01](hw/hw01.md)
 * [hw02](hw/hw02.md)
 * [lab01](lab/lab01.md)

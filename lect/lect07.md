@@ -167,7 +167,7 @@ y[n]&=h[n]\otimes{x}[n]\\
 &=x[n]H\left(e^{j\omega}\right)
 \end{align*}
 $$
-- So, for the complex exponential input siganl, the LTI system is a complex exponential signal of the  same frequency multiplied by a complex constant $$H\left(e^{j\omega}\right).
+- So, for the complex exponential input siganl, the LTI system is a complex exponential signal of the  same frequency multiplied by a complex constant $$H\left(e^{j\omega}\right)$$.
 - .$$e^{j\omega{n}}$$ is known as an eigenfunction of the system.
 
 

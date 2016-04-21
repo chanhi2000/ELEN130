@@ -43,7 +43,7 @@ F_T&=2*B_{IF}&&\text{if }\frac{f_H}{B_{IF}}=n
 \end{align*}
 $$
 - If $$n$$ is an even integer for the above, spectral inversion occurs
-- if $$\tfrac{f_H}{B_{IF}} is *not* an integer, then math gets slightly more complicated
+- if $$\tfrac{f_H}{B_{IF}}$$ is *not* an integer, then math gets slightly more complicated
 - Two inequalities must be preserved:
 $$
 \begin{matrix}
@@ -239,11 +239,11 @@ H\left(e^{j\omega)0}\right)e^{j\omega_0n}
 $$
 - Thus, the output of $$g[n]$$ is given by: 
 $$
-\frac{1}{2}Ae^{j\phi}H\left(e^{j\oemga_0}\right)e^{j\omega_0n}
+\frac{1}{2}Ae^{j\phi}H\left(e^{j\omega_0}\right)e^{j\omega_0n}
 $$
 - Likewise, the output of $$g^*[n]$$ is: 
 $$
-\frac{1}{2}Ae^{-j\phi}H\left(e^{-j\oemga_0}\right)e^{-j\omega_0n}
+\frac{1}{2}Ae^{-j\phi}H\left(e^{-j\omega_0}\right)e^{-j\omega_0n}
 $$
 - Combining these outputs to create $$y[n]$$ yields:
 $$
@@ -307,7 +307,7 @@ $$
 - Now, apply an input:
 $$
 \begin{matrix}
-x[n]=A\cos{\left(\oemga_1n\right)}+B\cos{\left(\omega_2n\right)}\\
+x[n]=A\cos{\left(\omega_1n\right)}+B\cos{\left(\omega_2n\right)}\\
 0<\omega_1<\omega_c<\omega_2<\pi
 \end{matrix}
 $$

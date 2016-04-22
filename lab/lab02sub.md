@@ -478,7 +478,7 @@ Using the steady state amplitudes and the response to a constant in Step 1, hand
 $$
 \begin{align*}
 ss_{23}&=0.3837&&@f=0.01\\
-ss_{24}&=0.3991$$@f=0.1\\
+ss_{24}&=0.3991&&@f=0.1\\
 ss_{25}&=1.1901&&@f=0.4
 \end{align*}
 $$

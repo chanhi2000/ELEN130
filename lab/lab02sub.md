@@ -76,7 +76,7 @@ plot(tv, x5);
 title('x5(t) vs. t');  xlabel('t');  ylabel('x5(t)')
 ```
 
-![fig01](lab02sub/lab02sub-fig01.png)
+![fig01](lab02sub/lab02sub01-fig01.png)
 
 ### 1(a)
 Count the number of cycles in `x3` and `x4` (*i.e.* compute the product of the normalized frequency and number of samples). Is it the same?
@@ -125,7 +125,7 @@ figure();
 plot(tv, v11, tv, v12, 'g');
 ```
 
-![fig02](lab02sub/lab02sub-fig02.png)
+![fig02a](lab02sub/lab02sub02-fig02a.png)
 
 #### a(i)
 From the plot, estimate the time constant of the impulse response in samples in the same way you would estimate the time constant for an analog signal. Recall that, in an RC circuit, the time constant is the time it takes for the voltage to reach 63% of it’s final voltage or, when it is discharging, to reach 37% of it’s original value. (Note: The plot magnify option and/or printing selected output values may be helpful.)
@@ -171,7 +171,7 @@ ans =
 	6.5132
 ```
 
-![fig03](lab02sub/lab02sub-fig03.png)
+![fig02b](lab02sub/lab02sub02-fig02b.png)
 
 #### a(ii)
 If the sampling interval were 20 msec, what would the time constant be in seconds?
@@ -237,9 +237,12 @@ it does get extremely close to 0 and approximately, we can assert that the impul
 ### (b)
 __For SYSTEM 1__, plot the responses to inputs `x3`, `x4`, and `x5` in three different colors on the same plot using your function `lab1plot2`. Use the upper right corner of the 2x2 subplot array for this plot.
 ```matlab
+% evaluate filtered results
 v13 = filter (b1, a1, x3);
 v14 = filter (b1, a1, x4);
 v15 = filter (b1, a1, x5);
+
+% plot those results together
 figure();
 plot(tv, v13, 'r', tv, v14, 'b', tv, v15, 'g')
 titleFinal = horzcat('Responses for freq ', num2str(freq1), ' r ', ' ', ...
@@ -247,17 +250,20 @@ titleFinal = horzcat('Responses for freq ', num2str(freq1), ' r ', ' ', ...
 title(titleFinal);
 ```
 
-![fig04](lab02sub/lab02sub-fig04.png)
+![fig03a](lab02sub/lab02sub02-fig03a.png)
 
 #### b(i)
 Estimate the steady state amplitude of the response to each test signal.
 ```matlab
+% evaluate steady-state amplitudes and make vectors.
 ss13 = rms(v13)
 ss14 = rms(v14)
 ss15 = rms(v15)
 ss13v = ones(1,n_in) * ss13;
 ss14v = ones(1,n_in) * ss14;
 ss15v = ones(1,n_in) * ss15;
+
+% plot it along the previous outputs
 figure();
 plot(tv, v13, 'r', tv, v14, 'b', tv, v15, 'g');
 hold on
@@ -277,25 +283,26 @@ ss15 =
 	0.3991
 ```
 
-![fig05](lab02sub/lab02sub-fig05.png)
+![fig03b](lab02sub/lab02sub02-fig03b.png)
 
 
 #### b(ii)
 Using the steady state amplitudes and the response to a constant in Step 1, hand sketch a plot of the amplitude of the response as a function of frequency.
-```matlab
-v13new = ss13 * cos(2 * pi * freq1 * tv);
-v14new = ss14 * cos(2 * pi * freq2 * tv);
-v15new = ss15 * cos(2 * pi * freq3 * tv);
-figure();
-plot(tv, v13new, 'r', tv, v14new, 'b', tv, v15new, 'g')
-titleFinal = horzcat('Responses for freq ', num2str(freq1), ' r ', ' ', ...
-    num2str(freq2), ' g ',  num2str(freq3), ' b');
-title(titleFinal);
-```
-![fig06](lab02sub/lab02sub-fig06.png)
+$$
+\begin{align*}
+ss_{13}&=5.8873&&@f=0.01\\
+ss_{14}&=1.1901&&@f=0.1\\
+ss_{15}&=0.3991&&@f=0.4
+\end{align*}
+$$
+
+![fig03c](lab02sub/lab02sub02-fig03c.jpg)
 
 #### b(iii)
 How would you characterize the frequency selective behavior of the system? *i.e.* What is the effect of this filter on different normalized frequencies between 0 and 0.5 cycles per sample?
+
+__ANSWER__: The higher the frequency, the lower the amplitude. It looks like a LPF.
+
 
 ### (c)
 __For SYSTEM 2__, plot the impulse response and step response on the same plot in different colors using your function lab1plot1.
@@ -303,32 +310,39 @@ __For SYSTEM 2__, plot the impulse response and step response on the same plot i
 v21 = filter (b2, a2, x1);
 v22 = filter (b2, a2, x2);
 
+figure();
+plot(tv, v21, tv, v22, 'g');
 ```
-![fig07](lab02sub/lab02sub-fig07.png)
+![fig04a](lab02sub/lab02sub02-fig04a.png)
 
 #### c(i)
 From the plot, estimate the time constant of the impulse response in samples in the same way you would estimate the time constant for an analog signal. Recall that, in an RC circuit, the time constant is the time it takes for the voltage to reach 63% of it’s final voltage or, when it is discharging, to reach 37% of it’s original value. (Note: The plot magnify option and/or printing selected output values may be helpful.)
 
 ```matlab
+% find the max values
 v21max = max(v21);
 v22max = max(v22);
-for i=1:n_in
-    if abs(v21(i)) < (v21max * 0.37)
-tc21 = i;
-break; end
+
+% traverse the top of the oscillation only
+for i=1:2:n_in
+    if v21(i) < (v21max * 0.37)
+    	tc21 = i;
+		break; 
+	end
 end
 tc21
 v21(tc21)
+
 % only traverse the top of the oscillation
 for i=n_in/2:2:n_in
-    if abs(v22(i)-0.5) < ((v22max-0.5) * 0.37)
-% remove DC bias
-tc22 = i;
-break; end
+    if abs(v22(i)-0.5) < ((v22max-0.5) * 0.37) % remove DC bias
+    	tc22 = i;
+		break; 
+	end
 end
-   10
-   tc22
+tc22
 v22(tc22)
+
 % zoom in
 figure();
 ax1=subplot(2,1,1);
@@ -350,12 +364,13 @@ ans =
 	0.3428
 ```
 
-![fig08](lab02sub/lab02sub-fig08.png)
+![fig04b](lab02sub/lab02sub02-fig04b.png)
 
 #### c(ii)
 If the sampling interval were 20 msec, what would the time constant be in seconds?
 ```matlab
 T = 0.02; % sampling interval [sec/sample]
+
 tc21sec = tc21 * T
 tc22sec = tc22 * T
 ```
@@ -422,18 +437,21 @@ titleFinal = horzcat('Responses for freq ', num2str(freq1), ' r ', ' ', ...
 title(titleFinal);
 ```
 
-![fig09](lab02sub/lab02sub-fig09.png)
+![fig05a](lab02sub/lab02sub02-fig05a.png)
 
 
 #### d(i)
 Estimate the steady state amplitude of the response to each test signal.
 ```matlab
+% evaluate the steady state amplitudes and make vectors
 ss23 = rms(v23)     % sqrt( 1/n_in * sum(v13.^2) )
 ss24 = rms(v24)
 ss25 = rms(v25)
 ss23v = ones(1,n_in) * ss23;
 ss24v = ones(1,n_in) * ss24;
 ss25v = ones(1,n_in) * ss25;
+
+% plot it with previous results
 figure();
 plot(tv, v23, 'r', tv, v24, 'b', tv, v25, 'g');
 hold on
@@ -453,38 +471,36 @@ ss25 =
 	1.1901
 ```
 
-![fig10](lab02sub/lab02sub-fig10.png)
+![fig05b](lab02sub/lab02sub02-fig05b.png)
 
 #### d(ii)
 Using the steady state amplitudes and the response to a constant in Step 1, hand sketch a plot of the amplitude of the response as a function of frequency.
-```matlab
-v23new = ss23 * cos(2 * pi * freq1 * tv);
-v24new = ss24 * cos(2 * pi * freq2 * tv);
-v25new = ss25 * cos(2 * pi * freq3 * tv);
-figure();
-plot(tv, v23new, 'r', tv, v24new, 'b', tv, v25new, 'g')
-titleFinal = horzcat('Responses for freq ', num2str(freq1), ' r ', ' ', ...
-    num2str(freq2), ' g ',  num2str(freq3), ' b');
-title(titleFinal);
-```
+$$
+\begin{align*}
+ss_{23}&=0.3837&&@f=0.01\\
+ss_{24}&=0.3991$$@f=0.1\\
+ss_{25}&=1.1901&&@f=0.4
+\end{align*}
+$$
 
-![fig11](lab02sub/lab02sub-fig11.png)
+![fig05c](lab02sub/lab02sub02-fig05c.jpg)
 
 #### d(iii)
 How would you characterize the frequency selective behavior of the system? *i.e.* What is the effect of this filter on different normalized frequencies between 0 and 0.5 cycles per sample?
 
+__answer__: The higher the frequency, the higher the amplitude.  It looks like a HPF.
 
 #### d(iv)
 plot with `lab1plot1' and 'lab1plot2' file
 ```matlab
 figure();
-lab1plot1(tv, v11, v12, 1)        % 2 means upper right in the 2x2 subplots
-lab1plot2(tv, v13, v14, v15, freq1, freq2, freq3, 2)
-lab1plot1(tv, v21, v22, 3)        % 2 means upper right in the 2x2 subplots
-lab1plot2(tv, v23, v24, v25, freq1, freq2, freq3, 4)
+lab1plot1(tv, v11, v12, 1);
+lab1plot2(tv, v13, v14, v15, freq1, freq2, freq3, 2);
+lab1plot1(tv, v21, v22, 3);
+lab1plot2(tv, v23, v24, v25, freq1, freq2, freq3, 4);
 ```
 
-![fig12](lab02sub/lab02sub-fig12.png)
+![fig06](lab02sub/lab02sub02-fig06.png)
 
 ### (e)
 Additional Questions:
@@ -493,27 +509,26 @@ Additional Questions:
 What is the effect of changing the sign of `a(2)` on the impulse and step response for these
 two systems?
 
-For impulse function, as the sign of `a(2)` changes, the output changes from the decreasing exponential output to decreasing in oscillation amplitude output.
-
-For step response, the same applies on the latter half side.
+__answer__: 
+- For impulse function, as the sign of `a(2)` changes, the output changes from the decreasing exponential output to decreasing in oscillation amplitude output.
+- For step response, the same applies on the latter half side.
 
 #### e(ii) 
 What do you think will happen if the absolute value of `a(2)` is decreased? Why?
 
-The lower the 'a(2)' is, the speed of convergence for steady state output becomes quicker,
+__answer__: The lower the 'a(2)' is, the speed of convergence for steady state output becomes quicker,
 and convergence value also changes according to it.
 
 #### e(iii) 
 What do you think will happen if the absolute value of `a(2)` is increased? Why?
 
-The opposite of above will happen, *i.e.* the speed of convergences for steady state output becomes much slower.
+__answer__: The opposite of above will happen, *i.e.* the speed of convergences for steady state output becomes much slower.
 
 
 #### e(iv) 
-If System 1 is used as an “exponential average”, what value should `b(1)` have to insure that
-for a constant input value, the output will be that same value?
+If System 1 is used as an “exponential average”, what value should `b(1)` have to insure that for a constant input value, the output will be that same value?
 
-It has to be 1.
+__answer__: It has to be 1.
 
 
 ## LAB03
@@ -546,106 +561,173 @@ b6 = [0, alpha*sin(w)];
 Comparing System 3 and System 4:
 	
 ```matlab
-y31 = filter(b3, a3, x1);
-y32 = filter(b3, a3, x2);
+% impulse and step response
+v31 = filter(b3, a3, x1);
+v32 = filter(b3, a3, x2);
+v41 = filter(b4, a4, x1);
+v42 = filter(b4, a4, x2);
 
-y41 = filter(b4, a4, x1);
-y42 = filter(b4, a4, x2);
+% sinusodial set
+v33 = filter(b3, a3, x3);
+v34 = filter(b3, a3, x4);
+v35 = filter(b3, a3, x5);
+v43 = filter(b4, a4 ,x3);
+v44 = filter(b4, a4, x4);
+v45 = filter(b4, a4, x5);
+
+% plot comparison
+figure();
+subplot(2,1,1);
+plot(tv, v31, tv, v32, 'g');
+title('impulse and step response of system 3');
+subplot(2,1,2);
+plot(tv, v41, tv, v42, 'g');
+title('impulse and step response of system 4');
 
 figure();
 subplot(2,1,1);
-plot(tv, y31, tv, y32, 'g');
+plot(tv, v33, 'r', tv, v34, 'b', tv, v35, 'g');
+title('sinusoidal output of system 3');
 subplot(2,1,2);
-plot(tv, y41, tv, y42, 'g');
+plot(tv, v43, 'r', tv, v44, 'b', tv, v45, 'g');
+title('sinusoidal output of system 4');
 ```
 
-![fig13](lab02sub/lab02sub-fig13.png)
+![fig02a](lab02sub/lab02sub03-fig02a.png)
 
-### Q3(a) 
+![fig02b](lab02sub/lab02sub03-fig02b.png)
+
+### 3(a) 
 How are System 3 and System 4 different?
 
 #### Q3a(i) 
 Describe the impulse response of each system.
 
-The system 4 converges with higher frequency of oscillation
+__answer__: The system 4 converges with higher frequency of oscillation
 
 #### Q3a(ii) 
 How does using `2w` instead of `w` affect the impulse and step responses?
 
-All it changes is the frequency of oscillation.
+__answer__: the frequency of oscillation got larger and the maximum amplitude of the output is reduced by half.
 
 #### Q3a(iii) 
 How does using `2w` instead of `w` affect the response to the cosines at the three different input frequencies?
+
+__answer__: The signal with smallest frequency got larger with much bigger amplitude.
 
 
 ### 3(b)
 Comparing System 3 and System 5,
 
 ```matlab
-% y31 = filter(b3, a3, x1);
-% y32 = filter(b3, a3, x2);
+% impulse and step response
+v31 = filter(b3, a3, x1);
+v32 = filter(b3, a3, x2);
+v51 = filter(b5, a5, x1);
+v52 = filter(b5, a5, x2);
 
-y51 = filter(b5, a5, x1);
-y52 = filter(b5, a5, x2);
+% sinusodial set
+v33 = filter(b3, a3, x3);
+v34 = filter(b3, a3, x4);
+v35 = filter(b3, a3, x5);
+
+v53 = filter(b5, a5 ,x3);
+v54 = filter(b5, a5, x4);
+v55 = filter(b5, a5, x5);
+
+% lab1plot1(tv, y51, y52, 3)
 
 figure();
 subplot(2,1,1);
-plot(tv, y31, tv, y32, 'g');
+plot(tv, v31, tv, v32, 'g');
+title('impulse and step response of system 3');
 subplot(2,1,2);
-plot(tv, y51, tv, y52, 'g');
+plot(tv, v51, tv, v52, 'g');
+title('impulse and step response of system 5');
+
+figure();
+subplot(2,1,1);
+plot(tv, v33, 'r', tv, v34, 'b', tv, v35, 'g');
+title('sinusoidal output of system 3');
+subplot(2,1,2);
+plot(tv, v53, 'r', tv, v54, 'b', tv, v55, 'g');
+title('sinusoidal output of system 5');
 ```
 
-![fig14](lab02sub/lab02sub-fig14.png)
+![fig03a](lab02sub/lab02sub03-fig03a.png)
 
-### Q3(b)
+![fig03b](lab02sub/lab02sub03-fig03b.png)
+
+### 3(b)
 How are System 3 and System 5 different?
 
 #### Q3a(i) 
 how does increasing alpha affect:
 
+__answer__:  system 5 takes more time/sample to see the steady state output. 
+
 #### Q3a(ii) 
 the duration of the impulse responses?
 
-All it changes is the frequency of oscillation.
+__answer__: The bigger ripple is created by system 5.
 
 #### Q3a(iii) 
 the relative response to the three different input frequencies?
 
+__answer__: The signal with higher frequency gets amplitude in increasing manner.
 
 
 ### 3(c)
 Comparing System 3 and System 6:
-- How are System 3 and System 6 different?
-- Compare the impulse and frequency responses over the full time interval.
-- Zoom in on the first 20 samples and compare again.
-- Compare the steady state amplitudes of the responses to cosines at the three different input frequencies.
 
 ```matlab
-% y31 = filter(b3, a3, x1);
-% y32 = filter(b3, a3, x2);
+% impulse and step response
+v31 = filter(b3, a3, x1);
+v32 = filter(b3, a3, x2);
+v61 = filter(b6, a6, x1);
+v62 = filter(b6, a6, x2);
 
-y61 = filter(b6, a6, x1);
-y62 = filter(b6, a6, x2);
+% sinusodial set
+v33 = filter(b3, a3, x3);
+v34 = filter(b3, a3, x4);
+v35 = filter(b3, a3, x5);
+v63 = filter(b6, a6 ,x3);
+v64 = filter(b6, a6, x4);
+v65 = filter(b6, a6, x5);
+
+% lab1plot1(tv, y61, y62, 4)
+figure();
+subplot(2,1,1);
+plot(tv, v31, tv, v32, 'g');
+title('impulse and step response of system 3');
+subplot(2,1,2);
+plot(tv, v61, tv, v62, 'g');
+title('impulse and step response of system 6');
 
 figure();
 subplot(2,1,1);
-plot(tv, y31, tv, y32, 'g');
+plot(tv, v33, 'r', tv, v34, 'b', tv, v35, 'g');
+title('sinusoidal output of system 3');
 subplot(2,1,2);
-plot(tv, y61, tv, y62, 'g');
-
-% zoom in
-figure();
-ax1 = subplot(2,1,1);
-plot(ax1, tv, y31, tv, y32, 'g');
-ax2 = subplot(2,1,2);
-plot(ax2, tv, y61, tv, y62, 'g');
-h=[0, 20, -1, 1];
-axis([ax1, ax2], h);
+plot(tv, v63, 'r', tv, v64, 'b', tv, v65, 'g');
+title('sinusoidal output of system 5');
 ```
 
-![fig15](lab02sub/lab02sub-fig15.png)
+![fig04a](lab02sub/lab02sub03-fig04a.png)
 
-![fig16](lab02sub/lab02sub-fig16.png)
+![fig04b](lab02sub/lab02sub03-fig04b.png)
+
+### 3(c)
+How are System 3 and System 6 different?
+
+#### Q3c(i) 
+Compare the impulse and frequency responses over the full time interval
+
+#### Q3a(ii) 
+Zoom in on the first 20 samples and compare again.
+
+#### Q3a(iii) 
+Compare the steady state amplitudes of the responses to cosines at the three different input frequencies.
 
 ### 3(d)
 plot
@@ -657,7 +739,12 @@ lab1plot1(tv, y51, y52, 3)
 lab1plot1(tv, y61, y62, 4)
 ```
 
-![fig17](lab02sub/lab02sub-fig17.png)
+![fig05a](lab02sub/lab02sub03-fig05a.png)
+
+![fig05b](lab02sub/lab02sub03-fig05b.png)
+
+![fig05c](lab02sub/lab02sub03-fig05c.png)
+
 
 
 ## LAB04
@@ -672,26 +759,110 @@ b7 = [1, -0.9];
 ```
 
 ### 4(a)
-- Compute the impulse response for System 7.
-- What is the duration of the impulse response?
-- Why? (Zoom in to look at the first 20 samples of the output.)
-- Does the impulse response ever go to 0?
-- Compare the impulses responses of System 7 and System 1.
-- Compute `y1` as the impulse response of System 1, and then use `y1` as the input for System 7. The output of System 7 will be `z1`. Plot `y1` and `z1` on the same axes. Explain the form of `z1`. (Zoom in to look at the first 20 samples of the output.)
+Compute the impulse response for System 7.
+
+Compute `y1` as the impulse response of System 1, and then use `y1` as the input for System 7. The output of System 7 will be `z1`. Plot `y1` and `z1` on the same axes. Explain the form of `z1`. (Zoom in to look at the first 20 samples of the output.)
 
 ```matlab
+% filtered impulse response
 y1 = filter(b1, a1, x1);
 z1 = filter(b7, a7, y1);
-y2 = filter(b1, a1, x2);
-z2 = filter(b7, a7, y2);
 
+% plot comparison
 figure();
 subplot(2,1,1);
 plot(tv, y1, tv, z1, 'g');
-subplot(2,1,2);
-plot(tv, y2, tv, z2, 'g');
+title('y1 (b) vs.  z1 (g)');
+
+% zoom in
+subplot(2,1,2)
+plot(tv, y1, tv, z1, 'g');
+title('the first 20 samples: y1 (b) vs. z1 (g)');
+axis([0, 20, -1, 1]);
 ```
 
-![fig18](lab02sub/lab02sub-fig18.png)
+![fig01a](lab02sub/lab02sub04-fig01a.png)
 
+#### 4a(i)
+What is the duration of the impulse response?
+
+__answer__: it's 1 for impulse response for system 7.
+
+#### 4a(ii)
+Zoom in to look at the first 20 samples of the output.
+
+#### 4a(iii)
+Does the impulse response ever go to 0?
+
+__answer__: yes it goes to 0 instantly.
+
+#### 4a(iv) 
+
+Compute `y7` as the impulse response of System 7, and then use `y7` as the input for System 1. The output of System 1 will be `z7`. Plot `y7` and `z7` on the same axes. Explain the form of `z7`. (Zoom in to look at the first 20 samples of the output.)
+```matlab
+% filtered impulse response
+y7 = filter(b7, a7, x1);
+z7 = filter(b1, a1, y7);
+
+% plot comparison
+figure();
+subplot(2,1,1);
+plot(tv, y7, tv, z7, 'g');
+title('y7 (b) vs.  z7 (g)');
+
+% zoom in
+subplot(2,1,2);
+plot(tv, y7, tv, z7, 'g');
+title('the first 20 samples: y7 (b) vs. z7 (g)');
+axis([0, 20, -1, 1]);
+```
+
+![fig01b](lab02sub/lab02sub04-fig01b.png)
+
+#### 4a(v)
+Draw block diagrams for the two previous steps and label `y1`, `z1`, `y7`, and `z7`.
+
+![fig02](lab02sub/lab02sub04-fig02.jpg)
+
+#### 4a(vi) 
+Analytically compute the first 5 values of `y1`, `z1`, `y7`, and `z7`.
+$$
+\begin{align*}
+y1[n]&=\sum_{k=0}^{N_b}{x1[n-k]}-\sum_{m=0}^{N_a}{y1[n-m]}\\
+&=x1[n]+0.9y1[n-1]\\\\
+z1[n]&=\sum_{k=0}^{N_b}{y1[n-k]}-\sum_{m=0}^{N_a}{z1[n-m]}\\
+&=y1[n]-0.9y1[n-1]-z1[n-1]\\
+\end{align*}
+$$
+
+| $$n$$ | 0 | 1 | 2 | 3 | 4 | 5 | $$\cdots$$ |
+| :---: | - | - | - | - | - | - | :--------: |
+| x1[n] | 1 | 0 | 0 | 0 | 0 | 0 | $$\cdots$$ |
+| y1[n] | 1 | $$0.9$$ | $$0.9^2$$ | $$0.9^3$$ | $$0.9^4$$ | $$0.9^5$$ | $$\cdots$$ |
+| z1[n] | 1 | 0 | 0 | 0 | 0 | 0 |  $$\cdots$$ |
+
+$$
+\begin{align*}
+y7[n]&=\sum_{k=0}^{N_b}{x1[n-k]}-\sum_{m=0}^{N_a}{y7[n-m]}\\
+&=x1[n]-0.9x1[n-1]-y1[n-1]\\\\
+z7[n]&=\sum_{k=0}^{N_b}{y7[n-k]}-\sum_{m=0}^{N_a}{z7[n-m]}\\
+&=y7[n]+0.9z7[n-1]\\
+\end{align*}
+$$
+
+| $$n$$ | 0 | 1 | 2 | 3 | 4 | 5 | $$\cdots$$ |
+| :---: | - | - | - | - | - | - | :--------: |
+| x1[n] | 1 | 0 | 0 | 0 | 0 | 0 | $$\cdots$$ |
+| y7[n] | 1 | $$-0.9$$ | 0| 0 | 0 | 0 | $$\cdots$$ |
+| z7[n] | 1 | 0 | 0 | 0 | 0 | 0 |  $$\cdots$$ |
+
+
+#### 4a(vii)
+How would `y7` and `z7` change if the input to the cascaded system were $$x[n]=\delta[n]+\delta[n-1]$$ instead of just the impulse $$x[n]=\delta[n]$$?
+
+| $$n$$ | 0 | 1 | 2 | 3 | 4 | 5 | $$\cdots$$ |
+| :---: | - | - | - | - | - | - | :--------: |
+| x1[n] | 1 | 1 | 0 | 0 | 0 | 0 | $$\cdots$$ |
+| y7[n] | 1 | $$-0.9$$ | 0| 0 | 0 | 0 | $$\cdots$$ |
+| z7[n] | 1 | 0 | 0 | 0 | 0 | 0 |  $$\cdots$$ |
 

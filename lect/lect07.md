@@ -643,7 +643,7 @@ $$
 - This is the discrete-time frequency.
 - Sampled in the time domain at frequency, $$T$$, thus replicated in the $$f$$-domain at $$F_T$$ and we know that it is periodic with period, $$N$$... and, we know that the DTFT was periodic with period $$2\pi$$. So, the $$\omega_{k_0}$$ is a fraction of the sampling frequency...
 $$
-\tfrac{\omega_{k_0}}{2\pi}F_T
+\frac{\omega_{k_0}}{2\pi}F_T
 $$
 is the frequency at $$k_0$$.
 - Quick aside — earlier I failed to clarify the difference between $$\Omega$$ used in the CTFT and $$w$$ used in the DTFT. $$w$$ is simply a frequency normalized between $$-\pi$$ and $$\pi$$.
@@ -713,3 +713,66 @@ $$
 
 ## DFT SYMMETRIES
 - An $$N$$-point DFT $$X[k]$$ is said to be a circular conjugate-symmetric sequence if:
+$$
+\begin{align*}
+X[k]&=X^*[\left<-k\right>_N]\\
+&=X^*[\left<N-k\right>_N]
+\end{align*}
+$$
+- And, it is said to be a circular conjugate-antisymmetric sequence if:
+$$
+\begin{align*}
+X[k]&=-X^*[\left<-k\right>_N]\\
+&=-X^*[\left<N-k\right>_N]
+\end{align*}
+$$
+- Similar to previous sequences, the complex DFT, $$X[k]$$ can be expressed as a sum of a circular conjugate symmetric part $$X_{cs}[k]$$ and a circular conjugate anti-symmetric part $$X_{ca}[k]$$.
+$$
+\begin{align*}
+X[k]&=X_{cs}[k]+X_{ca}&&\text{for }0\leq{k}\leq{N}-1\\
+X_{cs}[k]&=\frac{1}{2}\left(X[k]+X^*[\left<-k\right>_N]\right)&&\text{for }0\leq{k}\leq{N}-1\\
+X_{ca}[k]&=\frac{1}{2}\left(X[k]-X^*[\left<-k\right>_N]\right)&&\text{for }0\leq{k}\leq{N}-1\\
+\end{align*}
+$$
+
+
+## DFT PROPERTIES: SYMMETRY RELATIONS
+
+| Length-$$N$$ Sequence | $$N$$-point DFT |
+| :-------------------: | :-------------: |
+| $$x[n]$$ | $$X[k]$$ |
+| $$x^*[n]$$ | $$X^*[\left<-k\right>_N]$$ |
+| $$x^*[\left<-n\right>N]$$ | $$X^*[k]$$ |
+| $$\Re{\left\{x[n]\right\}}$$ | $$X_{pcs}[k]$$ |
+| $$j\Im{\left\{x[n]\right\}}$$ | $$X_{pca}[k]$$ |
+| $$x_{pcs}[n]$$ | $$\Re{\left\{X[k]\right\}}$$ |
+| $$x_{pca}[n]$$ | $$j\Im{\left\{X[k]\right\}}$$ |
+| $$x[n]$$ | $$X[k]=\Re{\left\{X[k\right\}}+j\Im{\left\{X[k]\right\}}$$ |
+| $$x_{pe}[n]$$ | $$\Re{\left\{X[k\right\}}$$ |
+| $$x_{po}[n]$$ | $$j\Im{\left\{X[k\right\}}$$ |
+
+where
+$$
+\begin{align*}
+X_{pcs}[k]&=\frac{1}{2}\left(X[\left<k\right>_N]+X^*[\left<-k\right>_N]\right)\\
+X_{pca}[k]&=\frac{1}{2}\left(X[\left<k\right>_N]-X^*[\left<-k\right>_N]\right)\\
+\end{align*}
+$$
+- __NOTE__: $$x_{pcs}[n]$$ and $$x_{pca}[n]$$ are the __periodic conjugate-symmetric__ and __periodic conjugate-antisymmetric__ parts of $$x[n]$$, respectively.
+- Likewise, $$X_{pcs}[k]$$ and $$X_{pca}[k]$$ are the __periodic conjugate-symmetric__ and __periodic conjugate-antisymmetric__ parts of $$X[k]$$, respectively.
+
+
+## SYMMETRY RELATIONS
+$$
+\begin{align*}
+X[k]&=X^*[\left<-k\right>_N]\\
+\Re{\left\{X[k]\right\}}&=\Re{\left\{X[\left<-k\right>_N]\right\}}\\
+\Im{\left\{X[k]\right\}}&=-\Im{\left\{X[\left<-k\right>_N]\right\}}\\
+\left|X[k]\right|&=\left|X[\left<-k\right>_N]\right|\\
+\arg{\left(X[k]\right)}&=\arg{X[\left<-k\right>_N]}
+\end{align*}
+$$
+- __NOTE__: $$x_{pe}[n]$$ and $$x_{po}[n]$$ are the periodic even and periodic odd parts of $$x[n]$$. respectively.
+
+ 
+

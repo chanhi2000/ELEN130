@@ -296,7 +296,7 @@ ss_{15}&=0.3991&&@f=0.4
 \end{align*}
 $$
 
-![fig03c](lab02sub/lab02sub02-fig03c.jpg)
+![fig03c](lab02sub/lab02sub02-fig03c.jpeg)
 
 #### b(iii)
 How would you characterize the frequency selective behavior of the system? *i.e.* What is the effect of this filter on different normalized frequencies between 0 and 0.5 cycles per sample?
@@ -483,7 +483,7 @@ ss_{25}&=1.1901&&@f=0.4
 \end{align*}
 $$
 
-![fig05c](lab02sub/lab02sub02-fig05c.jpg)
+![fig05c](lab02sub/lab02sub02-fig05c.jpeg)
 
 #### d(iii)
 How would you characterize the frequency selective behavior of the system? *i.e.* What is the effect of this filter on different normalized frequencies between 0 and 0.5 cycles per sample?
@@ -822,7 +822,7 @@ axis([0, 20, -1, 1]);
 #### 4a(v)
 Draw block diagrams for the two previous steps and label `y1`, `z1`, `y7`, and `z7`.
 
-![fig02](lab02sub/lab02sub04-fig02.jpg)
+![fig02](lab02sub/lab02sub04-fig02.jpeg)
 
 #### 4a(vi) 
 Analytically compute the first 5 values of `y1`, `z1`, `y7`, and `z7`.

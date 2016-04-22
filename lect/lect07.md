@@ -225,7 +225,7 @@ x[n]=A\cos{\left(\omega_0n+\phi\right)}&&\forall{n}\\
 \text{where}\:\:\:\:-\infty<n<\infty
 \end{matrix}
 $$
-- We can express the input as: 
+- We can express the input as:
 $$
 x[n]=\frac{1}{2}Ae^{j\phi}e^{j\omega_0n}+\frac{1}{2}Ae^{-j\phi}e^{-j\omega_0n}
 $$
@@ -237,11 +237,11 @@ $$
 $$
 H\left(e^{j\omega)0}\right)e^{j\omega_0n}
 $$
-- Thus, the output of $$g[n]$$ is given by: 
+- Thus, the output of $$g[n]$$ is given by:
 $$
 \frac{1}{2}Ae^{j\phi}H\left(e^{j\omega_0}\right)e^{j\omega_0n}
 $$
-- Likewise, the output of $$g^*[n]$$ is: 
+- Likewise, the output of $$g^*[n]$$ is:
 $$
 \frac{1}{2}Ae^{-j\phi}H\left(e^{-j\omega_0}\right)e^{-j\omega_0n}
 $$
@@ -289,7 +289,7 @@ $$
 	- For system parameters, we can evaluate amplitude and phase shift for any input frequency
 	- Use frequency response to convert $$\text{time}\to\text{frequency}$$
 - __Design__
-	- Want to go from frequency specifications to time representation... we need a method to do this 
+	- Want to go from frequency specifications to time representation... we need a method to do this
 	- Use DTFT and CTFT properties to help
 
 
@@ -297,7 +297,7 @@ $$
 - One purpose of LTI DT system is to pass certain frequencies and to block others — *i.e.* to filter with certain properties
 - The key to the filtering process is recognizing that $$x[n]$$ can be written as a weighted sum of an infinite number of exponential sequences (*i.e.* as a linear weighted sum of sinusoids)
 - By appropriately choosing the values of $$\left|H\left(e^{j\omega}\right)\right|$$ of the  LTI digital filter — certain frequencies can be attenuated or filteredas desired.
-- To understand the mechanism behind the design of frequency-selective filters, consider a real-coefficient LTI discrete-time system characterized by the following magnitude function: 
+- To understand the mechanism behind the design of frequency-selective filters, consider a real-coefficient LTI discrete-time system characterized by the following magnitude function:
 $$
 \left|H\left(e^{j\omega}\right)\right|\approx\begin{cases}
 1,&|\omega|\leq\omega_c\\
@@ -319,7 +319,7 @@ $$
 - Say we want to design an LPF
 - We can use the inverse DTFT to determine coefficients — so, we draw our rect and solve the IDTFT — that results in a sinc function evaluated at $$n$$.
 - Can we build this?
-	- no $$h[n]$$ goes forever 
+	- no $$h[n]$$ goes forever
 	- and, $$h[n]$$ not causal
 - Can approximate with a truncated sinc...defined from $$-M$$ to $$M$$
 	- still not causal — need a delay of $$M$$
@@ -377,3 +377,339 @@ $$
 
 
 ## BACK TO FILTER DESIGN
+- Recall the DTFT of a sinc function is a rect function. Specifically:
+$$
+\begin{matrix}
+h_{LP}[n]&\underleftrightarrow{CTFT}&H_{LP}\left(e^{j\omega}\right)
+\end{matrix}
+$$
+where
+$$
+\begin{align*}
+h_{LP}[n]&=\frac{\sin{\left(\omega_cn\right)}}{\pi{n}}\\
+H_{LP}\left(e^{j\omega}\right)&=\begin{cases}
+1,&0\leq|\omega|\leq\omega_c\\
+0,&\omega_c<|\omega|\leq\pi
+\end{cases}
+\end{align*}
+$$
+- So, a flat, rectangular, symmetric, real function in the frequency domain corresponds to a "sinc" function in the discrete-time domain.
+- Specifically, the sinc function is inifinite... thus, it is not something that can be built.
+- Instead we truncate symmetrically:
+$$
+h_2[n] \begin{cases}
+h_{LP}[n],&-M\leq{n}\leq{M}\\
+0,&|n|>M
+\end{cases}
+$$
+- And analyze to see how good it is.
+
+
+## FILTER DESIGN: APPLYING FREQUENCY SHIFT
+- Parameters that can be adjusted are: $$\omega_c$$ and $$M$$
+- Can also take advantage of DTFT properties to create other filters
+- __Example__: Create an LPF and apply a frequency shift.
+- Shift in frequency domain maps to a complex exponential in the discrete-time domain.
+- So
+$$
+H_{HP}\left(e^{j\omega}\right)=H_{LP}\left(e^{j(\omega-\pi)}\right)
+$$
+$$
+\begin{matrix}
+2\pi\delta(\omega-\pi)&\underleftrightarrow{IDTFT}&e^{j\pi{n}}=\left(e^{j\pi}\right)^n=\left(-1\right)^n
+\end{matrix}
+$$
+- Thus
+$$
+h_{HP}[n]=h_{LP}[n]\left(-1\right)^n
+$$
+
+
+## ANOTHER WAY TO CREATE A HPF
+- We can create a high pass filter by manipulating the coefficients of the low pass filter. Note that the new cutoff frequency of the high pass filter is $$pi-\omega_c$$.
+- Another way to create HP from a LP is to substract the frequency domain from $$1$$.
+$$
+\begin{align*}
+H_{HP}(z)&=1-H_{LP}(z);\\
+H_{HP}\left(e^{j\omega}\right)&=1-H_{LP}\left(e^{j\omega}\right);\\
+h_{HP}[n]&=\delta[n]-h_{LP}[n]\\
+\end{align*}
+$$
+- Cutoff in this case is the same.
+
+
+## FILTER DESIGN: USING CONVOLUTION PROPERTY
+- If you take a LPF and convolve the time-domain representation with itself, you will end up with a longer filter — *i.e.* a “better” LPF.
+- You will have a HW problem to help convince yourself of this.
+
+
+## REVISITING DTFT
+- Consider a discrete time signal.
+$$
+\begin{matrix}
+x[n]&\underrightarrow{DTFT}&X\left(e^{j\omega}\right)=\sum_{n=-\infty}^{\infty}{x[n]e^{-j\omega{n}}}
+\end{matrix}
+$$
+- Now, assume that we wish to make $$x_N[n]$$ which is a finite version of $$x[n]$$ defined from $$n=0:N-1$$.
+- Or,
+$$
+x_N[n]=x[n]\otimes{w}[n]
+$$
+where
+$$
+\underset{\text{a rectangular window}}{w[n]=\begin{cases}
+1,&0\leq{n}\leq{N}-1\\
+0,&\text{otherwise}
+\end{cases}}
+$$
+$$
+\begin{matrix}
+x_N[n]&\underrightarrow{DTFT}&X_N\left(e^{j\omega}\right)=\sum_{n=0}^{N-1}{x[n]e^{-j\omega{n}}}
+\end{matrix}
+$$
+- Can we recover the original $$x[n]$$ from $$X_N\left(e^{j\omega}\right)$$?
+- What do DTFT properties tell us about $$X_N\left(e^{j\omega}\right)$$
+- If $$N$$ specific values define $$x[n]$$, do we need a continuous function of $$\omega$$ for our DTFT?
+- What is the effect of computing only a finite number of values? Can we represent all of the information in $$X_N\left(e^{j\omega}\right)$$?
+- Let's see...
+- To compute — sample in $$\omega$$ — we will take $$M$$ samples.
+- Recall that our period is $$2\pi$$
+- So
+$$
+\begin{align*}
+\Delta\omega&=\frac{2\pi}{M}\\
+\omega_k&=k\Delta\omega\\
+&=\frac{2\pi{k}}{M}
+\end{align*}
+$$
+- So, we sample $$X_N\left(e^{j\omega}\right)$$ at values $$\omega=\omega_k$$.
+- The sampled version of $$X_N\left(e^{j\omega}\right)$$ is now
+$$
+\begin{align*}
+X_{N,M}(k)&=\sum_{n=0}^{N-1}{x[n]e^{-j\omega_kn}}\\
+&=\sum_{n=0}^{N-1}{x[n]e^{-j\left(k\frac{2\pi}{M}\right)n}}\\
+&=\sum_{n=0}^{N-1}{x[n]e^{-j2\pi\frac{nk}{M}}}\\
+\end{align*}
+$$
+- So, what is the effect of sampling?
+	- Sampling in time @ $$\Delta{t}=T$$ resulted in a replication in frequency at intervals of $$F_T=\frac{1}{T}$$.
+	- So, sampling in frequency @ $$\Delta\omega=\tfrac{2\pi}{M}$$ will result in a replication in time at intervals of $$\tfrac{M}{2\pi}$$
+	- .$$M\geq{N}$$ will prevent overlap in time and sampling in frequency domain will NOT cause information loss.
+- This leads us to DFT.
+
+
+## DFT
+- DFT is the DTFT of finite length sequence $$x[n]$$ evaluated at finite number of frequency values.
+- __Forward DFT__:
+$$
+\begin{matrix}
+X[k]=\sum_{n=0}^{N-1}{x[n]e^{-j2\pi\tfrac{nk}{N}}}\\
+\text{for }0\leq{k}\leq{N}-1
+\end{matrix}
+$$
+- __Inverse DFT__:
+$$
+\begin{matrix}
+x[n]=\frac{1}{N}\sum_{n=0}^{N-1}{X[k]e^{+j2\pi\tfrac{nk}{N}}}\\
+\text{for }0\leq{n}\leq{N}-1
+\end{matrix}
+$$
+- Both are periodic of period, $$N$$.
+- Simplify with $$W_N=e^{-j\tfrac{2\pi}{N}}$$
+- so, $$W_N^{nk}$$ for forward and $$W_N^{-nk}$$ for inverse.
+
+### [EXAMPLE: FAMILIARITY WITH $$W_N$$.][]
+
+### [EXAMPLE: SOLVING A GENERIC DFT][]
+
+
+## DFT: VIEWING $$W_N$$ around the unit circle.
+- To compute $$X[k]$$ take $$k$$ steps around the unit circle to get factors to multiply.
+- If $$N=4$$, there will be $$4$$ steps around the unit circle:
+![fig02](lect07/lect07-fig02.png)
+
+
+## DFT IN MATRIX REPRESENTATION
+$$
+\begin{bmatrix}
+X[0]\\X[1]\\X[2]\\X[3]
+\end{bmatrix}=\begin{bmatrix}
+W_4^0&W_4^0&W_4^0&W_4^0\\
+W_4^0&W_4^1&W_4^2&W_4^3\\
+W_4^0&W_4^2&W_4^4&W_4^6\\
+W_4^0&W_4^3&W_4^6&W_4^9
+\end{bmatrix}\begin{bmatrix}
+x[0]\\x[1]\\x[2]\\x[3]
+\end{bmatrix}
+$$
+- __notation__: This is $$D_4$$.
+$$
+\underline{X}=D_N\underline{x}
+$$
+- __NOTE__:
+$$
+\begin{matrix}
+\underline{x}=D_N^{-1}\underline{X}\\
+\text{where }D_N^{-1}=\frac{1}{N}D_N^*
+\end{matrix}
+$$
+- Frequency vector = DFT mattrix for $$N=4$$ times time vector.
+
+### [EXAMPLE: DFT AROUND UNIT CIRCLE][]
+
+
+## DFT SUMMARIZED
+- DFT is a relationship between a sampled periodic sequence in time and a sampled periodic sequence in frequency.
+- DFT is very useful in structured computation and fast algorithms.
+
+
+## MORE DFT EXAMPLES
+$$
+\begin{matrix}
+x[n]&\underrightarrow{DFT}&X[k]
+\end{matrix}
+$$
+where
+$$
+\begin{align*}
+x[n]&=\delta[n-n_0]\\
+X[k]&=\sum_{n=0}^{N-1}{x[n]e^{-j2\pi\tfrac{nk}{N}}}\\
+&=e^{-j2\pi\tfrac{n_0k}{N}}
+\end{align*}
+$$
+- Likewise,
+$$
+\begin{matrix}
+X[k]&\underrightarrow{IDFT}&x[n]
+\end{matrix}
+$$
+where
+$$
+\begin{align*}
+X[k]&=\delta[k-k_0]\\
+x[n]&=\frac{1}{N}\sum_{n=0}^{N-1}{X[k]e^{+j2\pi\tfrac{nk}{N}}}\\
+&=\frac{1}{N}e^{+j2\pi\tfrac{n_0k}{N}}
+\end{align*}
+$$
+- Another one:
+$$
+\begin{matrix}
+w_M[n]=\text{window of }M\text{ samples }\\
+M<N
+\end{matrix}
+$$
+so,
+$$
+x[n]=\sum_{m=0}^{M-1}{\delta[n-m]}
+$$
+- So, the DFT is:
+$$
+\begin{align*}
+X[k]&=\sum_{n=0}^{N-1}{x[n]e^{-j2\pi\tfrac{nk}{N}}}\\
+&=\sum_{n=0}^{M-1}{e^{-j2\pi\tfrac{nk}{N}}}\\
+&=\frac{1-e^{-j2\pi\tfrac{Mk}{n}}}{1-e^{-j2\pi\tfrac{k}{n}}}
+\end{align*}
+$$
+- Manipulated — this becomes:
+$$
+\exp\left({-j\pi\frac{(M-1)k}{N}\frac{\sin{\left(\tfrac{\pi{M}k}{N}\right)}}{ \sin{\left(\tfrac{\pi{k}}{N}\right)}}}\right)
+$$
+- This is the discrete sinc sampled and period with period, $$N$$.
+
+
+## REVIEW PERIODICITY
+- To review, DFT is $$N$$ evenly spaced samples of $$\omega$$ where
+$$
+\begin{align*}
+\Delta\omega&=\tfrac{2\pi}{N}\\
+\omega_k&=k\Delta\omega
+\end{align*}
+$$
+- Both $$x[n]$$ and $$X[k]$$ are periodic with period, $$N$$.
+$$
+\begin{align*}
+x[n+N]&=x[n]\\
+X[k+N]&=X[k]
+\end{align*}
+$$
+- What is $$X[-1]$$?
+
+
+## REAL WORLD FREQUENCY ASSOCIATED WITH SAMPLES
+- So, what is the real world frequency associated with a particular $$k_0$$ sample?
+$$
+\omega_{k_0}=k_0\Delta\omega=\frac{k_02\pi}{N}
+$$
+- This is the discrete-time frequency.
+- Sampled in the time domain at frequency, $$T$$, thus replicated in the $$f$$-domain at $$F_T$$ and we know that it is periodic with period, $$N$$... and, we know that the DTFT was periodic with period $$2\pi$$. So, the $$\omega_{k_0}$$ is a fraction of the sampling frequency...
+$$
+\tfrac{\omega_{k_0}}{2\pi}F_T
+$$
+is the frequency at $$k_0$$.
+- Quick aside — earlier I failed to clarify the difference between $$\Omega$$ used in the CTFT and $$w$$ used in the DTFT. $$w$$ is simply a frequency normalized between $$-\pi$$ and $$\pi$$.
+
+
+## USE OF DFT FOR CONVOLUTION
+- So, similarly to how this was done for DTFT, the convolution in time transforms to multiplication in the frequency domain for the DFT.
+- However, when doing this with the DFT, care must be taken with the length of the sequences.
+- Say we convolve some sequence $$x[n]$$ with some sequence $$h[n]$$.
+- __Linear convolution__:
+$$
+\begin{matrix}
+g_L[n]&\underleftrightarrow{DTFT}&G\left(e^{j\omega}\right)
+\end{matrix}
+$$
+where
+$$
+\begin{align*}
+g_L[n]&=\sum_{k=0}^{N-1}{x[k]h[n-k]}\\
+G\left(e^{j\omega}\right)&=X\left(e^{j\omega}\right)H\left(e^{j\omega}\right)
+\end{align*}
+$$
+- __Cicular convolution__:
+$$
+\begin{matrix}
+g_c[n]&\underleftrightarrow{DFT}&G[k]
+\end{matrix}
+$$
+where
+$$
+\begin{align*}
+g_c[n]&=\sum_{k=0}^{N-1}{x[k]h[\left<n-k\right>_N]}\\
+G[k]&=X[k]H[k]
+\end{align*}
+$$
+- for the DFT, everyhing is periodic with period, $$N$$ (the length of the DFT).
+
+
+## LINEAR VS. CIRCULAR CONVOLUTION
+- Assume $$N=3$$
+$$
+\begin{align*}
+g_L[0]&=x[0]h[0]+x[1]h[-1]+x[2]h[-2]\\
+g_L[1]&=x[0]h[1]+x[1]h[0]+x[2]h[-1]\\
+g_L[2]&=x[0]h[2]+x[1]h[1]+x[2]h[0]\\
+\end{align*}
+$$
+and
+$$
+\begin{align*}
+g_c[0]&=x[0]h[0]+x[1]h[N-1]+x[2]h[N-2]\\
+g_c[1]&=x[0]h[1]+x[1]h[0]+x[2]h[N-1]\\
+g_c[2]&=x[0]h[2]+x[1]h[1]+x[2]h[0]\\
+\end{align*}
+$$
+
+### [EXAMPLE: CIRCULAR CONVOLUTION][]
+74-77
+
+
+## FREQUENCY RESOLUTION
+- Zero padding computes more values for DTFT or interpolates the DFT... it does NOT add information or improve frequency resolution.
+- Recall, infinite lenght $$x[n]$$ DTFT to $$X\left(e^{j\omega}\right)$$.
+- If we take $$N$$ points of $$x[n]$$, we would get $$N$$ points in $$X[k]$$ and the frequency spacing (or frequency resolution) would be $$\Delta\omega=\tfrac{2\pi}{N}$$.
+- Now, if we took $$2N$$ points of $$x[n]$$, we would get $$2N$$ points in $$X[k]$$ and the frequency resolution would be $$\Delta\omega=\tfrac{2\pi}{2N}$$
+
+
+## DFT SYMMETRIES
+- An $$N$$-point DFT $$X[k]$$ is said to be a circular conjugate-symmetric sequence if:

@@ -731,12 +731,31 @@ Compare the steady state amplitudes of the responses to cosines at the three dif
 
 ### 3(d)
 plot
+
 ```matlab
-figure(2);
-lab1plot1(tv, y31, y32, 1)
-lab1plot1(tv, y41, y42, 2)
-lab1plot1(tv, y51, y52, 3)
-lab1plot1(tv, y61, y62, 4)
+figure();
+lab1plot1(tv, v31, v32, 1);
+title('system 3');
+lab1plot2(tv, v33, v34, v35, freq1, freq2, freq3, 2);
+lab1plot1(tv, v41, v42, 3);
+title('system 4');
+lab1plot2(tv, v43, v44, v45, freq1, freq2, freq3, 4);
+
+figure();
+lab1plot1(tv, v31, v32, 1);
+title('system 3');
+lab1plot2(tv, v33, v34, v35, freq1, freq2, freq3, 2);
+lab1plot1(tv, v51, v52, 3);
+title('system 5');
+lab1plot2(tv, v53, v54, v55, freq1, freq2, freq3, 4);
+
+figure();
+lab1plot1(tv, v31, v32, 1);
+title('system 3');
+lab1plot2(tv, v33, v34, v35, freq1, freq2, freq3, 2);
+lab1plot1(tv, v61, v52, 3);
+title('system 6');
+lab1plot2(tv, v63, v64, v65, freq1, freq2, freq3, 4);
 ```
 
 ![fig05a](lab02sub/lab02sub03-fig05a.png)
@@ -828,10 +847,10 @@ Draw block diagrams for the two previous steps and label `y1`, `z1`, `y7`, and `
 Analytically compute the first 5 values of `y1`, `z1`, `y7`, and `z7`.
 $$
 \begin{align*}
-y1[n]&=\sum_{k=0}^{N_b}{x1[n-k]}-\sum_{m=0}^{N_a}{y1[n-m]}\\
-&=x1[n]+0.9y1[n-1]\\\\
-z1[n]&=\sum_{k=0}^{N_b}{y1[n-k]}-\sum_{m=0}^{N_a}{z1[n-m]}\\
-&=y1[n]-0.9y1[n-1]-z1[n-1]\\
+y1[n]&=\sum_{k=0}^{N_b}{x1[n-k]}-\sum_{m=1}^{N_a}{a_my1[n-m]}\\
+&=x1[n]+0.9\left(y1[n-1]\right)\\\\
+z1[n]&=\sum_{k=0}^{N_b}{y1[n-k]}-\sum_{m=1}^{N_a}{a_mz1[n-m]}\\
+&=y1[n]-0.9\left(y1[n-1]\right)\\
 \end{align*}
 $$
 
@@ -839,14 +858,14 @@ $$
 | :---: | - | - | - | - | - | - | :--------: |
 | x1[n] | 1 | 0 | 0 | 0 | 0 | 0 | $$\cdots$$ |
 | y1[n] | 1 | $$0.9$$ | $$0.9^2$$ | $$0.9^3$$ | $$0.9^4$$ | $$0.9^5$$ | $$\cdots$$ |
-| z1[n] | 1 | 0 | 0 | 0 | 0 | 0 |  $$\cdots$$ |
+| z1[n] | 1 | 0 | 0 | 0 | 0 | 0 | $$\cdots$$ |
 
 $$
 \begin{align*}
-y7[n]&=\sum_{k=0}^{N_b}{x1[n-k]}-\sum_{m=0}^{N_a}{y7[n-m]}\\
-&=x1[n]-0.9x1[n-1]-y1[n-1]\\\\
-z7[n]&=\sum_{k=0}^{N_b}{y7[n-k]}-\sum_{m=0}^{N_a}{z7[n-m]}\\
-&=y7[n]+0.9z7[n-1]\\
+y7[n]&=\sum_{k=0}^{N_b}{x1[n-k]}-\sum_{m=1}^{N_a}{a_my7[n-m]}\\
+&=x1[n]-0.9\left(x1[n-1]\right)\\\\
+z7[n]&=\sum_{k=0}^{N_b}{y7[n-k]}-\sum_{m=1}^{N_a}{a_mz7[n-m]}\\
+&=y7[n]+0.9\left(z7[n-1]\right)\\
 \end{align*}
 $$
 
@@ -855,7 +874,6 @@ $$
 | x1[n] | 1 | 0 | 0 | 0 | 0 | 0 | $$\cdots$$ |
 | y7[n] | 1 | $$-0.9$$ | 0| 0 | 0 | 0 | $$\cdots$$ |
 | z7[n] | 1 | 0 | 0 | 0 | 0 | 0 |  $$\cdots$$ |
-
 
 #### 4a(vii)
 How would `y7` and `z7` change if the input to the cascaded system were $$x[n]=\delta[n]+\delta[n-1]$$ instead of just the impulse $$x[n]=\delta[n]$$?

@@ -20,6 +20,7 @@
 - Implementation considerations—quantization and dynamic range
 - Specific Applications (if time)
 
+
 ## OVERVIEW
 - Frequency Response
 - DFT
@@ -99,6 +100,30 @@ $$
 - This is called the __attenuation / loss__ function.
 
 
+## PLOTTING PHASE
+$$
+H\left(e^{j\omega}\right)=\left|H\left(e^{j\omega}\right)\right|e^{j\theta(\omega)}
+$$
+- Solution to previous example:
+$$
+e^{-j\omega_0}\left(1+2\cos{\left(\omega_0\right)}\right)
+$$
+- Therefore, Phase is $$-\omega_0$$
+- The general form pulls out an $$e^{-j\omega_0}$$ term. Based on the first bullet, this means the phase is :
+$$
+\theta(\omega)=-\omega
+$$
+- Thus, phase is a straight line.... with a slope of $$-1$$!
+- The slope of the linear phase represents the delay of the system.
+
+
+## IMPORTANT POINT ABOUT PLOTTING MAG/PHASE
+- magnitude should never be negative!
+- Thus "negative" section need to be flipped up
+- This "$$-1$$" multiplier in the magnitude plot needs to be represented in the phase...
+- How do we represent this? IN other words, what phase jump $$e^{j\left<\text{what}\right>}$$ represents $$-1$$?
+
+
 ## PROPERTIES OF FREQUENCY RESPONSE
 - If $$h[n]$$ is real, magnitude function is even and phase function is odd (functions of $$\omega$$)
 - If $$h[n]$$ is real, $$H_\Re\left(e^{j\omega}\right)$$ is even and $$H_\Im\left(e^{j\omega}\right)$$ is odd
@@ -176,10 +201,9 @@ $$
 $$
 y[n]=\begin{cases}
 0,&\text{for }n<0\\
-\left(\sum_{k=0}^{\infty}{h[k]e^{-j\omega{k}}}\right)e^{j\omega{n}}-\left(\sum_{k=n+1}^{\infty}{h[k]e^{-j\omega{k}}}\right)e^{j\omega{n}}
+\underset{\text{steady state reponse}}{\left(\sum_{k=0}^{\infty}{h[k]e^{-j\omega{k}}}\right)e^{j\omega{n}}}-\underset{\text{transient response}}{\left(\sum_{k=n+1}^{\infty}{h[k]e^{-j\omega{k}}}\right)e^{j\omega{n}}}
 \end{cases}
 $$
-- steady state response MINUS transient response.
 
 
 ## COURSE SUMMARY
@@ -715,7 +739,7 @@ x[n+mN],&0\leq{n}\leq{N}-1\\
 &=x[n]=\sum_{m=0}^{\infty}{x_m[n-mN]}
 \end{align*}
 $$
-- Say 
+- Say
 $$
 y_m[n]=h[n]\otimes{x}_m[n]
 $$
@@ -760,7 +784,7 @@ y_c[0]&=h[0]x[0]+h[1]x[3]+h[2]x[2]\\
 y_c[1]&=h[0]x[1]+h[1]x[0]+h[2]x[3]\\
 y_c[2]&=h[0]x[2]+h[1]x[1]+h[2]x[0]\\
 y_c[3]&=h[0]x[3]+h[1]x[2]+h[2]x[1]\\
-\end{align*}	
+\end{align*}
 $$
 $$
 y_c[2]=y_c[3]
@@ -777,7 +801,7 @@ x_m[n]=x[n+2m]\\
 \text{for }\begin{matrix}
 0\leq{n}\leq3,\\
 0\leq{m}\leq\infty,\\
-\end{matrix}	
+\end{matrix}
 $$
 - Then, form
 $$

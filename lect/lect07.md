@@ -47,7 +47,7 @@ $$
 - Two inequalities must be preserved:
 $$
 \begin{matrix}
--(n-1)\frac{F_T}{2}F_T\leq{f}_L\\
+-(n-1)\frac{F_T}{2}\leq{f}_L\\
 f_H\leq(n)\frac{F_T}{2}
 \end{matrix}
 $$

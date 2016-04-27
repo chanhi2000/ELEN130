@@ -45,8 +45,8 @@ Note that in the plot command, `plot(fv, abs(H852))` would yield a plot from $$0
 
 So, to see the two-sided plot, one must subtract $$\tfrac{F_s}{2}$$  (in this case, $$4000$$) and “`fftshift`” the values being plotted — in essence, this is picking up the irght hand side of the plot and putting it onto the left.
 ```matlab
-% ----- EXERCISE 1: ----- 
-% see the change of filter's shape as N1 becomes larger
+% ----- EXERCISE 1: -----
+% changes in resolution (N2) of FR 
 
 fs = 8000;
 fc = 852;
@@ -54,46 +54,35 @@ w = 82;
 Wn = [fc-w, fc+w]/(fs/2);
 
 N1 = 100;
-b852a = fir1(  N1, Wn, rectwin(N1+1)  );
-[H852a, fv1] = freqz(  b852a, 1, N1, fs,'whole'  );
+b852 = fir1(  N1, Wn, rectwin(N1+1)  );
 
 N2a = 512;
-b852b = fir1(  N2a, Wn, rectwin(N2a+1)  );
-[H852b, fv2] = freqz(  b852b, 1, N2a, fs,'whole'  );
+[H852a, fv1] = freqz(  b852, 1, N2a, fs,'whole'  );
 
 N2b = 1024;
-b852c = fir1(  N2b, Wn, rectwin(N2b+1)  );
-[H852c, fv3] = freqz(  b852c, 1, N2b, fs,'whole'  );
+[H852b, fv2] = freqz(  b852, 1, N2b, fs,'whole'  );
 
-title1 = 'one-sided FR of BPF filter @ 852 Hz: N1 = ';
-title2 = 'two-sided FR of BPF filter @ 852 Hz: N1 = ';
+title1 = 'one-sided FR of BPF filter @ 852 Hz w/ resolution, N2 = ';
+title2 = 'two-sided FR of BPF filter @ 852 Hz w/ resolution, N2 = ';
 
-% ----- one-sided plot -----
+% ----- one-sided plot ----- 
 figure();
-subplot(3,1,1);
-plot(fv1, abs(H852a));
-title(  horzcat(title1, num2str(N1))  );
-
-subplot(3,1,2);
-plot(  fv2, abs(H852b)  );
+subplot(2,1,1);
+plot(  fv1, abs(H852a)  );
 title(  horzcat(title1, num2str(N2a))  );
 
-subplot(3,1,3);
-plot(  fv3, abs(H852c)  );
+subplot(2,1,2);
+plot(  fv2, abs(H852b)  );
 title(  horzcat(title1, num2str(N2b))  );
 
-% ----- two-sided plot -----
+% ----- two-sided plot ----- 
 figure();
-subplot(3,1,1);
+subplot(2,1,1);
 plot(  fv1-(fs/2), fftshift(abs(H852a))  );
-title(  horzcat(title2, num2str(N1))  );
-
-subplot(3,1,2);
-plot(  fv2-(fs/2), fftshift(abs(H852b))  );
 title(  horzcat(title2, num2str(N2a)));
 
-subplot(3,1,3);
-plot(  fv3-(fs/2), fftshift(abs(H852c))  );
+subplot(2,1,2);
+plot(  fv2-(fs/2), fftshift(abs(H852b))  );
 title(  horzcat(title2, num2str(N2b))  );
 ```
 
@@ -106,7 +95,7 @@ title(  horzcat(title2, num2str(N2b))  );
 ### 3.
 Use `N1 = 100` and `w = 80` to compute `b852` and then plot the frequency response as described above. It is your choice to plot the one-sided or the two-sided plot — but, you should understand and be comfortable with both. This should produce a filter with $$101$$ coefficients that tries to make a filter that will pass frequencies between $$772\:\text{Hz}$$ and $$932\:\text{Hz}$$. Observe the plot of the frequency response and see how well this filter works.
 ```matlab
-% ----- EXERCISE 2: ----- 
+% ----- EXERCISE 2: -----
 % Change in filter based on the limited amount of sample points.
 
 fs = 8000;
@@ -115,15 +104,15 @@ w = 80;
 Wn = [fc-w, fc+w]/(fs/2);
 
 N1 = 100;
+N2 = 1024;      % resolution of FR
 b852 = fir1(  N1, Wn, rectwin(N1+1)  );
-[H852, fv] = freqz(  b852, 1, N1, fs, 'whole'  );
+[H852, fv] = freqz(  b852, 1, N2, fs, 'whole'  );
 
 title3 = 'one-sided FR of BPF filter @ 852 Hz';
 title4 = 'two-sided FR of BPF filter @ 852 Hz';
 title5 = 'two-sided FR of BPF filter @ 852 Hz (zoomed-in)';
 
 % ----- plot frequency response -----
-
 figure();
 subplot(3,1,1);
 plot(fv, abs(H852));
@@ -135,35 +124,38 @@ plot(fv-(fs/2), fftshift(abs(H852)));
 title(title4);
 xlabel('f [Hz]'); ylabel('amplitude');
 
-
 subplot(3,1,3);
 plot(fv-(fs/2), fftshift(abs(H852)));
 title(title5);
-axis([700 1150 0 1]);
+axis([670 1100 0 1]);
 
-% linear interpolation: apprximate magnitude for
-% (1) 852 Hz,
-% (2) 772 Hz, and
+% linear interpolation: apprximate magnitude for 
+% (1) 852 Hz, 
+% (2) 772 Hz, and 
 % (3) 932 Hz
 
-a720 = fftshift(abs(H852(10)));  % 720 Hz
-a800 = fftshift(abs(H852(11)));  % 800 Hz
-a880 = fftshift(abs(H852(12)));  % 880 Hz
-a960 = fftshift(abs(H852(13)));  % 960 Hz
+a765 = fftshift(abs(H852(99)));  % 765 Hz
+a773 = fftshift(abs(H852(100)));  % 773 Hz
+a851 = fftshift(abs(H852(110)));  % 851 Hz
+a859 = fftshift(abs(H852(111)));  % 859 Hz
+a929 = fftshift(abs(H852(120)));  % 929 Hz
+a937 = fftshift(abs(H852(121)));  % 937 Hz
 
-a852 = a800 + (a880 - a800) * (852-800)/(880-800)
-a772 = a720 + (a800 - a720) * (772-720)/(800-720)
-a932 = a880 + (a960 - a880) * (932-880)/(960-880)
+a852 = a851 + (a859 - a851) * (852-851)/(859-851)
+a772 = a765 + (a773 - a765) * (772-765)/(773-765)
+a932 = a929 + (a937 - a929) * (932-929)/(937-929)
+
+% Approximately 985 and 720 hits close to 0
 ```
 
 __output__:
 ```
 a852 
-	= 0.8253
+	= 0.9991
 a772 
-	= 0.4479
+	= 0.3877
 a932 
-	= 0.3971
+	= 0.3766
 ```
 
 ![fig02](lab04sub/lab04sub-fig02.png)
@@ -176,10 +168,10 @@ You should see a narrow band centered at $$852\:\text{Hz}$$ on frequency axis th
 Use the magnify feature in the figure window and display the small region with a nonzero frequency response in detail. What is the value of the frequency response at approximately $$852\:\text{Hz}$$? At approximately $$772\:\text{Hz}$$?, at approximately $$932\:\text{Hz}$$? At what frequency below $$852\:\text{Hz}$$ does the frequency response first go to zero? At what frequency above $$852\:\text{Hz}$$ does the frequency response first go to zero?
 
 #### A3(b)
-- @ $$852\:\text{Hz}$$, the amplitude is approximately 0.8253
-- @ $$772\:\text{Hz}$$, the amplitude is approximately 0.4479
-- @ $$932\:\text{Hz}$$, the amplitude is approximately 0.3971
-- Examining the plot, @ $$960\:\text{Hz}$$ and $$720\:\text{Hz}$$ is the location where it will first go to zero.
+- @ $$852\:\text{Hz}$$, the amplitude is approximately 0.9991
+- @ $$772\:\text{Hz}$$, the amplitude is approximately 0.3877
+- @ $$932\:\text{Hz}$$, the amplitude is approximately 0.3766
+- Examining the plot, @ $$985\:\text{Hz}$$ and $$720\:\text{Hz}$$ is the location where it will first go to zero.
 
 ------
 
@@ -199,9 +191,11 @@ Compute `b770` and `H770` in the same way and plot both `H770` and `H852` on the
 ```matlab
 % ----- EXERCISE 3: -----
 % Examiniation of overlapping filter @ different frequencies.
+
 fs = 8000;
 fc1 = 852;
 fc2 = 770;
+
 
 N1 = 50;
 w = 30;
@@ -211,15 +205,15 @@ b852 = fir1(  N1, Wn1, rectwin(N1+1)  );
 Wn2 = [fc2-w, fc2+w]/(fs/2);
 b770 = fir1(  N1, Wn2, rectwin(N1+1)  );
 
-[H852, fv] = freqz(  b852, 1, N1, fs,  'whole'  ) ;
-[H770, fv] = freqz(  b770, 1, N1, fs,  'whole'  ) ;
+N2 = 1024;
+[H852, fv] = freqz(  b852, 1, N2, fs,  'whole'  ) ;
+[H770, fv] = freqz(  b770, 1, N2, fs,  'whole'  ) ;
 
 title1 = 'one-sided FR of BPF filter @ 852 Hz (r) and 770 Hz (b) : N1 = ';
 title2 = 'two-sided FR of BPF filter @ 852 Hz (r) and 770 Hz (b) : N1 = ';
-width = ' w = ';
+width = ' w = '; 
 
-% ----- plot the frequency response -----
-
+% ----- plot the frequency response ----- 
 figure();
 subplot(2,1,1)
 plot(  fv, abs(H852), '-r', fv, abs(H770), '-b'  );
@@ -252,13 +246,13 @@ Try to reduce the overlap by repeating Step 4 with the following three sets of v
 __NOTE__: Just reducing w will not necessarily narrow the width of your filter. As `w` is decreased, `N1` may have to be increased to attain the sharper frequency definition.
 
 ```matlab
-% ----- EXERCISE 4: ----- 
+% ----- EXERCISE 4: -----
 % Remove the overlap
 fs = 8000;
 fc1 = 852;
 fc2 = 770;
 
-% ----- test1: -----
+% ----- test1: ----- 
 N1 = 100;
 w1 = 40;
 
@@ -266,19 +260,21 @@ Wn1 = [fc1-w1, fc1+w1]/(fs/2);
 Wn2 = [fc2-w1, fc2+w1]/(fs/2);
 b852 = fir1(  N1, Wn1, rectwin(N1+1)  );
 b770 = fir1(  N1, Wn2, rectwin(N1+1)  );
-[H852, fv] = freqz(  b852, 1, N1, fs,  'whole'  ) ;
-[H770, fv] = freqz(  b770, 1, N1, fs,  'whole'  ) ;
 
-title2 = 'two-sided FR of BPF filter @ 852 Hz (r) and 941 Hz (b) : N1 = ';
-width = ' w = ';
+N2 = 1024;
+[H852, fv] = freqz(  b852, 1, N2, fs,  'whole'  ) ;
+[H770, fv] = freqz(  b770, 1, N2, fs,  'whole'  ) ;
 
-% ----- test1: plot the frequency response -----
+title2 = 'zoomed in: two-sided FR of BPF filter @ 852 Hz (r) and 941 Hz (b) : N1 = ';
+width = ' w = '; 
+
+% ----- test1: plot the frequency response ----- 
 subplot(3,1,1)
 plot(  fv-(fs/2), fftshift(abs(H852)), '-r',...
     fv-(fs/2), fftshift(abs(H770)), '-b' );
 title(horzcat(title2, num2str(N1), width, num2str(w1)));
 xlabel('f [Hz]'); ylabel('Amplitude');
-
+axis([ 600 1100 0 1]);
 
 % ----- test2: reducing w by half -----
 N1 = 100;
@@ -288,33 +284,36 @@ Wn1 = [fc1-w1, fc1+w1]/(fs/2);
 Wn2 = [fc2-w1, fc2+w1]/(fs/2);
 b852 = fir1(  N1, Wn1, rectwin(N1+1)  );
 b770 = fir1(  N1, Wn2, rectwin(N1+1)  );
-[H852, fv] = freqz(  b852, 1, N1, fs,  'whole'  ) ;
-[H770, fv] = freqz(  b770, 1, N1, fs,  'whole'  ) ;
 
-% ----- test2: plot the frequency response -----
+[H852, fv] = freqz(  b852, 1, N2, fs,  'whole'  ) ;
+[H770, fv] = freqz(  b770, 1, N2, fs,  'whole'  ) ;
+
+% ----- test2: plot the frequency response ----- 
 subplot(3,1,2)
 plot(  fv-(fs/2), fftshift(abs(H852)), '-r',...
     fv-(fs/2), fftshift(abs(H770)), '-b' );
 title(horzcat(title2, num2str(N1), width, num2str(w1)));
 xlabel('f [Hz]'); ylabel('Amplitude');
-
+axis([ 600 1100 0 1]);
 
 % ----- test3: double N1 -----
 N1 = 200;
 w1 = 20;
+
 Wn1 = [fc1-w1, fc1+w1]/(fs/2);
 Wn2 = [fc2-w1, fc2+w1]/(fs/2);
 b852 = fir1(  N1, Wn1, rectwin(N1+1)  );
 b770 = fir1(  N1, Wn2, rectwin(N1+1)  );
-[H852, fv] = freqz(  b852, 1, N1, fs,  'whole'  ) ;
-[H770, fv] = freqz(  b770, 1, N1, fs,  'whole'  ) ;
+[H852, fv] = freqz(  b852, 1, N2, fs,  'whole'  ) ;
+[H770, fv] = freqz(  b770, 1, N2, fs,  'whole'  ) ;
 
-% ----- test3: plot the frequency response -----
+% ----- test3: plot the frequency response ----- 
 subplot(3,1,3)
 plot(  fv-(fs/2), fftshift(abs(H852)), '-r',...
     fv-(fs/2), fftshift(abs(H770)), '-b' );
 title(horzcat(title2, num2str(N1), width, num2str(w1)));
 xlabel('f [Hz]'); ylabel('Amplitude');
+axis([ 600 1100 0 1]);
 ```
 
 ![fig04](lab04sub/lab04sub-fig04.png)
@@ -334,35 +333,55 @@ What is the effect of reducing `w`? What is the effect of increasing `N1`?
 Chose a set of values for `N1` and `w` that you think would be the best to use in filters that would reliably distinguish the row 3 tone from the row 2 tone and justify your choice. How long is your filter as a fraction of the minimum time between digits of $$45\:\text{ms}$$? Your choice does not have to be one of the four suggested in this Prelab.
 
 ```matlab
------ EXERCISE 5: ----- Find the best N1 and w for case above
+% ----- EXERCISE 5: -----
+% Find the best N1 and w for the least overlapping.
 fs = 8000;
 fc1 = 852;
 fc2 = 770;
 
-% ----- test1: -----
-N1 = 1024;
-w1 = 20;
+% ----- test1: ----- 
+N1 = 200;
+w1 = 10;
 
 Wn1 = [fc1-w1, fc1+w1]/(fs/2);
 Wn2 = [fc2-w1, fc2+w1]/(fs/2);
 b852 = fir1(  N1, Wn1, rectwin(N1+1)  );
 b770 = fir1(  N1, Wn2, rectwin(N1+1)  );
-[H852, fv] = freqz(  b852, 1, N1, fs,  'whole'  ) ;
-[H770, fv] = freqz(  b770, 1, N1, fs,  'whole'  ) ;
 
-title2 = 'zoomed in: two-sided FR of BPF filter @ 852 Hz (r) and 941 Hz (b) : N1 =
-width = ' w = ';
+N2 = 1024;
+[H852, fv] = freqz(  b852, 1, N2, fs,  'whole'  ) ;
+[H770, fv] = freqz(  b770, 1, N2, fs,  'whole'  ) ;
 
-% ----- test1: plot the frequency response -----
+title2 = 'zoomed in: two-sided FR of BPF filter @ 852 Hz (r) and 941 Hz (b) : N1 = ';
+width = ' w = '; 
+
+% ----- test1: plot the frequency response ----- 
 figure();
 plot(  fv-(fs/2), fftshift(abs(H852)), '-r',...
     fv-(fs/2), fftshift(abs(H770)), '-b' );
-axis([400 1100 0 1]);
+axis([600 1100 0 1]);
 title(horzcat(title2, num2str(N1), width, num2str(w1)));
-xlabel('f [Hz]'); ylabel('Amplitude');  
+xlabel('f [Hz]'); ylabel('Amplitude');
 ```
 
 ![fig05](lab04sub/lab04sub-fig05.png)
+
+Given
+$$
+f_s=8000\:\left[\tfrac{\text{sample}}{\text{sec}}\right]
+$$
+We can find the tone signal's time by doing the following
+$$
+\begin{align*}
+t_\text{tone}&=\frac{N1}{f_s}\\
+&=\frac{200}{8000}\\
+&=0.025
+\end{align*}
+$$
+Doing so, the ratio between tone time to quiet time must be less than one. So,
+$$
+\frac{t_\text{tone}}{t_\text{quiet}}=\frac{0.025}{0.045}=0.55
+$$
 
 __For the Prelab, submit the answers to the questions, the plots and any Matlab scripts that you wrote.__
 

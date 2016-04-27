@@ -666,7 +666,8 @@ Yes, they are 1.2 seconds.
 Do all the signals sound the same? Explain any differences you hear.
 
 #### A3(b)ii
-No, they are not.  As the sample size decreases, the tone of the sound becomes 'scant', or harder to hear.
+No, they are not.  As the sample frequency decreases, its sample size should decrease.  When you hear an audio in a such condtion, the tone of the sound will go down, meaning the tone will shift from treble to base.
+
 Compare how it sounds
 - [testSig1_16000][7]
 - [testSig1_4000][8]

@@ -672,3 +672,26 @@ What is the length of each signal in samples?
 #### A3(b)iii
 See the table above.  The highest sample rate has largest sample size.
 
+
+#### SOUND FILES:
+- [01(a)my_phone.wav][1]
+- [01(b)sig5.wav][2]
+- [01(c)testSig1.wav][3]
+- [01(d)testSig2.wav][4]
+- [01(e)testSig3.wav][5]
+- [01(f)testSig4.wav][6]
+- [02(a)testSig1_16000.wav][7]
+- [02(b)testSig1_4000.wav][8]
+- [02(c)testSig1_2000.wav][9]
+
+[1]: https://raw.githubusercontent.com/chanhi2000/ELEN133/master/lab/lab03sub/01(a)my_phone.wav
+[2]: https://raw.githubusercontent.com/chanhi2000/ELEN133/master/lab/lab03sub/01(b)sig5.wav
+[3]: https://raw.githubusercontent.com/chanhi2000/ELEN133/master/lab/lab03sub/01(c)testSig1.wav
+[4]: https://raw.githubusercontent.com/chanhi2000/ELEN133/master/lab/lab03sub/01(d)testSig2.wav
+[5]: https://raw.githubusercontent.com/chanhi2000/ELEN133/master/lab/lab03sub/01(e)testSig3.wav
+[6]: https://raw.githubusercontent.com/chanhi2000/ELEN133/master/lab/lab03sub/01(f)testSig4.wav
+[7]: https://raw.githubusercontent.com/chanhi2000/ELEN133/master/lab/lab03sub/02(a)testSig1_16000.wav
+[8]: https://raw.githubusercontent.com/chanhi2000/ELEN133/master/lab/lab03sub/02(b)testSig1_4000.wav
+[9]: https://raw.githubusercontent.com/chanhi2000/ELEN133/master/lab/lab03sub/02(c)testSig1_2000.wav
+
+

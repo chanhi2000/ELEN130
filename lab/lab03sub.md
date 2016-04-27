@@ -194,34 +194,36 @@ When the function runs without detected errors:
 
 Repeat your test with a dial value vector containing two different numbers.
 
-Demonstrate this to your laboratory assistant.
-
 ```matlab
 fs = 8000;
 t_tone = 0.5;
 t_quiet = 0.1;
 
 % ----- create signals -----
-dial_val1 = [1 4 11 8 5 5 4 4 11 11 11];    % SCU: 1-408-554-4000
+dial_val1 = [1 4 11 8 5 5 4 4 11 11 11];
 test_sig1 = my_dtmf(t_tone, t_quiet, fs, dial_val1);
 
 dial_val2 = [1 4 11 8 6 9 1 8 7 6 1]; % my number 1-408-691-8761
 test_sig2 = my_dtmf(t_tone, t_quiet, fs, dial_val2);
 
-% ----- play the sound -----
-sound(test_sig1, fs)
-pause(6.5);
- 
-sound(test_sig2, fs);
-
+% % ----- play the sound -----
+% sound(test_sig1, fs)
+%
+% sound(test_sig2, fs);
+%
 
 % ----- plot the signals -----
 figure();
+subplot(2,1,1);
 plot(test_sig1);
+title('test-sig_1: SCU phone number');
 
-figure();
+subplot(2,1,2);
 plot(test_sig2);
+title('test-sig_2: my phone number');
+
 ```
+![fig03a](lab03sub/lab03sub-fig03a.png)
 
 #### 1(c)
 Use the zoom feature of the figure display to show regions that are about $$200\:\text{samples}$$ wide. (Or use `axis` to do this.) Describe the zoomed-in display. (An example for comparison is shown below.)
@@ -231,28 +233,41 @@ Use the zoom feature of the figure display to show regions that are about $$200\
 % t_tone = 0.5;
 % t_quiet = 0.1;
 
-% ----- test 3 -----
+% ----- zoom into dial signal: 3, 5, 7 -----
 dial_val3 = [3 5 7];
 test_sig3 = my_dtmf(t_tone, t_quiet, fs, dial_val3);
+N=length(test_sig3);
+tv=(0:N-1)/fs;
 
 % zoom in
 figure();
-
 subplot(3,1,1);
-plot(test_sig3);
-axis([0 14400 -1 1]);
-title('first 3 number dials: 3, 5, 7');
+plot(tv, test_sig3);
+axis([0 1.8 -1 1]);
+title('first 3 dials: 3, 5, 7');
+xlabel('t [sec.]'); ylabel('test-sig_3(t)');
 
 subplot(3,1,2);
-plot(test_sig3);
-axis([0 500 -1 1]);
-title('dials: 3');
+plot(tv, test_sig3);
+axis([0 0.0625 -1 1]);     % 500 samples = 500/8000 sec
+title('dials: 3 (600 samples)');
+xlabel('t [sec.]'); ylabel('test-sig_3(t)');
 
 subplot(3,1,3);
-plot(test_sig3);
-axis([5000 5500 -1 1]);
-title('dials: 5');
+plot(tv, test_sig3);
+axis([0.6 0.6625 -1 1]);
+title('dials: 5 (600 samples)');
+xlabel('t [sec.]'); ylabel('test-sig_3(t)');
+
+% subplot(4,1,4);
+% plot(tv, test_sig3);
+% axis([1.2 1.2625 -1 1]);
+% title('dials: 7 (600 samples)');
+% xlabel('t [sec.]'); ylabel('test-sig_3(t)');
 ```
+
+![fig03b](lab03sub/lab03sub-fig03b.png)
+
 
 ##### Q1(c)
 Does it look like the sum of two sinusoids that have no harmonic relationship? If one were a harmonic of the other, how would the display be different?
@@ -317,29 +332,191 @@ t_tone4 = 0.25;
 t_quiet4 = 0.05;
 testSig4 = my_dtmf(t_tone4, t_quiet4, fs, dial_val4);
 
+% ---- define the following: -----
+% (1) sample size
+% (2) time duration
+% (3) time vector.
 
-% ---- play the sound -----
-sound(my_phone, fs);
-pause(7);
+N1=length(my_phone);
+t1=N1/fs;
+tv1=(0:N1-1)/fs;
 
-sound(sig5);
-pause(1);
+N2=length(sig5);
+t2=N2/fs;
+tv2=(0:N2-1)/fs;
 
-sound(testSig1);
-pause(3);
+N3=length(testSig1);
+t3=N3/fs;
+tv3=(0:N3-1)/fs;
 
-sound(testSig2);
-pause(3);
+N4=length(testSig2);
+t4=N4/fs;
+tv4=(0:N4-1)/fs;
 
-sound(testSig3);
-pause(4);
+N5=length(testSig3);
+t5=N5/fs;
+tv5=(0:N5-1)/fs;
 
-sound(testSig4);
-pause(4);
+N6=length(testSig4);
+t6=N6/fs;
+tv6=(0:N6-1)/fs;
+
+
+% %----- REMOVE COMMENTS BELOW IF NECESSRAY -----
+% % ---- play the sound -----
+%
+% sound(my_phone, fs);
+% pause(6.7);
+%
+% sound(sig5);
+% pause(0.7);
+%
+% sound(testSig1);
+% pause(1.3);
+%
+% sound(testSig2);
+% pause(0.48);
+%
+% sound(testSig3);
+% pause(2.4);
+%
+% sound(testSig4);
+% pause(3.6);
+% % ----- export sound file -----
+% filename1='01(a)my_phone.wav';
+% filename2='01(b)sig5.wav';
+% filename3='01(c)testSig1.wav';
+% filename4='01(d)testSig2.wav';
+% filename5='01(e)testSig3.wav';
+% filename6='01(f)testSig4.wav';
+%
+% audiowrite(filename1, my_phone, fs);
+% audiowrite(filename2, sig5, fs);
+% audiowrite(filename3, testSig1, fs);
+% audiowrite(filename4, testSig2, fs);
+% audiowrite(filename5, testSig3, fs);
+% audiowrite(filename6, testSig4, fs);
+
+% ----- plot the signals -----
+figure();
+subplot(3,1,1);
+plot(tv1, my_phone);
+title('my-phone');
+xlabel('t [sec.]'); ylabel('my-phone(t)');
+
+subplot(3,1,2);
+plot(tv2, sig5);
+title('sig5');
+xlabel('t [sec.]'); ylabel('sig5(t)');
+
+subplot(3,1,3);
+plot(tv3, testSig1);
+title('testSig1');
+xlabel('t [sec.]'); ylabel('testSig1(t)');
+
+figure();
+subplot(3,1,1);
+plot(tv4, testSig2);
+title('testSig2');
+xlabel('t [sec.]'); ylabel('testSig2(t)');
+
+subplot(3,1,2);
+plot(tv5, testSig3);
+title('testSig3');
+xlabel('t [sec.]'); ylabel('testSig3(t)');
+
+subplot(3,1,3);
+plot(tv6, testSig4);
+title('testSig4');
+xlabel('t [sec.]'); ylabel('testSig4(t)');
+
+
+% ----- time duration and sample sizes -----
+N1 = horzcat('my_phone: total sample size = ', num2str(N1));
+t1 = horzcat('my_phone: total time duration = ', num2str(t1));
+N1,t1
+
+N2 = horzcat('sig5: total sample size = ', num2str(N2));
+t2 = horzcat('sig5: total time duration = ', num2str(t2));
+N2,t2
+
+N3 = horzcat('testSig1: total sample size = ', num2str(N3));
+t3 = horzcat('testSig1: total time duration = ', num2str(t3));
+N3,t3
+
+N4 = horzcat('testSig2: total sample size = ', num2str(N4));
+t4 = horzcat('testSig2: total time duration = ', num2str(t4));
+N4,t4
+
+N5 = horzcat('testSig3: total sample size = ', num2str(N5));
+t5 = horzcat('testSig3: total time duration = ', num2str(t5));
+N5, t5
+
+N6 = horzcat('testSig4: total sample size = ', num2str(N6));
+t6 = horzcat('testSig4: total time duration = ', num2str(t6));
+N6, t6
 ```
 
-#### 2(b) 
+__output__:
+```
+N1 =
+my_phone: total sample size = 52800
+t1 =
+my_phone: total time duration = 6.6
+
+N2 =
+sig5: total sample size = 4800
+t2 =
+sig5: total time duration = 0.6
+
+N3 =
+testSig1: total sample size = 9600
+t3 =
+testSig1: total time duration = 1.2
+
+N4 =
+testSig2: total sample size = 3840
+t4 =
+testSig2: total time duration = 0.48
+
+N5 =
+testSig3: total sample size = 19200
+t5 =
+testSig3: total time duration = 2.4
+
+N6 =
+testSig4: total sample size = 28800
+t6 =
+testSig4: total time duration = 3.6
+```
+
+![fig04a](lab03sub/lab03sub-fig04a.png)
+
+![fig04b](lab03sub/lab03sub-fig04b.png)
+
+
+#### Q2(b) 
 What is the total duration of each of the six signals in samples? in time?
+
+
+#### A2(b)
+$$
+\begin{align*}
+t_{tot}&=\#\text{dials}\times\left(t_\text{tone}+t_\text{quiet}\right)\\
+N_{tot}&=\#\text{dials}\times{f}_T\times\left(t_\text{tone}+t_\text{quiet}\right)\\
+&=\left(t_{tot}\right)\times{f}_T
+\end{align*}
+$$
+
+| signal | # dials | $$t_\text{tone}$$ | $$t_\text{quiet}$$ | sample size | time duration [sec.] |
+| :----: | :-----: | :---------------: | :----------------: | :---------: | :------------------: |
+| `my_phone` | 11 | 0.5 | 0.1 | 52800 | 6.6 |
+| `sig5` | 1 | 0.5 | 0.1 | 4800 | 0.6 |
+| `testSig1` | 4 | 0.25 | 0.05 | 9600 | 1.2 |
+| `testSig2` | 4 | 0.10 | 0.02 | 3840 | 0.48 |
+| `testSig3` | 4 | 0.50 | 0.10 | 19200 | 2.4 |
+| `testSig4` | 12 | 0.25 | 0.05 | 28800 | 3.6 |
+
 Demonstrate the sounds to your laboratory assistant.
 
 -----
@@ -365,7 +542,7 @@ fs1 = 16000;
 fs2 = 4000;
 fs3 = 2000;
 
-% ---- create signals ----- 
+% ---- create signals -----
 dial_val = [3 5 7 11];
 t_tone = 0.25;
 t_quiet = 0.05;
@@ -373,41 +550,125 @@ testSig1_16000 = my_dtmf(t_tone, t_quiet, fs1, dial_val);
 testSig1_4000 = my_dtmf(t_tone, t_quiet, fs2, dial_val);
 testSig1_2000 = my_dtmf(t_tone, t_quiet, fs3, dial_val);
 
+% ---- define the following: -----
+% (1) sample size
+% (2) time duration
+% (3) time vector.
 
-% ---- play the sound -----
+N1=length(testSig1_16000);
+t1=N1/fs1;
+tv1=(0:N1-1)/fs1;
 
+N2=length(testSig1_4000);
+t2=N2/fs2;
+tv2=(0:N2-1)/fs2;
+
+N3=length(testSig1_2000);
+t3=N3/fs3;
+tv3=(0:N3-1)/fs3;
+
+% % ---- play the sound -----
+%
 % sound(testSig1_16000);
 % pause(3);
-
+%
 % sound(testSig1_4000);
 % pause(3);
+%
+% sound(testSig1_2000);
+% pause(3);
 
-sound(testSig1_2000);
-pause(3);
+% % ----- export sound file -----
+% filename1='02(a)testSig1_16000.wav';
+% filename2='02(b)testSig1_4000.wav';
+% filename3='02(c)testSig1_2000.wav';
+%
+% audiowrite(filename1, testSig1_16000, fs1);
+% audiowrite(filename2, testSig1_4000, fs2);
+% audiowrite(filename3, testSig1_2000, fs3);
 
-
-% ----- see the plot -----
+% ----- plot the signals -----
 figure();
-subplot(3,1,1)
-plot(testSig1_16000);
-subplot(3,1,2)
-plot(testSig1_4000);
-subplot(3,1,3)
-plot(testSig1_2000);
+subplot(3,1,1);
+plot(tv1, testSig1_16000);
+title('testSig1-16000');
+xlabel('t [sec.]'); ylabel('testSig1-16000(t)');
 
+subplot(3,1,2);
+plot(tv2, testSig1_4000);
+title('testSig1-4000');
+xlabel('t [sec.]'); ylabel('testSig1-4000(t)');
 
-% ----- length of the plot -----
-len1 = length(testSig1_16000)
-len2 = length(testSig1_4000)
-len3 = length(testSig1_2000)
+subplot(3,1,3);
+plot(tv3, testSig1_2000);
+title('testSig1-2000');
+xlabel('t [sec.]'); ylabel('testSig1-2000(t)');
+
+% ----- time duration and sample sizes -----
+N1 = horzcat('testSig1-16000: total sample size = ', num2str(N1));
+t1 = horzcat('testSig1-16000: total time duration = ', num2str(t1));
+N1,t1
+N2 = horzcat('testSig1-4000: total sample size = ', num2str(N2));
+t2 = horzcat('testSig1-4000: total time duration = ', num2str(t2));
+N2,t2
+N3 = horzcat('testSig1-2000: total sample size = ', num2str(N3));
+t3 = horzcat('testSig1-2000: total time duration = ', num2str(t3));
+N3,t3
 ```
+
+__output__:
+```
+N1 =
+testSig1-16000: total sample size = 19200
+t1 =
+testSig1-16000: total time duration = 1.2
+
+N2 =
+testSig1-4000: total sample size = 4800
+t2 =
+testSig1-4000: total time duration = 1.2
+
+N3 =
+testSig1-2000: total sample size = 2400
+t3 =
+testSig1-2000: total time duration = 1.2
+```
+
+![fig03](lab03sub/lab03sub-fig05.png)
 
 
 #### 3(b)
 Use sound to listen to these three new signals and compare each to `testSig1`. In each case for the sound instruction use the sampling frequency that was used to create the signal.
-- Is the time duration of each signal the same?
-- Do all the signals sound the same? Explain any differences you hear.
-- What is the length of each signal in samples?
 
-Demonstrate the sounds to your laboratory assistant.
+$$
+\begin{align*}
+t_{tot}&=\#\text{dials}\times\left(t_\text{tone}+t_\text{quiet}\right)\\
+N_{tot}&=\#\text{dials}\times{f}_T\times\left(t_\text{tone}+t_\text{quiet}\right)\\
+&=\left(t_{tot}\right)\times{f}_T
+\end{align*}
+$$
+
+| signal | $$f_T$$ | sample size | time duration [sec.] |
+| :----: | :-----: | :---------: | :------------------: |
+| `testSig1_16000` | 16000 | 19200 | 1.2 |
+| `testSig1_4000` | 4000 | 4800 | 1.2 |
+| `testSig1_2000` | 2000 | 2400 | 1.2 |
+
+#### Q3(b)i 
+Is the time duration of each signal the same?
+
+#### A3(b)i
+Yes, they are 1.2 seconds.
+
+#### Q3(b)ii
+Do all the signals sound the same? Explain any differences you hear.
+
+#### A3(b)ii
+No, they are not.  As the sample size decreases, the tone of the sound becomes 'scant', or harder to hear.
+
+#### Q3(b)iii
+What is the length of each signal in samples?
+
+#### A3(b)iii
+See the table above.  The highest sample rate has largest sample size.
 

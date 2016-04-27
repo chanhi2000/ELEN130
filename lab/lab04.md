@@ -7,7 +7,7 @@ The seven-tone DTMF signal created by dialing a telephone number (see Lab 3) can
 ## PRELAB:
 In this PreLab we will explore filters that can distinguish the third row tone at $$852\:\text{Hz}$$ from the second row tone at $$770\:\text{Hz}$$.
 
-### 1. 
+### 1.
 In MATLAB type “`help fir1`” to read about the function that will generate low pass and bandpass filter coefficients. Part of that information is shown below.
 `B = FIR1(N, Wn, WIN)` designs an N-th order FIR filter using the N+1 length vector WIN to window the impulse response.
 - An `N`th order FIR filter will have $$(N+1)$$ coefficients. Its Z-transforms will have $$N$$ zeros, which we will not compute (we will cover z-transforms more fully in about two weeks).
@@ -40,7 +40,7 @@ plot(fv, abs(H852))
 This shows just the one-sided spectrum. To see the two-sided spectrum from $$-\tfrac{F_s}{2}$$ to $$\tfrac{F_s}{2}$$ do the following instead.
 ```matlab
 N2=1024;
-[H852, fv] = freqz(b852,1,N2,fs,'whole'); 
+[H852, fv] = freqz(b852,1,N2,fs,'whole');
 plot(fv-4000, fftshift(abs(H852)));
 ```
 

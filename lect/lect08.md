@@ -379,7 +379,7 @@ $$
 - Now, assume that we wish to make $$x_N[n]$$ which is a finite version of $$x[n]$$ defined from $$n=0:N-1$$.
 - Or,
 $$
-x_N[n]=x[n]\otimes{w}[n]
+x_N[n]=x[n]\times{w}[n]
 $$
 where
 $$

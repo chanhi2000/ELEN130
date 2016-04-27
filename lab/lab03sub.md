@@ -139,10 +139,10 @@ $$
 
 ## LAB
 
-### STEP 1: 
+### STEP 1:
 Create and debug a function to generate a DTMF signal as described in the preLab
 
-#### 1(a) 
+#### 1(a)
 Write your m-file to implement the function `my_dtmf`. Save it in a file called `my_dtmf.m` in your MATLAB working directory. Save it in your MATLAB current folder.
 
 #### `my_dtmf.m`
@@ -157,14 +157,14 @@ function dial_sig = my_dtmf(tone_time, quiet_time, fs, dial_vals)
 % Note that the dialed "0" is button number 11!!!!!!
 %
 % OUTPUT:
-% - dial_sig is the vector of sampled values of the DTMF output signal 
+% - dial_sig is the vector of sampled values of the DTMF output signal
 % for the number sequence
 
 t_tone_new = 0:tone_time*fs-1;
 num = length(dial_vals);
 quiet_sig = zeros(1, fs*quiet_time);
 f_tone = [
-    697, 1209; 697, 1336; 697, 1477;... 
+    697, 1209; 697, 1336; 697, 1477;...
     770, 1209; 770, 1336; 770, 1477;...
     852, 1209; 852, 1336; 852, 1477;...
     941, 1209; 941, 1336; 941, 1477;
@@ -177,7 +177,7 @@ for ii=1:num
     hi = f_tone(dial_vals(ii),2);
     new_sig = cos( 2 * pi * lo / fs * t_tone_new)...
         + cos( 2 * pi * hi / fs * t_tone_new );
-    
+
     % normalize the output around 1
     new_sig = new_sig./abs(max(new_sig(:)));
 
@@ -273,7 +273,8 @@ xlabel('t [sec.]'); ylabel('test-sig_3(t)');
 Does it look like the sum of two sinusoids that have no harmonic relationship? If one were a harmonic of the other, how would the display be different?
 
 ##### A1(c)
-Yes, it does. 
+Yes, it does.  If one were a harmonic of the other, the sum of the two sinusoids would start to resemble a square wave with ripples on the top peak. 
+
 -----
 
 ### STEP 2:
@@ -495,7 +496,7 @@ testSig4: total time duration = 3.6
 ![fig04b](lab03sub/lab03sub-fig04b.png)
 
 
-#### Q2(b) 
+#### Q2(b)
 What is the total duration of each of the six signals in samples? in time?
 
 
@@ -656,7 +657,7 @@ $$
 | `testSig1_4000` | 4000 | 4800 | 1.2 |
 | `testSig1_2000` | 2000 | 2400 | 1.2 |
 
-#### Q3(b)i 
+#### Q3(b)i
 Is the time duration of each signal the same?
 
 #### A3(b)i

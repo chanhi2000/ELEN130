@@ -327,7 +327,7 @@ v22max = max(v22);
 for i=1:2:n_in
     if v21(i) < (v21max * 0.37)
     	tc21 = i;
-		break; 
+		break;
 	end
 end
 tc21
@@ -337,7 +337,7 @@ v21(tc21)
 for i=n_in/2:2:n_in
     if abs(v22(i)-0.5) < ((v22max-0.5) * 0.37) % remove DC bias
     	tc22 = i;
-		break; 
+		break;
 	end
 end
 tc22
@@ -505,27 +505,27 @@ lab1plot2(tv, v23, v24, v25, freq1, freq2, freq3, 4);
 ### (e)
 Additional Questions:
 
-#### e(i) 
+#### e(i)
 What is the effect of changing the sign of `a(2)` on the impulse and step response for these
 two systems?
 
-__answer__: 
+__answer__:
 - For impulse function, as the sign of `a(2)` changes, the output changes from the decreasing exponential output to decreasing in oscillation amplitude output.
 - For step response, the same applies on the latter half side.
 
-#### e(ii) 
+#### e(ii)
 What do you think will happen if the absolute value of `a(2)` is decreased? Why?
 
 __answer__: The lower the 'a(2)' is, the speed of convergence for steady state output becomes quicker,
 and convergence value also changes according to it.
 
-#### e(iii) 
+#### e(iii)
 What do you think will happen if the absolute value of `a(2)` is increased? Why?
 
 __answer__: The opposite of above will happen, *i.e.* the speed of convergences for steady state output becomes much slower.
 
 
-#### e(iv) 
+#### e(iv)
 If System 1 is used as an “exponential average”, what value should `b(1)` have to insure that for a constant input value, the output will be that same value?
 
 __answer__: It has to be 1.
@@ -559,7 +559,7 @@ b6 = [0, alpha*sin(w)];
 
 ### 3(a)
 Comparing System 3 and System 4:
-	
+
 ```matlab
 % impulse and step response
 v31 = filter(b3, a3, x1);
@@ -597,20 +597,20 @@ title('sinusoidal output of system 4');
 
 ![fig02b](lab02sub/lab02sub03-fig02b.png)
 
-### 3(a) 
+### 3(a)
 How are System 3 and System 4 different?
 
-#### Q3a(i) 
+#### Q3a(i)
 Describe the impulse response of each system.
 
 __answer__: The system 4 converges with higher frequency of oscillation
 
-#### Q3a(ii) 
+#### Q3a(ii)
 How does using `2w` instead of `w` affect the impulse and step responses?
 
 __answer__: the frequency of oscillation got larger and the maximum amplitude of the output is reduced by half.
 
-#### Q3a(iii) 
+#### Q3a(iii)
 How does using `2w` instead of `w` affect the response to the cosines at the three different input frequencies?
 
 __answer__: The signal with smallest frequency got larger with much bigger amplitude.
@@ -661,17 +661,17 @@ title('sinusoidal output of system 5');
 ### 3(b)
 How are System 3 and System 5 different?
 
-#### Q3a(i) 
+#### Q3a(i)
 how does increasing alpha affect:
 
-__answer__:  system 5 takes more time/sample to see the steady state output. 
+__answer__:  system 5 takes more time/sample to see the steady state output.
 
-#### Q3a(ii) 
+#### Q3a(ii)
 the duration of the impulse responses?
 
 __answer__: The bigger ripple is created by system 5.
 
-#### Q3a(iii) 
+#### Q3a(iii)
 the relative response to the three different input frequencies?
 
 __answer__: The signal with higher frequency gets amplitude in increasing manner.
@@ -720,13 +720,13 @@ title('sinusoidal output of system 5');
 ### 3(c)
 How are System 3 and System 6 different?
 
-#### Q3c(i) 
+#### Q3c(i)
 Compare the impulse and frequency responses over the full time interval
 
-#### Q3a(ii) 
+#### Q3a(ii)
 Zoom in on the first 20 samples and compare again.
 
-#### Q3a(iii) 
+#### Q3a(iii)
 Compare the steady state amplitudes of the responses to cosines at the three different input frequencies.
 
 ### 3(d)
@@ -815,7 +815,7 @@ Does the impulse response ever go to 0?
 
 __answer__: yes it goes to 0 instantly.
 
-#### 4a(iv) 
+#### 4a(iv)
 
 Compute `y7` as the impulse response of System 7, and then use `y7` as the input for System 1. The output of System 1 will be `z7`. Plot `y7` and `z7` on the same axes. Explain the form of `z7`. (Zoom in to look at the first 20 samples of the output.)
 ```matlab
@@ -843,7 +843,7 @@ Draw block diagrams for the two previous steps and label `y1`, `z1`, `y7`, and `
 
 ![fig02](lab02sub/lab02sub04-fig02.jpeg)
 
-#### 4a(vi) 
+#### 4a(vi)
 Analytically compute the first 5 values of `y1`, `z1`, `y7`, and `z7`.
 $$
 \begin{align*}

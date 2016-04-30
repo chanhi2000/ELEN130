@@ -22,14 +22,19 @@
 
 
 ## OVERVIEW
-- Bandpass signal Sampling
+- Frequency Response
+- DFT
+- Circular Convolution
+- Overlap/Add and Overlap/Save
 
 
-## EXAMPLE: SAMPLING AND RECONSTRUCTION
+## [EXAMPLE: SAMPLING AND RECONSTRUCTION][]
 
 
 ## SAMPLING BANDPASS SIGNALS
-What was special about the previous two cases?
+- What was special about the previous two cases?
+	- Edges of the band were at integer multiples of $$\tfrac{F_T}{2}$$
+- How does the previous situation change if the edges of the band are not located at multpiles of $$\tfrac{F_T}{2}$$?
 
 
 ## SAMPLING THEOREM FOR BANDPASS SIGNALS
@@ -65,7 +70,7 @@ where $$n_\text{max}=\left\lfloor\left(\frac{f_H}{B_{IF}}\right)\right\rfloor$$
 - Knowing the response of an LTI system to a single sinusoidal signal means that we can determine its response to more complicated signals through superposition
 
 
-## EXAMPLE: FREQUENCY RESPONSE
+## [EXAMPLE: FREQUENCY RESPONSE][]
 - Consider an altered moving average filter:
 $$
 y[n]=\frac{1}{M}\sum_{k=0}{M-1}{x[n-k]}

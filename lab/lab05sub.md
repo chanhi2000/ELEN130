@@ -1,4 +1,4 @@
-# lab05
+# lab05sub
 
 ## OBJECTIVES:
 - Use MATLAB to help us learn the DFT and how to use it to detect DTMF tones. 

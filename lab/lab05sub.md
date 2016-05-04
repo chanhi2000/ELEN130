@@ -28,11 +28,129 @@ Using your `m`-files from Laboratory 3, create `testSig3`. Verify that it is cor
 
 Print a plot of testSig3 to be used later in this Prelab.
 
+#### `my_dtmf.m`
+```matlab
+function dial_sig = my_dtmf(tone_time, quiet_time, fs, dial_vals)
+% INPUTS:
+% - tone_time is the tone duration in seconds
+% - quiet_time is quiet time duration between tones in seconds
+% - fs is the sampling frequency in Hz
+% - dial_vals is a vector of integers from 1 to 12 representing the
+% - button numbers of the sequence of numbers to be dialed
+% Note that the dialed "0" is button number 11!!!!!!
+%
+% OUTPUT:
+% - dial_sig is the vector of sampled values of the DTMF output signal 
+% for the number sequence
+
+t_tone_new = 0:tone_time*fs-1;
+num = length(dial_vals);
+quiet_sig = zeros(1, fs*quiet_time);
+f_tone = [
+    697, 1209; 697, 1336; 697, 1477;... 
+    770, 1209; 770, 1336; 770, 1477;...
+    852, 1209; 852, 1336; 852, 1477;...
+    941, 1209; 941, 1336; 941, 1477;
+    ];
+
+dial_sig = []; %initializes the output to an empty vector
+
+for ii=1:num
+    lo = f_tone(dial_vals(ii),1);
+    hi = f_tone(dial_vals(ii),2);
+    new_sig = cos( 2 * pi * lo / fs * t_tone_new)...
+        + cos( 2 * pi * hi / fs * t_tone_new );
+    
+    % normalize the output around 1
+    new_sig = new_sig./abs(max(new_sig(:)));
+
+    dial_sig = [dial_sig, new_sig, quiet_sig];
+end
+```
+
+```matlab
+%% 
+% ----- EXERCISE 1: -----
+%
+% Generate signal `testSig3` (from lab 03)
+
+fs = 8000;
+
+dial_val3 = [3 5 7 11];
+t_tone3 = 0.50;
+t_quiet3 = 0.10;
+testSig3 = my_dtmf(t_tone3, t_quiet3, fs, dial_val3);
+
+% ----- define the following: -----
+% (1) sample size
+% (2) time duration
+% (3) time vector.
+
+N3=length(testSig3);
+t3=N3/fs;
+tv3=(0:N3-1)/fs;
+
+% % ---- play the sound -----
+% sound(testSig3, fs);
+% pause(2.4);
+
+% ---- plot the signal -----
+figure();
+plot(tv3, testSig3);
+title('testSig3');
+xlabel('t [sec.]'); ylabel('testSig3(t)');
+```
+
+![fig01](lab05sub/lab05sub-fig01.png)
+
+
 ### 3.
 Create `S3=fft(testSig3)`, the Fourier transform of `testSig3`, using `fft`. View the results with plot(S3). What do you observe? How do you explain this?
 
 ### 4.
 Try the plot again with `plot(abs(S3))`. Now what do you see? How is it related to the DTMF test signal you generated? (__NOTE__: If your plot does not show a signal with 14 pulses in four sub-groups, check the signal you are using with sound and check the commands you are using for the `fft`.)
+
+```matlab
+%%
+% ----- EXERCISE 2: -----
+%
+% Fourier Transform the signal
+
+S3 = fft(testSig3);
+figure();
+plot(S3)
+% make observation and explain
+
+figure();
+plot(abs(S3));
+% make observation and explain how it's related to your DTMF signal,
+% `testSig3`
+
+fv = (0 : (length(S3)-1)) * fs / length(S3);
+figure();
+subplot(2,1,1)
+plot(fv, abs(S3));
+subplot(2,1,2)
+plot(fv-(fs/2), fftshift(abs(S3)));
+```
+![fig02a](lab05sub/lab05sub-fig02a.png)
+
+![fig02b](lab05sub/lab05sub-fig02b.png)
+
+![fig02c](lab05sub/lab05sub-fig02c.png)
+
+
+### A3.
+The first plot you will see is the output of `fft(testSig3)` in real / imaginary doamin.
+Seeing this plot and analyzing and interpreting its frequency response is much more difficult, since it doesn't indicate anything about __amplitude__ and __phase__.
+
+### A4.
+![fig01t](lab03sub/lab03sub-fig01.png)
+
+The second plot is much more relatable to us. This plot maps the amplitude for frequency response.  Each peak indicates the frequency that the signal retains.  The first half shows the one-sided frequency response and the second half shows the two-sided frequency response. The second one is more visually helpful, since the plot is centered at zero, and we want to know which frequecies exist in the signal. 
+
+It's worthy to note that the peak with the highest amplitude should be one. It's at $$f=1336\:\text{Hz}$$. And there's nothing wrong about it, since the button 5 and 0 both have high tone of frequency at $$f=1336\:\text{Hz}$$
+
 
 ### 5.
 The main frequencies present in a signal are hard to interpret from a plot such as the one we just created because the values of the transform are plotted as a function of the index of the transform data array. For `fs=8000` we can create a frequency vector for the frequencies used by `fft` with:
@@ -43,8 +161,72 @@ plot(fv, abs(S3));
 
 On this plot, use the zoom feature of the plot window to identify the horizontal location and height of the peak of each pulse on the left half of the display. Record the height of each pulse as well as the center frequency and width in $$\text{Hz}$$ of each pulse.
 
+```matlab
+%%
+% ----- EXERCISE 3: -----
+%
+% Test your understanding
+
+% ----- create a new signal `sig3a` -----
+n1a=1; 
+n2a=4000; 
+sig3a = testSig3(n1a:n2a);
+
+% ----- define the following: -----
+% (1) sample size
+% (2) time duration
+% (3) time vector.
+
+N3=length(testSig3);
+t3=N3/fs;
+tv3=(0:N3-1)/fs;
+
+% ----- plot the signals -----
+figure();
+subplot(2,1,1);
+plot(tv3, testSig3);
+axis( [n1a/fs, n2a/fs, -1, 1]) ;
+title3a = horzcat('sig3a: the subregion of testSig3 from n=', ...
+    num2str(n1a), ':', num2str(n2a));
+title(title3a);
+
+% to convince yourself that it is indeed in the right region,
+subplot(2,1,2);
+plot(sig3a);
+title('sig3a');
+
+% ----- Compute DFT of sig3a -----
+S3a = fft(sig3a);
+fv3 = (0 : (length(S3a)-1)) * fs / length(S3a);
+
+% ----- plot DFT of sig3a -----
+figure();
+subplot(3,1,1);
+plot(fv3-(fs/2), fftshift(abs(S3a)) );
+title('sig3a: two-sided FR overview');
+
+subplot(3,1,2);
+plot(fv3-(fs/2), fftshift(abs(S3a)) );
+% axis([2000, 3000, 0, max(abs(S3a))+100]);
+title('sig3a: lower frequency region');
+
+subplot(3,1,3);
+plot(fv3-(fs/2), fftshift(abs(S3a)) );
+% axis([3000, 3700, 0, max(abs(S3a))+100]);
+title('sig3a: higher frequency region');
+```
+
+![fig03a](lab05sub/lab05sub-fig03a.png)
+
+![fig03b](lab05sub/lab05sub-fig03b.png)
+
+
 #### 5(a)
 How would you characterize the shape of the pulses?
+
+#### A5(a)
+This is the frequency response of section of the signal, `testSig3` sampled at $$n=0:4000$$. This is sampled when the tone of buttun 3 is played.   
+
 
 #### 5(b)
 Why is one pulse on the left side larger than all the others?
@@ -73,6 +255,88 @@ On your printed plot of `testSig3`, mark the region corresponding to `sig3a`.
 Compute the DFT and plot the results as you did for the complete `testSig3`. Note that you will have to create a new vector, `fv`, for the plot using the length of `sig3a` which is determined by `n1` or `n2`. You can also use the MATLAB function `length(sig3a)` or `size(sig3a)`.
 
 On this plot of the Fourier transform of `sig3a`, use the zoom feature to identify the horizontal location and height of the peak of each pulse on the left half of the display. Record the height of each pulse as well as the center frequency and width in $$\text{Hz}$$ of each pulse.
+```matlab
+%%
+% ----- EXERCISE 4: -----
+%
+%% 
+% 4(a)
+%
+% Repeat exercise 3 with other signals ----
+
+% ----- create a new signals: -----
+% (1) `sig3b`, 
+% (2) `sig3c`, and 
+% (3) `sig3d`
+
+n1b=4801; 
+n2b=8800; 
+sig3b = testSig3(n1b:n2b);
+
+n1c=2401;
+n2c=6400;
+sig3c = testSig3(n1c:n2c);
+
+n1d=1901;
+n2d=2100;
+sig3d = testSig3(n1d:n2d);
+
+% ----- define the following: -----
+% (1) sample size
+% (2) time duration
+% (3) time vector.
+
+N3=length(testSig3);
+t3=N3/fs;
+tv3=(0:N3-1)/fs;
+
+title3b = horzcat('sig3b: the subregion of testSig3 from n=', ...
+    num2str(n1b), ':', num2str(n2b));
+title3c = horzcat('sig3c: the subregion of testSig3 from n=', ...
+    num2str(n1c), ':', num2str(n2c));
+title3d = horzcat('sig3d: the subregion of testSig3 from n=', ...
+    num2str(n1d), ':', num2str(n2d));
+
+% ----- plot the signals:  -----
+% (1) `sig3b`, 
+% (2) `sig3c`, and 
+% (3) `sig3d`
+
+figure();
+subplot(3,1,1);
+plot(testSig3);
+axis( [n1b, n2b, -1, 1] ) ;
+title(title3b);
+
+subplot(3,1,2);
+plot(testSig3);
+axis( [n1c, n2c, -1, 1] ) ;
+title(title3c);
+
+subplot(3,1,3);
+plot(testSig3);
+axis( [n1d, n2d, -1, 1]) ;
+title(title3d);
+
+% to convince yourself that it is indeed in the right region,
+figure();
+subplot(3,1,1);
+plot(sig3b);
+title('sig3b');
+
+subplot(3,1,2);
+plot(sig3c);
+title('sig3c');
+
+subplot(3,1,3);
+plot(sig3d);
+title('sig3d');
+```
+
+![fig04a](lab05sub/lab05sub-fig04a.png)
+
+![fig04b](lab05sub/lab05sub-fig04b.png)
+
 
 #### 6(a)
 Print the plot window with a zoomed in view of one of the pulses. Label it with the signal name.
@@ -98,94 +362,76 @@ Repeat __Step 6__ completely for three other signals defined below. Compare the 
 
 
 Submit the answers to the questions, the plot of `testSig3` with the four time segments marked, and the four plots from __steps 4 to 7__.
-
-
-## LAB:
-
-### STEP 1: 
-Write a MATLAB script `m`-file to analyze a signal in sequences of short segments with 50% overlap.
-
-Assume that you have a test signal `sig` (we will use `testSig3` from laboratory 3 for the initial tests) and that `N=length(sig)` is the number of samples in the signal.
-
-#### 1(a)
-Draw a flowchart for the following and then write and test the MATLAB instructions to implement it.
-- A variable __`seg_width`__ will be the number of samples in a signal segment that is the input to the `fft`. We will start with 100 and also consider 200 and 400.
-- A variable __`seg_step = 0.5`__ seg_width will indicate the distance to the start of the next segment.
-- The variable __`seg_width`__ is the length of the segment that is analyzed by `fft`. So it also controls the relationship between the index of the `fft` result and the actual frequency value. As a function of __`seg_width`__, __compute the index of the `fft` result that is closest to the peak of each row and column tone__. (And remember that MATLAB starts its indexing with 1, not 0.)
-- Compute __`n_seg`__, the total number of complete segments of length __`seg_width`__ that will be analyzed with 50% overlap.
-- Initialize 6 arrays of length `n_seg` to 0. These arrays will contain the following information for each segment:
-	- The time of the center of each segment
-	- The average of the magnitude of the results of fft for a segment. (See MATLAB function `mean`.)
-	- The magnitudes of the `fft` results at the frequencies for tones for `row1`, `row2`, `column1`, and `column2`.
-- Initialize a segment start value, __`nstart`__, to 1 and make a loop to do the following for each segment:
-	- Get a signal segment __`sig(nstart : nstart+seg_width-1)`__ and get the magnitude of its `fft`
-	- Add `seg_step` to nstart.
-	- Put the data values into the 6 arrays.
-
-#### 1(b)
-- Test your `m`-file for `seg_width = 100`. (You can use an input statement to prompt you to enter the value of `seg_width` each time you run the script.)
-
-#### 1(c)
-- When the instructions are debugged, plot the results of your five data arrays as a function of the center times. Compare that to a plot of the whole signal.
-
-##### Q1c(i)
-Does the average value clearly show the difference between when a button signal is present and when there is a quiet period?
-
-##### Q1c(ii)
-Do the row 2 and column 2 magnitude plots accurately show when these tones are
-present?
-
-##### Q1c(iii)
-What rule would you use to decide which button had been pressed at each time
-during the signal?
-
-##### Q1c(iv)
-Is there a chance for confusions or wrong detections?
-
-
-#### 1(d)
-Print a plot of your results
-
-
-### Step 2: 
-Explore the effect of changing the segment length.
-
-In some cases the results computed in step 1 might have a problem __because the exact frequency associated with the index you are observing is not the desired tone frequency__.
-
-#### 2(a)
-Compute the actual frequencies represented by the four frequency indices you selected in __Step 1__ and compare them to the desired tone frequencies. Which is closest? Which has the most difference?
-
-#### 2(b)
-Compare the results of Step 1 to results obtained when the segment length is increased to 200 and then 400. For each length, compute the actual frequencies represented by the four frequency indices you selected and compare them to the desired tone frequencies.
-
-#### 2(c)
-Print a plot of your results for lengths of 200 and 400.
-
-
-### STEP 3: 
-Explore the effect of just computing more values of the Fourier transform.
-
-The default number of points to be computed by the fft function is the same as the number of points in the discrete time signal being transformed. So if `seg = sig(nstart : nstart+seg_width-1)`, then `SS = fft(sig)` returns the Fourier transform in `SS` which also has a length of seg_width. However, you can ask the `fft` for more points to be computed in frequency so you can get closer to the actual tone frequencies of interest. To get twice as many use `SS = fft(sig, 2*segwidth)`.
-
-- Set `seg_width` back to 100 and compute `fft` results for 200 and 400 points. Remember to recompute the indices for the DTMF frequencies.
-- Print a plot of your results for 200 and 400 frequency points.
-- Compare these results with the original results for `seg_width = 100`.
-- Compare these results with the original results for `seg_width = 200` and `400`.
-- Pick a value for seg_width that you think is the smallest value that will work well and pick a value for the number of frequency points computed by `fft` that improves results. Make a button 5 detector by multiplying the row 2 signal and the col 2 signal. (Use `.*` to multiply two vectors point by point.) How well does this work?
-- Using the same values, repeat for `testSig1` and `testSig2` from Laboratory 3.
-
-### STEP 4: 
-Extra: How well does your detector work on an unknown signal?
-
-Each lab team will be given an unknown dial sequence signal that may have different length tones and varying amounts of added noise. You might want to try your detector on variations of your test signal with added noise to see the effect. All systems must be designed to function with some allowance for random variations in the signals. Using the method from the previous laboratory, create
 ```matlab
-testSig3n = testSig3 + a*randn(1, length(testSig3));
+%% 
+% 4(b)
+%
+% ----- Compute DFT of signals: -----
+% (1) `sig3b`, 
+% (2) `sig3c`, and 
+% (3) `sig3d`
+
+S3b = fft(sig3b);
+S3c = fft(sig3c);
+S3d = fft(sig3d);
+
+fv3b = (0 : (length(S3b)-1)) * fs / length(S3b);
+fv3c = (0 : (length(S3c)-1)) * fs / length(S3c);
+fv3d = (0 : (length(S3d)-1)) * fs / length(S3d);
+
+% ----- plot DFT of sig3b -----
+figure();
+subplot(3,1,1);
+plot(fv3b-(fs/2), abs(fftshift(S3b)) );
+title('sig3b: two-sided FR overview ');
+
+subplot(3,1,2);
+plot(fv3b-(fs/2), abs(fftshift(S3b)) );
+% axis([2656, 2672, 0, max(abs(S3b))+100]);
+title('sig3b: lower frequency region');
+
+subplot(3,1,3);
+plot(fv3b-(fs/2), abs(fftshift(S3b)) );
+% axis([3220, 3240, 0, max(abs(S3b))+100]);
+title('sig3b:  higher frequency region');
+% 
+% 
+% ----- plot DFT of sig3c -----
+figure();
+subplot(3,1,1);
+plot(fv3c-(fs/2), abs(fftshift(S3c)) );
+title('sig3c: two-sided FR overview ');
+
+subplot(3,1,2);
+plot(fv3c-(fs/2), abs(fftshift(S3c)) );
+% axis([2400, 2800, 0, max(abs(S3c))+100]);
+title('sig3c: lower frequency region');
+
+subplot(3,1,3);
+plot(fv3c-(fs/2), abs(fftshift(S3c)) );
+% axis([3150, 3400, 0, max(abs(S3c))+100]);
+title('sig3c: higher frequency region');
+
+
+% ----- plot DFT of sig3d -----
+figure();
+subplot(3,1,1);
+plot(fv3d-(fs/2), abs(fftshift(S3d)) );
+title('sig3d: two-sided FR overview ');
+
+subplot(3,1,2);
+plot(fv3d-(fs/2), abs(fftshift(S3d)) );
+% axis([2400, 2800, 0, max(abs(S3d))+100]);
+title('sig3d: lower frequency region');
+
+subplot(3,1,3);
+plot(fv3d-(fs/2), abs(fftshift(S3d)) );
+% axis([3150, 3400, 0, max(abs(S3d))+100]);
+title('sig3d: higher frequency region');
 ```
 
-Choose values of `a` and explore the effect of the number of data points and the number of computed points on detection from the noisy signal.
+![fig05a](lab05sub/lab05sub-fig05a.png)
 
-Then run your detector on the unknown signal and report the results to your lab assistant. In your report, describe how well your detector worked, and, if it failed in some cases, suggest improvements in your detector that would yield better results.
+![fig05b](lab05sub/lab05sub-fig05b.png)
 
-
-## REPORT:
-Submit the answers to the questions and the plots requested in the laboratory procedure. In addition, consider how the results would be different if we had used the energy at each frequency point instead of the magnitude. For example, if `S = fft(s);` `SA = abs(S);` and `SAE = SA.*SA`, how would results using `SAE` be different from results us `SA`?
+![fig05c](lab05sub/lab05sub-fig05c.png)

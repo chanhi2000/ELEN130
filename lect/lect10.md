@@ -25,6 +25,7 @@
 - Overlap/Add and Overlap/Save
 - Z-transform
 
+d
 ## EXAMPLE TO MOTIVATE NEED FOR Z-TRANSFORM
 - Recall this difference equation
 $$
@@ -45,7 +46,7 @@ $$
 - If $$|a|<1$$, then this reduces to $$\frac{1}{1-ae^{-j\omega}}$$
 -  If we had started with
 $$
-H\left(e^{j\omega}\right)=\frac{1}{1-1-ae^{-j\omega}}
+H\left(e^{j\omega}\right)=\frac{1}{1-ae^{-j\omega}}
 $$
 - we would take the inverse and get
 $$
@@ -521,7 +522,7 @@ So
 $$
 \begin{align*}
 H(z)H(z^{-1})&=\left(\frac{z^{-M}D_M(z^{-1})}{D_M(z)}\right)\left(\frac{z^{M}D_M(z)}{D_M(z^{-1})}\right)\\
-&=1
+&=1;
 \end{align*}
 $$
 

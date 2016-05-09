@@ -25,7 +25,7 @@ $$
 X[k]:&\text{DFT of }x[n]\\
 H_2[k]:&\text{DFT of }h_2[n]\\
 Y[k]&=X[k]H_2[k]\\
-y_c[k]:&\text{IDFT of }Y[k] 
+y_c[k]:&\text{IDFT of }Y[k]
 \end{align*}
 $$
 - How does $$y_L[n]$$ relate to $$y_c[n]$$?

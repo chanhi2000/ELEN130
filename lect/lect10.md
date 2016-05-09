@@ -25,7 +25,7 @@
 - Overlap/Add and Overlap/Save
 - Z-transform
 
-d
+
 ## EXAMPLE TO MOTIVATE NEED FOR Z-TRANSFORM
 - Recall this difference equation
 $$

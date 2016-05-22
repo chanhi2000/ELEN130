@@ -136,17 +136,17 @@ $$
 ## MORE BIG PICTURE
 
 ## BASIC FILTER STRUCTURE — FIR SYMMETRY
-- In filter design by IDTFT for ideal LP filter or differentiation, we got infinite duration result 
+- In filter design by IDTFT for ideal LP filter or differentiation, we got infinite duration result
 	- For LP filter, was symmetric about $$n=0$$
 	- For difference filter was anti-symmetric
 - We truncated filters to $$-N\leq{n}\leq{N}$$ and then shifted to make them causal to approximate desired response.
-- Consider general behavior of FIR symmetric and anti-symmetric filters 
+- Consider general behavior of FIR symmetric and anti-symmetric filters
 	- All will have linear phase
 	- Depending on order, limits to type of filter.
 - Why is linear phase desirable?
-	- Pure bulk delay 
+	- Pure bulk delay
 	- no differentiated impact on different frequencies
 
-[1]: 
+[1]:
 
 

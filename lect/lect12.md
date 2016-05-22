@@ -45,7 +45,7 @@ $$
 
 ### PHASE EXAMPLE
 $$
-x[n]\overleftarrow{DTFT}X\left(e^{j\omega}\right)
+x[n]\underrightarrow{DTFT}X\left(e^{j\omega}\right)
 $$
 Given $$x_1[n]=x[n-n_0]$$, What is $$X_1 \left(e^{j\omega}\right)$$?
 $$
@@ -87,10 +87,22 @@ $$
 $$
 \begin{align*}
 H\left(z\right)&=\sum_{n=0}^{N}{h[n]z^{-n}}\\
-H\left(z^{-1}\right)&=\sum_{n=0}^{N}{h[n]z^n\\
-&=
+H\left(z^{-1}\right)&=\sum_{n=0}^{N}{h[n]z^n}\\
+&=z^{N}\sum_{n=0}^{N}{h[n]z^{n-N}}\\
+&=z^{N}\sum_{m=N}^{0}{h[N-m]z^{-m}}\\
+&=z^{N}\sum_{m=0}^{N}{h[m]z^{-m}}\\
+&=z^{N}H(z)
 \end{align*}
 $$
+So,
+$$
+\therefore\:H(z)=z^{-N}H\left(z^{-1}\right)
+$$
+- zeros can be at:
+	- .$$+1$$ or $$-1$$
+	- .$$p$$ or $$\tfrac{1}{p}$$
+	- .$$e^{+j\omega_0}$$ or $$e^{-j\omega_0}$$
+	- .$$pe^{+j\omega_0}$$ or $$\tfrac{1}{p}e^{-j\omega_0}$$
 
 
 
@@ -105,8 +117,56 @@ $$
 - .$$N$$ is even... length $$N+1$$ is odd.
 - Since $$N$$ is even, zeros occur in pairs or groups of $$4$$.
 - Either no zeros at $$z=1$$ or $$z=-1$$ OR pairs of zeros at $$z=1$$ or $$z=-1$$ (*i.e.* even numbers of zeros at $$z=1$$ or $$z=-1$$)
+- __example__:
+$$
+h[n]=\delta[n]+\alpha\delta[n-1]+\delta[n-2]
+$$
+	- __order__: 2
+	- __length__: 3
+	- __symmetry__: even
+	$$
+	h[0]=h[2]=1
+	$$
+$$
+\begin{align*}
+H(z)&=1+\alpha{z}^{-1}+z^{-2}\\
+&=\frac{z^2+\alpha{z}+1}{z^2}
+\end{align*}
+$$
+- So, zeros are at:
+$$
+z=\frac{-\alpha\pm\sqrt{\alpha^2-4}}{2}
+$$
+	- if $$|\alpha|<2$$,
+	$$
+	z=\frac{-\alpha\pm{j}\sqrt{4-\alpha^2}}{2}
+	$$
+	*i.e.*, 2 zeros in unit circle, $$z_0$$ and $${z_0}^*$$
+	- if $$\alpha=2$$, 2 zeros at $$z=-1$$
+	- if $$\alpha=-2$$, 2 zeros at $$z=1$$
+	- if $$|\alpha|>2$$,
+	$$
+	z=\frac{-\alpha\pm\sqrt{\alpha^2-4}}{2}
+	$$
+	*i.e.* 2 zeros at $$z_0$$ and $$\tfrac{1}{z_0}$$.
+- It has a __linear phase__
+- Z-transform:
+$$
+\begin{align*}
+H(z)&=\sum_{n=0}^{N}{h[n]z^{-n}}\\
+&=\sum_{n=0}^{\tfrac{N}{2}-1}{h[n]z^{-n}}+h\left[\tfrac{N}{2}\right]z^{-\tfrac{N}{2}}+\sum_{n=\tfrac{N}{2}+1}^{N}{h[n]z^{-n}}\\
+&=\sum_{n=0}^{\tfrac{N}{2}-1}{h[n]z^{-n}}+h\left[\tfrac{N}{2}\right]z^{-\tfrac{N}{2}}+\sum_{n=\tfrac{N}{2}+1}^{N}{h[N-n]z^{-n}}\\
+&\left<m=N-n\right>\\
+&=\sum_{n=0}^{\tfrac{N}{2}-1}{h[n]z^{-n}}+h\left[\tfrac{N}{2}\right]z^{-\tfrac{N}{2}}+\sum_{m=\tfrac{N}{2}-1}^{0}{h[m]z^{-(N-m)}}\\
+&=z^{-\tfrac{N}{2}}\left\{\sum_{n=0}^{\tfrac{N}{2}-1}{h[n]z^{-\left(n+\tfrac{N}{2}\right)}}+h\left[\tfrac{N}{2}\right]+\sum_{m=0}^{\tfrac{N}{2}-1}{h[m]z^{\left(m-\tfrac{N}{2}\right)}}\right\}\\
+&=z^{-\tfrac{N}{2}}\left\{h\left[\tfrac{N}{2}\right]+\sum_{n=0}^{\tfrac{N}{2}-1}{h[n]\left(z^{-\left(n-\tfrac{N}{2}\right)}+z^{\left(n-\tfrac{N}{2}\right)}\right)}\right\}\\
+H\left(e^{j\omega}\right)&=e^{-j\omega\tfrac{N}{2}}\left\{h\left[\tfrac{N}{2}\right]+\sum_{n=0}^{\tfrac{N}{2}-1}{h[n]\left(e^{-j\omega}{\left(n-\tfrac{N}{2}\right)}+e^{j\omega\left(n-\tfrac{N}{2}\right)}\right)}\right\}\\
+&=e^{-j\omega\tfrac{N}{2}}\underset{\text{real-valued}}{\underline{\left\{h\left[\tfrac{N}{2}\right]+\sum_{n=0}^{\tfrac{N}{2}-1}{h[n]\left(2\cos{\left(\omega\left(n-\frac{N}{2}\right)\right)}\right)}\right\}}}\\
+\end{align*}
+$$
+	- linear phase delay of $$\tfrac{N}{2}$$ 
+	- Since $$N$$ is even, this delay is an integer number of samples
 
-### [EXAMPLE: TYPE 1 FILTER][]
 
 ## TYPE 2 FIR FILTER
 - SYMMETRY: even
@@ -122,10 +182,66 @@ z=-1&\to&w=\pm\pi
 \end{matrix}
 $$
 - Therefore, TYPE 2 FILTER CANNOT be a HPF because at least one zero at $$z=-1$$.
+- __example__:
+$$
+h[n]=a\delta[n]+b\delta[n-1]+b\delta[n-2]+a\delta[n-3]
+$$
+	- __order__: 3
+	- __length__: 4
+	- __symmetry__: even
+$$
+H\left(e^{j\omega}\right)=a+be^{-j\omega}+be^{-j2\omega}+ae^{-j3\omega}
+$$
+- Reduce this to standard $$e^{j\theta(\omega)}$$\left|H\left(e^{j\omega}\right)\right|$$.
+$$
+H\left(e^{j\omega}\right)=e^{-j\omega\tfrac{3}{2}}\underset{\text{real-valued}}{\underline{\left(2a\cos{\left(\tfrac{3}{2}\omega\right)}+2b\cos{\left(\tfrac{1}{2}\omega\right)}\right)}}
+$$
+	- linear phase delay of $$\tfrac{3}{2}$$ 
 
-### [EXAMPLE: TYPE 2 FIR FILTER][]
+## EXERCISE: TYPE 1 FIR FILTER TIMES (z+1)
+- What is the result of taking a TYPE 1 FIR FILTER and multiplying it (in the Z-domain) by $$(z+1)$$?
+- Let's try an example:
+$$
+\begin{align*}
+h[n]&=\delta[n]+a\delta[n-1]+\delta[n-2]\\
+H(z)&=1+az^{-1}+z^{-2}\\
+H(z)(z+1)&=\left(1+az^{-1}+z^{-2}\right)(z+1)\\
+&=z+a+z^{-1}+1+az^{-1}+z^{-2}\\
+&=z+(1+a)+(1+a)z^{-1}+z^{-2}
+\end{align*}
+$$
+	- __symmetry__: even
+	- __order__: 3
+	- __length__: 4... 
+- Type 2 FIR Filter!
+- It’s looks funny... generally, when we add a zero, we also add a pole at $$z=0$$.
 
-### [EXAMPLE: TYPE 1 FIR FILTER TIMES (z+1)][]
+
+## EXERCISE: TYPE 1 FIR FILTER TIMES (z+1)/z
+- What is the result of taking a TYPE 1 FIR FILTER and multiplying it (in the Z-domain) by $$\tfrac{z+1}{z}$$?
+$$
+\begin{align*}
+h[n]&=\delta[n]+a\delta[n-1]+\delta[n-2]\\
+H(z)&=1+az^{-1}+z^{-2}\\
+H(z)\frac{z+1}{z}&=\frac{\left(1+az^{-1}+z^{-2}\right)(z+1)}{z}\\
+&=\frac{z+(1+a)+(1+a)z^{-1}+z^{-2}}{z}\\
+&=1+(1+a)z^{-1}+(1+a)z^{-2}+z^{-3}
+\end{align*}
+$$
+- Looks less funny... Taking the inverse yields the time-domain:
+$$
+h[n]=\delta[n]+(1+a)\delta[n-1]+(1+a)\delta[n-2]+\delta[n-3]
+$$
+
+
+## WHAT IS MULTIPLYING (z+1)/z IN THE TIME-DOMAIN
+- Same as convolving our time-domain filter with Inverse Z-transform of $$\tfrac{z+1}{z}$$
+- Which is $$1+\tfrac{1}{z}$$
+- So,it is the same as convolving with 
+$$
+\delta[n]+\delta[n-1]
+$$
+
 
 ## TYPE 3 FIR FILTER
 - SYMMETRY: odd
@@ -133,7 +249,7 @@ $$
 h[n]=-h[N-n]
 $$
 - .$$N$$ is even, length $$N+1$$ is odd.
-- __NOTE__: 
+- __NOTE__:
 $$
 h\left[\frac{N}{2}\right]=0
 $$
@@ -141,7 +257,19 @@ because of odd symmetry
 - We now have an odd number of zeros at $$z=1$$ and $$z=-1$$.
 - What does this mean in terms of what type of filter this can be?
 
-### [EXAMPLE: TYPE 3 FIR FILTER][]
+
+## TYPE 3 FIR FILTER: EXAMPLE
+$$
+\begin{align*}
+h[n]&=\delta[n]-\delta[n-2];\\
+H(z)&=1-z^{-2}\\
+&=\frac{z^2-1}{z^2}\\
+&=\frac{(z-1)(z+1)}{z^2};\\
+H\left(e^{j\omega}\right)&=e^{-j\omega}\left(2j\sin{\left(\omega\right)}\right);
+\end{align*}
+$$
+
+
 
 ## TYPE 4 FIR FILTER
 - SYMMETRY: odd
@@ -149,23 +277,43 @@ because of odd symmetry
 - Will have an odd number of zeros at $$z=1$$ and even number or no zeros at $$z=-1$$.
 - Using similar logic as before, this cannot be a LPF.
 - This is like TYPE 2 except with sines instead of cosines.
+- __example__: 
+$$
+\begin{align*}
+h[n]&=\delta[n]-\delta[n-1]\\
+H(z)&=1-z^{-1}\\
+&=\frac{z-1}{z}\\
+H\left(e^{j\omega}\right)&=e^{-j\omega\tfrac{1}{2}}\left(2j \sin{\left(\frac{1}{2}\omega\right)}\right)
+\end{align*}
+$$
 
-### [EXAMPLE: TYPE 4 FIR FILTER][]
 
 ## QUICK (BUT IMPORTANT) ASIDE
 - FIR VS. IIR
-- Linearity of phase — can you say something about this based on the filter being FIR or IIR?
+- __Linearity of phase__: can you say something about this based on the filter being FIR or IIR?
+	- FIR filters CAN have linear phase. The TYPE 1, 2, 3, and 4 always have linear phase!
 - Where are the poles for an FIR filter?
+	- FIR filters MUST have poles at only the origin.
 - Can a filter with feedback be an FIR filter?
+	- Technically, yes, but it would be contrived. No *useful* feedback will result in an FIR filter.
+	- *e.g.*: 
+	$$
+	y[n]=x[n]+x[n-1]-y[n-1]
+	$$
+	- What is the resulting $$h[n]$$?
+	$$
+	h[n]=\delta[n]
+	$$
 
 
 ## SUMMARY OF FIR FILTERS
-| TYPE | ORDER (N) | LENGTH | SYMMETRY | 
-| :--: | :-------: | :----: | :------- |
-| 1 | EVEN | ODD | EVEN |
-| 2 | ODD | EVEN | EVEN (not HPF) |
-| 3 | EVEN | ODD | ODD (not LPF/not HPF) |
-| 4 | ODD | EVEN | ODD (not LPF) |
+| TYPE | ORDER (N) | SYMMETRY | LPF/HPF |
+| :--: | :-------: | :------: | :-----: | 
+| 1 | EVEN | EVEN | | 
+| 2 | ODD | EVEN | NO LPF |
+| 3 | EVEN | ODD | NO LPF / NO HPF |
+| 4 | ODD |  ODD | NO HPF |
+
 
 
 ## EXAMPLE OF SYMMETRIC FILTERS
@@ -346,7 +494,7 @@ $$
 \text{phase}&=\angle{\text{numerator}}-\angle{\text{denominator}}\\
 &=\frac{\sin{\left(\omega\right)}}{a-\cos{\left(\omega\right)}}-\frac{a\sin{\left(\omega\right)}}{1-a\cos{\left(\omega\right)}}\\
 &=\frac{\sin{\left(\omega\right)}}{a-\cos{\left(\omega\right)}}-\left(\frac{\sin{\left(\omega\right)}}{\tfrac{1}{a}-\cos{\left(\omega\right)}}\right)
-\end{align*}	
+\end{align*}
 $$
 - In general,
 $$
@@ -429,8 +577,8 @@ $$
 
 
 ## DIRECT FORM 2 STRUCTURE
-- can do either 
-	- former  
+- can do either
+	- former
 	- or latter
 - Middle section doesn't have to be doen twiece...
 - \# of delays = order
@@ -440,7 +588,7 @@ $$
 ## IIR STRUCTURES
 -  Possible to do “transpose” of both IIR structures
 - Can extend all 4 direct forms to ANY ORDER — just increase length of delay line
-- When might you want to use a form that is not direct? 
+- When might you want to use a form that is not direct?
 	- Build out of multiple standard second order components
 	- Optimization for reduced multiplies or adds
 	- Dynamic range control within filter stages

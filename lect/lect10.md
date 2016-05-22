@@ -331,7 +331,7 @@ H(z)&=\frac{1}{3}\left(1+z^{-1}+z^{-2}\right)\\
 $$
 	- __poles__: $$z=0,\:0$$
 	- __zeros__: $$z=\frac{1}{2}\pm{j}\frac{\sqrt{3}}{2}$$
-- __Look at unit circle__: convince yourself, it's the same as the preivous listed zeros: $$e^{j2\pi\tfrac{1}{3}}$$ and $$e^{j2\pi\tfrac{2}{3}}$$.
+- __Look at unit circle__: convince yourself, it's the same as the previous listed zeros: $$e^{j2\pi\tfrac{1}{3}}$$ and $$e^{j2\pi\tfrac{2}{3}}$$.
 
 
 ## ANOTHER TRICK TO PLOTTING
@@ -383,7 +383,7 @@ f_0&=3000,\\
 &=\frac{3\pi}{4}
 \end{align*}
 $$
-- To achieve this, we could put two zeros at $$\pm\omega_0$$, *i.e.* $$z=e^{\pm{j}\omega_0}
+- To achieve this, we could put two zeros at $$\pm\omega_0$$, *i.e.* $$z=e^{\pm{j}\omega_0}$$
 - Thus
 $$
 \begin{align*}

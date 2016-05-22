@@ -43,12 +43,62 @@ $$
 - Effect of magnitude and phase are both important
 - Phase determines position in time and alignment of frequency components in time.
 
-### [EXAMPLE: PHASE][]
+### PHASE EXAMPLE
+$$
+x[n]\overleftarrow{DTFT}X\left(e^{j\omega}\right)
+$$
+Given $$x_1[n]=x[n-n_0]$$, What is $$X_1 \left(e^{j\omega}\right)$$?
+$$
+\begin{align*}
+h[n]&=\delta[n-n_0]\\
+H\left(e^{j\omega}\right)&=e^{-\omega{n}_0}
+\end{align*}
+$$
+So,
+$$
+\begin{align*}
+x_1[n]&=x[n-n_0]\\
+X_1\left(e^{j\omega}\right)&=e^{-\omega{n}_0}X\left(e^{j\omega}\right)
+\end{align*}
+$$
+- Linear phase of $$-\omega{n}_0$$ that corresponds to a delay of $$n_0$$.
+- __Group delay__:
+$$
+\tau_g(\omega)=\frac{-d\delta(\omega)}{d\omega}
+$$
+- Thus, time domain delay maps to linear phase.
+- Consider example:
+$$
+\cos{\left(\omega(n-n_0)\right)}=\cos{\left(\omega{n}-\omega{n}_0)\right)}
+$$
+- Phase is a linear function of time shift.
+
+## EVEN SYMMETRIC FIR FILTER OF ORDER N
+- Consider general class of even symmetric FIR filter of order $$N$$, length $$N+1$$ with real-valued coefficients
+	- Even symmetry means
+	$$
+	h[n]=h[N-n]
+	$$
+	- Odd symmetry means:
+	$$
+	h[n]=-h[N-n]
+	$$
+- Claim that if $$z_0$$ is a zero of $$H(z)$$, then $${z_0}^{-1}$$ is also a zero of $$H(z)$$.
+$$
+\begin{align*}
+H\left(z\right)&=\sum_{n=0}^{N}{h[n]z^{-n}}\\
+H\left(z^{-1}\right)&=\sum_{n=0}^{N}{h[n]z^n\\
+&=
+\end{align*}
+$$
+
+
 
 ## FACTORS IN THE PROPERTIES OF FILTERS
 - Zero placement
 - Even/odd symmetry
 - Even/odd length
+
 
 ## TYPE 1 FILTER
 - SYMMETRY: even

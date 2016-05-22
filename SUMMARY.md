@@ -60,6 +60,8 @@
    * [ex09b](lect/ex09/ex09b.md)
    * [ex09c](lect/ex09/ex09c.md)
 * [lect10](lect/lect10.md)
+* [lect11](lect/lect11.md)
+* [lect12](lect/lect12.md)
 * [hw01](hw/hw01.md)
 * [hw02](hw/hw02.md)
 * [hw03](hw/hw03.md)

@@ -192,7 +192,7 @@ $$
 $$
 H\left(e^{j\omega}\right)=a+be^{-j\omega}+be^{-j2\omega}+ae^{-j3\omega}
 $$
-- Reduce this to standard $$e^{j\theta(\omega)}$$\left|H\left(e^{j\omega}\right)\right|$$.
+- Reduce this to standard $$e^{j\theta(\omega)}\left|H\left(e^{j\omega}\right)\right|$$.
 $$
 H\left(e^{j\omega}\right)=e^{-j\omega\tfrac{3}{2}}\underset{\text{real-valued}}{\underline{\left(2a\cos{\left(\tfrac{3}{2}\omega\right)}+2b\cos{\left(\tfrac{1}{2}\omega\right)}\right)}}
 $$

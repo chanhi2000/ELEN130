@@ -1,6 +1,6 @@
 # mt01prep
 
-## MIDTERM REVIEW: MATERIAL
+## MIDTERM #1 REVIEW: MATERIAL
 
 ### BIG PICTURE
 - Digital Signals

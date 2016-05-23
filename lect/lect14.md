@@ -160,7 +160,7 @@ $$
 - Solve for $$\lambda_1$$ and $$\lambda_2$$
 - in general:
 $$
-\lambda_{1,2}=\frac{-d_1\pm\sqrt{{d_1}^2-4d_2}}{2}
+\lambda_{1,2}=\frac{-d_1\pm\sqrt{d_1^2-4d_2}}{2}
 $$
 	- 2 real roots if $${d_1}^2\geq4d_2$$, and
 	- 2 complex roots if $${d_1}^2<4d_2$$

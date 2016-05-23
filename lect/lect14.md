@@ -160,7 +160,7 @@ $$
 - Solve for $$\lambda_1$$ and $$\lambda_2$$
 - in general:
 $$
-\lambda_{1,2}=\frac{-d_1\pm\sqrt{{d_1}^2-4d_2}}}{2}
+\lambda_{1,2}=\frac{-d_1\pm\sqrt{{d_1}^2-4d_2}}{2}
 $$
 	- 2 real roots if $${d_1}^2\geq4d_2$$, and
 	- 2 complex roots if $${d_1}^2<4d_2$$
@@ -173,8 +173,8 @@ $$
 ## TRIANGLE OF STABILITY
 $$
 \begin{align*}
-|d_1|<1+d_2;\\
-|d_2|=|\lambda_1\lambda_2|<1;\\
+|d_1|&<1+d_2;\\
+|d_2|=|\lambda_1\lambda_2|&<1;\\
 \end{align*}
 $$
 ![fig07]()
@@ -623,13 +623,16 @@ $$
 ### Butterworth
 - Maximally flat at $$\Omega=0$$
 - Monotonic in passband AND stopband
+
 ### Type I Chebyshev
 - Equiripple in passband
 - Monotonic in stopband
+
 ### Type II Chebyshev
 - Monotonic in passband
 - Maximally flat at $$\Omega=0$$
 - Equiripple in stopband
+
 ### Elliptic
 - Equiripple in both passband and stopband
 
@@ -888,6 +891,7 @@ A=[1, 1, 0, 0];
 ```
 F=[0, fp, fs, 1];
 A=[1, 1, 0, 0];
+```
 ![fig22]()
 
 ## `firpm` — WORTH NOTHING.

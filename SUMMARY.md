@@ -70,6 +70,7 @@
 * [hw03](hw/hw03.md)
 * [hw04](hw/hw04.md)
 * [hw05](hw/hw05.md)
+* [hw06](hw/hw06.md)
 * [q01](q/q01.md)
 * [q02](q/q02.md)
 

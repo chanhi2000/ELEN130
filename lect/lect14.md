@@ -1,4 +1,4 @@
-lect14.md
+# lect14
 
 ## COURSE OVERVIEW:
 - ~~Discrete-Time Signals in the Time Domain~~
@@ -94,7 +94,7 @@ $$
 ## IIR STRUCTURES
 - Possible to do “transpose” of both IIR structures
 - Can extend all 4 direct forms to ANY ORDER — just increase length of delay line
-- When might you want to use a form that is not direct? 
+- When might you want to use a form that is not direct?
 	- Build out of multiple standard second order components
 	- Optimization for reduced multiplies or adds
 	- Dynamic range control within filter stages
@@ -113,7 +113,7 @@ $$
 - This allows one to make higher order filters out of second order blocks!
 - Need to factor numerator and denominator to get list of poles and zeros.
 - Goal is to strategically group poles and zeroes. Mathematically, this makes no difference, but may make difference for finite dynamic range.
-- Poles of $$H_1(z)$$ ,$$H_2(z)$$, $$H_3(z)$$ are poles of $$H(z)$$. 
+- Poles of $$H_1(z)$$ ,$$H_2(z)$$, $$H_3(z)$$ are poles of $$H(z)$$.
 - Zeros of $$H_1(z)$$ ,$$H_2(z)$$, $$H_3(z)$$ are zeros of $$H(z)$$.
 ![fig05]()
 
@@ -124,9 +124,9 @@ H(z)=\gamma_0+\sum_{k}\left(\frac{\gamma_{0k}+\gamma_{1k}z^{-1}}{1+\alpha_{1k}z^
 $$
 - Need to factor denominator and do partial fractions to obtain numerator polynomials
 ![fig06]()
-- Poles of $$H_1(z)$$ ,$$H_2(z)$$, $$H_3(z)$$ are poles of $$H(z)$$. 
+- Poles of $$H_1(z)$$ ,$$H_2(z)$$, $$H_3(z)$$ are poles of $$H(z)$$.
 - Zeros of $$H_1(z)$$ ,$$H_2(z)$$, $$H_3(z)$$ are NOT zeros of $$H(z)$$.
-- MATLAB functions can do this for you: 
+- MATLAB functions can do this for you:
 	- `factor`
 	- `residue`
 
@@ -157,10 +157,10 @@ $$
 |\lambda_1\lambda_2|<1\\
 \end{cases}
 $$
-- Solve for $$\lambda_1$$ and $$\lambda_2$$ 
+- Solve for $$\lambda_1$$ and $$\lambda_2$$
 - in general:
 $$
-\lambda_{1,2}=\frac{-d_1\pm\sqrt{{d_1}^2-4d_2}}{2}
+\lambda_{1,2}=\frac{-d_1\pm\sqrt{{d_1}^2-4d_2}}}{2}
 $$
 	- 2 real roots if $${d_1}^2\geq4d_2$$, and
 	- 2 complex roots if $${d_1}^2<4d_2$$
@@ -206,7 +206,7 @@ $$
 ## BIG PICTURE: FIR MINIMIZING ITEGRAL SQURE ERROR
 - Now, we can implement filters w/several structures and we have one design method to match a desired $$H_d\left(e^{j\omega}\right)$$
 	1. specify $$H_d\left(e^{j\omega}\right)$$ *e.g.* Low pass, band pass, differentiator, etc.
-	2. Compute IDTFT to get 
+	2. Compute IDTFT to get
 	$$
 	h_d[n]=\frac{1}{2\pi}\int_{-\pi}^{\pi}{H_d\left(e^{j\omega}\right)e^{j\omega{n}}d\omega}
 	$$
@@ -217,8 +217,8 @@ $$
 
 ## QUESTIONS:
 - How do we choose M?
-- For choice of M, is this the best we can do?   
-- How good is this — how do we quantify it? 
+- For choice of M, is this the best we can do?
+- How good is this — how do we quantify it?
 - Does the length have to be odd?
 - We will address these questions as we move forward.
 
@@ -265,7 +265,7 @@ W_R\left(e^{j\omega}\right)&=\sum_{n=-\infty}^{\infty}{w_R(n)e^{-j\omega{n}}}\\
 &=\frac{\sin{\left(\tfrac{(2M+1)\omega}{2}\right)}}{\sin{\left(\tfrac{\omega}{2}\right)}}
 \end{align*}
 $$
-- This is a "digital sinc" 
+- This is a "digital sinc"
 - (We will show this is true in a HW problem)
 - Now, going back to our practical LPF — we have started with an ideal LPF (infinite sinc in the time domain) and truncated it to length $$2M+1$$.
 - This truncation is the same as multiplying by a time-domain “window”
@@ -378,8 +378,8 @@ $$
 
 
 ## NEW APPROACH
-- Specify $$\omega_p$$ and $$\omega_s$$  
-- Specify ripple tolerance $$\delta_p$$ and $$\delta_s$$  
+- Specify $$\omega_p$$ and $$\omega_s$$
+- Specify ripple tolerance $$\delta_p$$ and $$\delta_s$$
 - Design filter that can be implemented
 - Real world constraints include:
 	- Choosing order
@@ -438,10 +438,10 @@ where $$x(t)$$ is input signal and $$y(t)$$ is an output signal.
 
 
 ## ANALOG FILTER -> DIGITAL FILTER
-- Each of the three characterizations on the previous slide leads to alternatives for converting the filter from analog to digital: 
-	- Approximation of Derivatives, 
-	- Impulse Invariance, and 
-	- Bilinear Transformation. 
+- Each of the three characterizations on the previous slide leads to alternatives for converting the filter from analog to digital:
+	- Approximation of Derivatives,
+	- Impulse Invariance, and
+	- Bilinear Transformation.
 - The first two are limited to LPFs and limited class of BPFs — we will focus on a more general __Bilinear Transformation__ method.
 - An important thing to remember: An analog filter is stable if all of the poles are in the left-half of the $$s$$-plane
 - So — if this conversion is to be successful, regardless of method:
@@ -470,13 +470,13 @@ $$
 j\Omega\text{ axis of}s\text{-plane}&\leftrightarrow&\text{unit circle of }z\text{ plane}
 \end{matrix}
 $$
-- LHP in $$s$$-plane $$\leftrightarrow$$ inside unit circle to maintain stability 
+- LHP in $$s$$-plane $$\leftrightarrow$$ inside unit circle to maintain stability
 - *i.e.* poles in LHP of $$H_a(s)$$ will map to inside unit circle of $$G(z)$$.
 - Could sample $$h_a(t)$$, but there is a possibility of aliasing since $$H_a(j\Omega)$$ will not be strictly band-limited.
-- On the $$\Omega$$-axis, 
-	- .$$\tfrac{\Omega_T}{2}$$ maps to $$\pi$$. And 
+- On the $$\Omega$$-axis,
+	- .$$\tfrac{\Omega_T}{2}$$ maps to $$\pi$$. And
 	- .$$\tfrac{-\Omega_T}{2}$$ maps to $$\pi$$, but
-- We'd like 
+- We'd like
 	- .$$\Omega=-\infty$$ to map to $$\omega=-\pi$$, and
 	- .$$\Omega=\infty$$ to map to $$\omega=\pi$$.
 
@@ -594,7 +594,7 @@ $$
 ## BILINEAR TRANSFORM EXAMPLE
 - Design a lowpass digital filter with a $$3\:\text{dB}$$ bandwidth of $$0.2\pi$$, using the bilinear transformation applied to the analog filter:
 $$
-H(s)=\frac{\Omega_c}{s+\Omega_c}     
+H(s)=\frac{\Omega_c}{s+\Omega_c}
 $$
 where $$\Omega_c$$ is the 3-dB bandwidth of the analog filter.
 - The digital filter is specified to have its $$-3\:\text{dB}$$ gain at $$\omega_c=0.2\pi$$
@@ -648,9 +648,9 @@ $$
 ```matlab
 >> [num, den] = butter(8, 0.5)
 
-num = 
+num =
 	0.0093    0.0741    0.2595    0.5190    0.6487    0.5190    0.2595    0.0741    0.0093
-den = 
+den =
 	1.0000    -0.0000   1.0609    -0.0000   0.2909   -0.0000    0.0204    -0.0000   0.0002
 >> [H, w] = freqz(num, den, 1024, 'whole');
 >> plot(w-pi, fftshift(abs(H)));
@@ -659,9 +659,9 @@ den =
 ```matlab
 >> [num, den]=butter(7, 0.3)
 
-num = 
+num =
 	0.0093    0.0741    0.2595    0.5190    0.6487    0.5190    0.2595    0.0741    0.0093
-den = 
+den =
 	1.0000    -0.0000   1.0609    -0.0000   0.2909   -0.0000    0.0204    -0.0000   0.0002
 >> [H, w] = freqz(num, den, 1024, 'whole');
 >> plot(w-pi, fftshift(abs(H)));
@@ -671,12 +671,12 @@ den =
 
 ## TYPE I CHEBYSHEV FILTERS AND MATLAB example
 - All-pole filters that exhibit equiripple behavior in the passband and a monotonic characteristic in the stopband.
-- MATLAB script `cheby1`: 
+- MATLAB script `cheby1`:
 ```matlab
-[num, den] = cheby1(N, R, Wp) 
+[num, den] = cheby1(N, R, Wp)
 ```
-	- `N`-order, 
-	- `R`-passband ripple in dB, 
+	- `N`-order,
+	- `R`-passband ripple in dB,
 	- `Wp`is passband frequency over $$\pi$$.
 - `[num, den] = cheby1(8, 1, 0.5)`
 ![fig16a]()
@@ -685,17 +685,17 @@ den =
 
 
 ## TYPE I CHEBYSHEV FILTERS AND POLE-ZERO PLOT
-- `[num, den] = cheby1(8, 1, 0.5)` 
+- `[num, den] = cheby1(8, 1, 0.5)`
 ![fig17a]()
 ![fig17b]()
 
 
 ## TYPE II CHEBYSHEV FILTERS AND MATLAB example
 - Monotonic in passband (maximally flat) @ $$\Omega=0$$ and equiripple in stopband
-- MATLAB script `cheby2`: 
+- MATLAB script `cheby2`:
 ```matlab
-[num, den] = cheby2(N, R, Wst) 
-	- `N`-order, 
+[num, den] = cheby2(N, R, Wst)
+	- `N`-order,
 	- `R`-stopband ripple attenuation,
 	- `Wst` is stopband edge frequency over $$\pi$$.
 - `[num, den] = cheby2(8, 20, 0.5)`
@@ -705,20 +705,20 @@ den =
 
 
 ## TYPE II CHEBYSHEV FILTERS AND POLE-ZERO PLOT
-- `[num, den] = cheby1(8, 20, 0.3)` 
+- `[num, den] = cheby1(8, 20, 0.3)`
 ![fig19a]()
 ![fig19b]()
 
 
 ## ELLIPTIC FILTERS AND MATLAB example
 - Equiripple in passband and stopband
-- MATLAB script `ellip`: 
+- MATLAB script `ellip`:
 ```matlab
 [num, den] = ellip(N, Rp, Rs, Wp)
-``` 
-	- `N`-order, 
-	- `Rp`-peak-to-peak passband ripple, 
-	- `Rs`-stopband ripple attenuation, 
+```
+	- `N`-order,
+	- `Rp`-peak-to-peak passband ripple,
+	- `Rs`-stopband ripple attenuation,
 	- `Wp` is passband-edge frequency over $$\pi$$.
 - `[num, den] = ellip(8, 1, 20, 0.5)`
 ![fig20a]()
@@ -727,7 +727,7 @@ den =
 
 
 ## ELLIPTIC FILTERS AND POLE-ZERO PLOT
-- `[num, den] = ellip(7, 0.5, 20, 0.3)` 
+- `[num, den] = ellip(7, 0.5, 20, 0.3)`
 ![fig21a]()
 ![fig21b]()
 
@@ -825,7 +825,7 @@ $$
 z^{-1}&\to&\frac{z^{-1}-a}{1-az^{-1}};
 \end{matrix}
 $$
-where, 
+where,
 $$
 a=\frac{\sin{\left(\frac{\omega_p-\omega^\prime_p}{2}\right)}}{\sin{\left(\frac{\omega_p+\omega^\prime_p}{2}\right)}}
 $$
@@ -835,7 +835,7 @@ $$
 z^{-1}&\to&-\frac{z^{-1}+a}{1+az^{-1}};
 \end{matrix}
 $$
-where, 
+where,
 $$
 a=\frac{\cos{\left(\frac{\omega_p+\omega^\prime_p}{2}\right)}}{\cos{\left(\frac{\omega_p-\omega^\prime_p}{2}\right)}}
 $$
@@ -845,7 +845,7 @@ $$
 z^{-1}&\to&-\frac{z^{-2}-a_1z^{-1}+a_2}{a_2z^{-2}-a_1z^{-1}+1};
 \end{matrix}
 $$
-where, 
+where,
 $$
 \begin{align*}
 a_1&=\frac{2\alpha{K}}{K+1};\\
@@ -857,7 +857,7 @@ $$
 
 
 ## EQUIRIPPLE WITH FIR FILTER WITH LINEAR PHASE
-- Approximation of ideal response w/windowed finite duration causal filter did NOT give   
+- Approximation of ideal response w/windowed finite duration causal filter did NOT give
 equiripple — *e.g.* for rectangular window got ideal convolved with $$\tfrac{\sin{\left(\tfrac{N\omega}{2}\right)}}{\sin{\left(\tfrac{\omega}{2}\right)}}$$. $$N$$ is window length, ripples dicrease at $$\tfrac{1}{\sin{\left(\tfrac{\omega}{2}\right)}}$$.
 - Instead of minimizing integral squared error, minimize the peak absolute value of the
 weighted error — iteratively adjusting filter parameters to get equiripple filter.
@@ -899,16 +899,16 @@ A=[1, 1, 0, 0];
 - `firpmord` Parks-McClellan optimal equiripple FIR order estimator.
 ```matlab
 [N, Fo, Ao, W] = firpmord(F, A, DEV, Fs)
-``` 
-finds the approximate order `N`, normalized frequency band edges `Fo`, frequency band magnitudes Ao and weights `W` to be used by the FIRPM function as follows: 
+```
+finds the approximate order `N`, normalized frequency band edges `Fo`, frequency band magnitudes Ao and weights `W` to be used by the FIRPM function as follows:
 ```matlab
 B = FIRPM(N, Fo, Ao, W)
-``` 
+```
 <`W` weights the error in each band allowing you to prioritize>
 
-The resulting filter will approximately meet the specifications given by the input parameters `F`, `A`, and `DEV`. 
-- `F` is a vector of cutoff frequencies in Hz, in ascending order between 0 and half the sampling frequency `Fs`. If you do not specify `Fs`, it defaults to 2. 
-- `A` is a vector specifying the desired function's amplitude on the bands defined by `F`. The length of `F` is twice the length of `A`, minus 2 (it must therefore be even). The first frequency band always starts at zero, and the last always ends at `Fs`/2. It is not necessary to add these elements to the `F` vector. 
+The resulting filter will approximately meet the specifications given by the input parameters `F`, `A`, and `DEV`.
+- `F` is a vector of cutoff frequencies in Hz, in ascending order between 0 and half the sampling frequency `Fs`. If you do not specify `Fs`, it defaults to 2.
+- `A` is a vector specifying the desired function's amplitude on the bands defined by `F`. The length of `F` is twice the length of `A`, minus 2 (it must therefore be even). The first frequency band always starts at zero, and the last always ends at `Fs`/2. It is not necessary to add these elements to the `F` vector.
 - `DEV` is a vector of maximum deviations or ripples (in linear units) allowable for each band. `DEV` must have the same length as `A`.
 
 
@@ -926,7 +926,7 @@ The resulting filter will approximately meet the specifications given by the inp
 - Identical DT signals may result from the sampling of more than one distinct CT signal
 - We discussed that if we sample at twice the maximum frequency, we can get back the intended signal.
 - Let’s refresh our memories regarding what happens in the frequency domain when we sample...
-- Assume $$g_a(t)$$ is a CT signal that is sampled at $$t=nT$$, generating the sequence $$g[n]$$, where 
+- Assume $$g_a(t)$$ is a CT signal that is sampled at $$t=nT$$, generating the sequence $$g[n]$$, where
 $$
 g[n]=g_a(nT)
 $$
@@ -986,7 +986,7 @@ $$
 G_p(j\Omega)=G_a(j\Omega)\otimesШ_{\Omega_T}(j\Omega)
 $$
 - This means that sampling in the time domain at interval $$T$$ results in (scaled) REPLICATION in the frequency domain at interval $$\tfrac{1}{T}$$!!!
-- Thus, $$G_p(j\Omega)$$ is a periodic function of $$\Omega$$ consisting of a sum of shifted and scaled replicas of $$G_a(j\Omega)$$, shifted by integer multiples of $$\Omega_T$$ and scaled by $$\tfrac{1}{T}$$. 
+- Thus, $$G_p(j\Omega)$$ is a periodic function of $$\Omega$$ consisting of a sum of shifted and scaled replicas of $$G_a(j\Omega)$$, shifted by integer multiples of $$\Omega_T$$ and scaled by $$\tfrac{1}{T}$$.
 - The frequency range:
 $$
 -\frac{1}{2}\Omega_t\leq\Omega\leq\frac{1}{2}\Omega_T
@@ -1099,7 +1099,7 @@ $$\left(-\tfrac{\Delta}{2},\:\tfrac{\Delta}{2}\right]$$ assuming, $$-V\leq{x}[n]
 - In non-uniform quantization, we employ a relatively small step size $$\Delta$$ for low level signals and large $$\Delta$$ for larger signal levels
 	- Provides relatively constant SQNR over a wide dynamic input signal range using the same number of bits
 - Accomplished by the combination of a __compressor__ and an __expander__ — called a __compander__
-	- __Compressor__ compresses input samples prior to uniformly quantizing at the transmit end. 
+	- __Compressor__ compresses input samples prior to uniformly quantizing at the transmit end.
 	- __Expander__ restores samples to correct relative values.
 
 
@@ -1163,7 +1163,7 @@ $$
 $$
 y(mT_y)=\sum_{n=-\infty}^{\infty}{x(nT_x)g(mT_y-nT_x)}
 $$
-- This is accurate only if $$F_y>F_x$$. 
+- This is accurate only if $$F_y>F_x$$.
 	- If $$F_y<F_x$$, frequency components above  $$\tfrac{F_y}{2}$$ need to be filtered out before resampling — *i.e.*, the new sampling rate cannot violate the Nyquist limit.
 - Let’s look at the sampling chain to understand this better.
 ![fig30]()

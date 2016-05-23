@@ -1,6 +1,6 @@
 # lect03
 
-## COURSE OVERVIEW: PART 1
+## COURSE OVERVIEW: 
 - ~~Discrete-Time Signals in the Time Domain~~
 	- __Operations, Classifications, Sampling__
 - Discrete-Time Systems

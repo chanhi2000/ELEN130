@@ -52,7 +52,7 @@
 - High power consumption and complexity of a DSP implementation: unsuitable for simply, low-power applications
 
 
-## COURSE OVERVIEW: PART 1
+## COURSE OVERVIEW: 
 - Discrete-Time Signals in the Time Domain
 	- Operations, Classifications, Sampling
 - Discrete-Time Systems

@@ -1,6 +1,6 @@
 # lect05
 
-## COURSE OVERVIEW: PART 1
+## COURSE OVERVIEW: 
 - ~~Discrete-Time Signals in the Time Domain~~
 	- ~~Operations, Classifications, Sampling~~
 - __Discrete-Time Systems__
@@ -224,7 +224,7 @@ $$
 ### [EXAMPLE: DISCRETE-TIME ACCUMULATOR][3]
 
 
-## COURSE OVERVIEW: PART 1
+## COURSE OVERVIEW: 
 - ~~Discrete-Time Signals in the Time Domain~~
 	- ~~Operations, Classifications, Sampling~~
 - ~~Discrete-Time Systems~~

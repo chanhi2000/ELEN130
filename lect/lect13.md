@@ -1,6 +1,6 @@
 # lect13
 
-## COURSE OVERVIEW: PART 1
+## COURSE OVERVIEW:
 - ~~Discrete-Time Signals in the Time Domain~~
 	- ~~Operations, Classifications, Sampling~~
 - ~~Discrete-Time Systems~~
@@ -94,17 +94,17 @@ $$
 
 
 ## DISCUSSION QUESTION #1
-- An order $$N$$ filter with even symmetry is increased to order $$N+1$$ by adding a zero at $$z=-1$$. 
+- An order $$N$$ filter with even symmetry is increased to order $$N+1$$ by adding a zero at $$z=-1$$.
 - Show that the new filter will have __even symmetry__
 - What does it mean to add a zero at $$z=-1$$?
-	- multiply by $$\tfrac{z+1}{z}$$ in frequnecy domain
+	- multiply by $$\tfrac{z+1}{z}$$ in frequency domain
 - What can this look like in the time domain?
 	- convolve by $$\delta[n]+\delta[n-1]$$.
 - How do we test for even symmetry?
 $$
 h[n]=h[N-n]
 $$
-- __new filter__: 
+- __new filter__:
 $$
 \begin{align*}
 h_2[n]&=h[n]+h[n-1],&&\text{for }1\leq{n}\leq{N}\\
@@ -149,7 +149,7 @@ h[n-M],&0\leq{n}\leq{N}\\
 $$
 - Find filter coefficient for $$N=2$$ and for $$N=4$$.
 
-| order | coefficients | 
+| order | coefficients |
 | :---: | :----------: |
 | 2 | $$1,\:0,\:-1$$ |
 | 4 | $$-\tfrac{1}{2},\:1,\:0,\:-1,\:\tfrac{1}{2}$$ |
@@ -182,7 +182,7 @@ $$
 
 ## CONVERTING A LPF TO A HPF
 ### METHOD 1: sbstract
-- IDEAL: no delay, 
+- IDEAL: no delay,
 $$
 \begin{align*}
 H_{HP}(z)&=1-H_{LP}(z);\\
@@ -269,7 +269,7 @@ $$
 
 ## LPF FILTER COMPARISON
 - Assess filters by looking at “$$3\:\text{dB}$$” point and also looking at shape in passband and stopband.
-- Compare previous filter to moving average of same length: 
+- Compare previous filter to moving average of same length:
 $$
 H(z)=\frac{1}{4}\left(1+z^{-1}+z^{-2}+z^{-3}\right)
 $$
@@ -302,8 +302,10 @@ $$
 - it has frequency response which is a periodic function of $$\omega$$ with a period of $$\tfrac{2\pi}{L}$$
 - __example__:
 $$
+\begin{align*}
 H_0(z)&=\frac{1}{2}(1+z^{-1})\\
 G_0(z)&=H_0(z^L)=\frac{1}{2}(1+z^{-L})
+\end{align*}
 $$
 - If $$L=3$$,
 $$
@@ -341,9 +343,9 @@ $$
 \begin{align*}
 H(z)&=\frac{1}{8}\left(1+z^{-1}\right)^3\\
 &=\frac{1}{8}\left(1+3z^{-1}+3z^{-2}+z^{-3}\right)\\
-\end{align*}	
+\end{align*}
 $$
-	
+
 
 ## ALL PASS FILTER
 - Magnitude of the frequency response is 1, but phase controlled by filter coefficients.
@@ -355,18 +357,18 @@ H\left(e^{j\omega}\right)&=\frac{a-e^{-j\omega}}{1-ae^{-j\omega}}
 \end{align*}
 $$
 - Math...
-- If 
+- If
 $$
 H\left(e^{j\omega}\right)=\frac{H_N\left(e^{j\omega}\right)}{H_D\left(e^{j\omega}\right)}
 $$
 - Then,
-$$ 
+$$
 \begin{align*}
 |H_N\left(e^{j\omega}\right)|&=|H_D\left(e^{j\omega}\right)|\\
 \theta(\omega)&=\theta_N(\omega)-\theta_D(\omega)\\
 \end{align*}
 $$
-- Phase of numerator: 
+- Phase of numerator:
 $$
 \theta_N(\omega)=\frac{\sin{\left(\omega\right)}}{a-\cos{\left(\omega\right)}}
 $$

@@ -1,6 +1,6 @@
 # lect04
 
-## COURSE OVERVIEW: PART 1
+## COURSE OVERVIEW: 
 - ~~Discrete-Time Signals in the Time Domain~~
 	- __Operations, Classifications, Sampling__
 - Discrete-Time Systems
@@ -184,7 +184,7 @@ $$-\tfrac{f_T}{2}$$ and $$\tfrac{f_T}{2}$$
 
 
 
-## COURSE OVERVIEW: PART 1
+## COURSE OVERVIEW: 
 - ~~Discrete-Time Signals in the Time Domain~~
 	- ~~Operations, Classifications, Sampling~~
 - __Discrete-Time Systems__

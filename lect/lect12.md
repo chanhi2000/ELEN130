@@ -1,6 +1,6 @@
 # lect12
 
-## COURSE OVERVIEW: 
+## COURSE OVERVIEW:
 - ~~Discrete-Time Signals in the Time Domain~~
 	- ~~Operations, Classifications, Sampling~~
 - ~~Discrete-Time Systems~~
@@ -164,7 +164,7 @@ H\left(e^{j\omega}\right)&=e^{-j\omega\tfrac{N}{2}}\left\{h\left[\tfrac{N}{2}\ri
 &=e^{-j\omega\tfrac{N}{2}}\underset{\text{real-valued}}{\underline{\left\{h\left[\tfrac{N}{2}\right]+\sum_{n=0}^{\tfrac{N}{2}-1}{h[n]\left(2\cos{\left(\omega\left(n-\frac{N}{2}\right)\right)}\right)}\right\}}}\\
 \end{align*}
 $$
-	- linear phase delay of $$\tfrac{N}{2}$$ 
+	- linear phase delay of $$\tfrac{N}{2}$$
 	- Since $$N$$ is even, this delay is an integer number of samples
 
 
@@ -196,7 +196,7 @@ $$
 $$
 H\left(e^{j\omega}\right)=e^{-j\omega\tfrac{3}{2}}\underset{\text{real-valued}}{\underline{\left(2a\cos{\left(\tfrac{3}{2}\omega\right)}+2b\cos{\left(\tfrac{1}{2}\omega\right)}\right)}}
 $$
-	- linear phase delay of $$\tfrac{3}{2}$$ 
+	- linear phase delay of $$\tfrac{3}{2}$$
 
 ## EXERCISE: TYPE 1 FIR FILTER TIMES (z+1)
 - What is the result of taking a TYPE 1 FIR FILTER and multiplying it (in the Z-domain) by $$(z+1)$$?
@@ -212,7 +212,7 @@ H(z)(z+1)&=\left(1+az^{-1}+z^{-2}\right)(z+1)\\
 $$
 	- __symmetry__: even
 	- __order__: 3
-	- __length__: 4... 
+	- __length__: 4...
 - Type 2 FIR Filter!
 - It’s looks funny... generally, when we add a zero, we also add a pole at $$z=0$$.
 
@@ -237,7 +237,7 @@ $$
 ## WHAT IS MULTIPLYING (z+1)/z IN THE TIME-DOMAIN
 - Same as convolving our time-domain filter with Inverse Z-transform of $$\tfrac{z+1}{z}$$
 - Which is $$1+\tfrac{1}{z}$$
-- So,it is the same as convolving with 
+- So,it is the same as convolving with
 $$
 \delta[n]+\delta[n-1]
 $$
@@ -277,7 +277,7 @@ $$
 - Will have an odd number of zeros at $$z=1$$ and even number or no zeros at $$z=-1$$.
 - Using similar logic as before, this cannot be a LPF.
 - This is like TYPE 2 except with sines instead of cosines.
-- __example__: 
+- __example__:
 $$
 \begin{align*}
 h[n]&=\delta[n]-\delta[n-1]\\
@@ -296,7 +296,7 @@ $$
 	- FIR filters MUST have poles at only the origin.
 - Can a filter with feedback be an FIR filter?
 	- Technically, yes, but it would be contrived. No *useful* feedback will result in an FIR filter.
-	- *e.g.*: 
+	- *e.g.*:
 	$$
 	y[n]=x[n]+x[n-1]-y[n-1]
 	$$
@@ -308,8 +308,8 @@ $$
 
 ## SUMMARY OF FIR FILTERS
 | TYPE | ORDER (N) | SYMMETRY | LPF/HPF |
-| :--: | :-------: | :------: | :-----: | 
-| 1 | EVEN | EVEN | | 
+| :--: | :-------: | :------: | :-----: |
+| 1 | EVEN | EVEN | |
 | 2 | ODD | EVEN | NO LPF |
 | 3 | EVEN | ODD | NO LPF / NO HPF |
 | 4 | ODD |  ODD | NO HPF |

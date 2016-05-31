@@ -363,12 +363,12 @@ $$
 
 ## WINDOW SPECIFICATIONS
 
-| kind | Mian Lobe Width | Trnasition Band | Relative Side Lobe Level | Stop-Band Attenuation |
+| kind | Mian Lobe Width | Transition Band | Relative Side Lobe Level | Stop-Band Attenuation |
 | :--- | :-------------: | :-------------: | :----------------------: | :-------------------: |
-| Rectangular | $$\frac{4\pi}{2M+1}$$ | $$\frac{0.92\pi}{M}$$ | -13.3 dB | -21 dB |
-| Hanning | $$\frac{8\pi}{2M+1}$$ | $$\frac{3.11\pi}{M}$$ | -31.5 dB | -44 dB |
-| Hamming | $$\frac{8\pi}{2M+1}$$ | $$\frac{3.37\pi}{M}$$ | -42.7 dB | -53 dB |
-| Blackman | $$\frac{12\pi}{2M+1}$$ | $$\frac{5.56\pi}{M}$$ | -58.1 dB | -74 dB |
+| Rectangular | $$4\frac{\pi}{2M+1}$$ | $$0.92\frac{\pi}{M}$$ | $$-13.3\:\text{dB}$$ | $$-21\:\text{dB}$$ |
+| Hanning | $$8\frac{\pi}{2M+1}$$ | $$3.11\frac{\pi}{M}$$ | $$-31.5\:\text{dB}$$ | $$-44\:\text{dB}$$ |
+| Hamming | $$8\frac{\pi}{2M+1}$$ | $$3.37\frac{\pi}{M}$$ | $$-42.7\:\text{dB}$$ | $$-53\:\text{dB}$$ |
+| Blackman | $$12\frac{\pi}{2M+1}$$ | $$5.56\frac{\pi}{M}$$ | $$-58.1\:\text{dB}$$ | $$-74\:\text{dB}$$ |
 
 
 ## GOALS OF WINDOW SELECTION
@@ -851,7 +851,7 @@ $$
 where,
 $$
 \begin{align*}
-a_1&=\frac{2\alpha{K}}{K+1};\\
+a_1&=\frac{2\alpha{K}}{1+K};\\
 a_2&=\frac{K-1}{K+1};\\
 \alpha&=\frac{\cos{\left(\frac{\omega_u+\omega_l}{2}\right)}}{\cos{\left(\frac{\omega_u-\omega_l}{2}\right)}};\\
 K&=\cot{\left(\frac{\omega_u-\omega_l}{2}\right)}\tan{\left(\frac{\omega_p}{2}\right)};
@@ -1002,7 +1002,7 @@ is called the __baseband__ or __Nyquist band__.
 ## SAMPLING RATE ALTERATION
 - Used to generate a new sequence, $$y[n]$$, with a sampling rate $${F_T}^\prime$$ higher or lower than that of the original sampling rate $$F_T$$ of a given sequence $$x[n]$$.
 $$
-R=\frac{{F_T}^\prime}{F_T}
+R=\frac{F_T^\prime}{F_T}
 $$
 	- If $$R>1$$, the process is called __interpolation__ — meaning, we are interpolating between samples to determine the new samples
 	- If $$R<1$$, the process is called __decimation__ — meaning, we are decimating samples that previously existed

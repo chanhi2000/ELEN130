@@ -1,6 +1,6 @@
 # lect10
 
-## COURSE OVERVIEW: 
+## COURSE OVERVIEW:
 - ~~Discrete-Time Signals in the Time Domain~~
 	- ~~Operations, Classifications, Sampling~~
 - ~~Discrete-Time Systems~~
@@ -294,7 +294,7 @@ $$
 - So, what are __poles__ and __zeros__ of this?
 	- __poles__: $$z=0,\:0,\:1$$
 	- __zeros__: $$z^{3}=1$$
-- To determine zeros, recall that 
+- To determine zeros, recall that
 $$
 \begin{matrix}
 1=(1)e^{j2\pi{k}},&\forall{k}\in\mathbb{I}
@@ -303,7 +303,7 @@ $$
 
 
 ### FINDING POLES AND ZEROS
-- So, cube root of both sides reveals that 
+- So, cube root of both sides reveals that
 $$
 1=(1)e^{j2\pi\tfrac{k}{3}}
 $$

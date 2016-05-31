@@ -1,6 +1,6 @@
 # lect11
 
-## COURSE OVERVIEW: 
+## COURSE OVERVIEW:
 - ~~Discrete-Time Signals in the Time Domain~~
 	- ~~Operations, Classifications, Sampling~~
 - ~~Discrete-Time Systems~~

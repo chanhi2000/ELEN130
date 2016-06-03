@@ -236,7 +236,7 @@ H_2(z)=\frac{-d_1-z^{-1}}{1+d_1z^{-1}}
 $$
 This has the same MAGNITUDE — thus, if we show this looks like $$H(z)$$ — we've shown it is an ALL-PASS.
 $$
-H(z)&=\frac{a-z^{-1}}{1-az^{-1}}
+H(z)=\frac{a-z^{-1}}{1-az^{-1}}
 $$
 I can say $$a=-d_1$$. Thus, this becomes:
 $$

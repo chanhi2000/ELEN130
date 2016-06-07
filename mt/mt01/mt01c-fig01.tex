@@ -1,0 +1,46 @@
+\documentclass[margin=10pt]{article}
+\usepackage[usenames]{color} %used for font color
+\usepackage{amssymb} %maths
+\usepackage{amsmath} %maths
+\usepackage[utf8]{inputenc} %useful to type directly diacritic characters
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}\begin{document}
+\tikzstyle{block} = [draw, rectangle, 
+    minimum height=3em, minimum width=4em, node distance=6em]
+\tikzstyle{joint} = [draw, circle, fill, inner sep=0pt, minimum size=2pt]
+\tikzstyle{empty} = [coordinate]
+\tikzstyle{sum} = [draw, circle, minimum size=1em, node distance=5em, font=\tiny]
+\tikzstyle{input} = [coordinate]
+\tikzstyle{output} = [coordinate]
+\
+\tikzstyle{gain} = [draw, isosceles triangle, minimum height=2em, isosceles triangle apex angle=60, node distance=5em, font=\tiny]
+
+\begin{tikzpicture}[auto, node distance=4em,>=latex']
+
+    % We start by placing the blocks
+    \node [input, name=input] (input) {$$};
+    \node [joint, name=in, right of=input] (in) {$$};
+    \node [block, name=h1, right of=in] (h1) {$h_1[n]$};
+    \node [block, name=h2, right of=h1] (h2) {$h_2[n]$};
+    \node [block, name=h3, below of=h1] (h3) {$h_3[n]$};
+    \node [block, name=h4, right of=h3] (h4) {$h_4[n]$};
+    \node [empty, name=e1, right of=h2] (e1) {$$};
+    \node [sum, name=out, right of=e1] (sum) {$+$};
+    \node [output, name=output, right of=sum] (output) {$$}; 
+    \node [gain, name=g1, right of=h4] (g1) {$-1$};  
+    % calculate the coordinate u. We need it to place the measurement block. 
+
+    
+    \draw [draw,->] (input) -- node[pos=0.15,anchor=north] {$x[n]$} (h1);
+    \draw [->] (in) |- node {$$} (h3);
+    \draw [->] (h1) |- node {$$} (h2);
+    \draw [->] (h3) |- node {$$} (h4);
+    \draw [->] (h2) -- node {$$} (sum);
+    \draw [->] (h4) -- node {$$} (g1);
+    \draw [->] (g1) -| node {$$} (sum);
+    \draw [->] (sum) -- node[pos=0.85,anchor=north] {$y[n]$} (output);
+    % Once the nodes are placed, connecting them is easy. 
+
+\end{tikzpicture}
+
+\end{document}

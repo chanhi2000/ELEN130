@@ -1,6 +1,6 @@
 # mt01a
 
-## SECTION 1:
+## 1.
 __Signal manipulation and operations__
 ![fig01](mt01/mt01-fig01.png)
 
@@ -87,6 +87,11 @@ $$
 | $$3$$ | $$0$$ |
 | $$4$$ | $$(1)(2)=2$$ |
 | $$5$$ | $$0$$ |
+
+
+![fig02a](mt01a-fig02a.png)
+![fig02b](mt01a-fig02b.png)
+![fig02c](mt01a-fig02c.png)
 
 #### 1c(ii)
 What is $$z[4]$$?

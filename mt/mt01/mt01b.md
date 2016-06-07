@@ -1,6 +1,6 @@
 # mt01b
 
-## SECTION 2:
+## 2.
 __Finite Length Operation, Energy/Power and Fundamental Period__
 
 ### 2(a)

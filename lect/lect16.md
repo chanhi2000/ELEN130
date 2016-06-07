@@ -57,7 +57,7 @@ $$
 	- __downside__: "main lobe" is twice as wide
 	$$
 	\begin{matrix}
-	\sin{\left(2M+1\right)\omega}}{2}&\text{vs.}&\sin{\left(2M+1\right)\omega}}{2}
+	\frac{\sin{\left(M+1\right)\omega}}{2}&\text{vs.}&\frac{\sin{\left(2M+1\right)\omega}}{2}
 	\end{matrix}
 	$$
 

@@ -1,0 +1,53 @@
+\documentclass[margin=10pt]{article}
+\usepackage[usenames]{color} %used for font color
+\usepackage{amssymb} %maths
+\usepackage{amsmath} %maths
+\usepackage[utf8]{inputenc} %useful to type directly diacritic characters
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}\begin{document}
+\tikzstyle{joint} = [draw, circle, fill, inner sep=0pt, minimum size=2pt, node distance=2.5em]
+\tikzstyle{empty} = [coordinate]
+\tikzstyle{sum} = [draw, circle, minimum size=1em, node distance=5em, font=\tiny]
+\tikzstyle{delay} = [draw, rectangle, minimum height=3em, minimum width=3em, node distance=5em]
+\tikzstyle{input} = [coordinate]
+\tikzstyle{output} = [coordinate]
+\tikzstyle{gain} = [draw, isosceles triangle, minimum height=2em, isosceles triangle apex angle=60, node distance=5em, font=\tiny]
+
+\begin{tikzpicture}[auto, node distance=4em,>=stealth']
+
+    % We start by placing the blocks
+    \node [input, name=input] (input) {$$};
+    \node [joint, name=j1, right of=input] (j1) {$$};
+    \node [delay, name=z1, right of=j1] (z1) {$z^{-1}$} ; 
+    \node [delay, name=z2, right of=z1] (z2) {$z^{-1}$} ; 
+    \node [delay, name=z3, right of=z2] (z3) {$z^{-1}$} ; 
+    \node [joint, name=j2, right of=z2] (j2) {$$};
+    \node [gain, name=g1, right of=z3] (g1) {$2$};
+    \node [gain, name=g2, below of=z3] (g2) {$-1$};
+    \node [empty, name=e2, right of=g2] (e2) {$$};
+    \node [sum, name=sum, right of=e2] (sum) {$+$};
+    \node [empty, name=e3, below of=z1] (e3) {$$};
+    \node [gain, name=g3, below of=e3] (g3) {$2$};
+    \node [output, name=g3, right of=sum] (output) {$$};
+    \node [empty, name=e4, right of=output] (e4) {$$};
+    \node [delay, name=z4, right of=e4] (z4) {$z^{-1}$};
+
+    % calculate the coordinate u. We need it to place the measurement block. 
+
+    % Once the nodes are placed, connecting them is easy. 
+    \draw[->] (input) -- node[pos=0.15,anchor=south]{$x[n]$}(z1);
+    \draw[->] (j1) |- node{$$}(g3);
+    \draw[->] (z1) -- node{$$}(z2);
+    \draw[->] (z2) -- node{$$}(z3);
+    \draw[->] (j2) |- node{$$}(g2);
+    \draw[->] (z3) -- node{$$}(g1);
+    \draw[->] (g2) -- node{$$}(sum);
+    \draw[->] (g1) -| node{$$}(sum);
+    \draw[->] (g3) -| node{$$}(sum);
+    \draw[->] (sum.north) to [out=60, in=120] node{$y[n]$}(z4.north);
+    \draw[->] (z4) -- node{$$}(sum);
+\end{tikzpicture}
+
+
+
+\end{document}

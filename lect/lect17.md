@@ -356,6 +356,7 @@ $$
 - Imagine, first, that you sample a signal by the sampling rate, $$F_T$$, and in a separate sample, by the sampling rate $$LF_T$$.
 - In the first scenario, you will get spectral replicas every $$kF_T$$, and in the same scenario, you will get spectral replicas every $$kLF_T$$.
 - What does this look like vs. $$\omega$$? How does $$\omega$$ map to $$f$$ in each case?
+- Imagine, 
 
 
 

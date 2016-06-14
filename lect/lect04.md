@@ -292,14 +292,10 @@ $$
 
 
 ### FACTOR OF $$2$$ INTERPOLATOR FOR IMAGES
-![fig05a](lect04/lect04-fig05a.png)
-original (512x512)
 
-![fig05b](lect04/lect04-fig05b.png)
-down-sampled (256x256)
-
-![fig05c](lect04/lect04-fig05c.png)
-interpolated (512x512)
+| original (512x512) | down-sampled (256x256) | interpolated (512x512) |
+| :----------------: | :--------------------: | :--------------------: |
+| ![fig05a](lect04/lect04-fig05a.png) | ![fig05b](lect04/lect04-fig05b.png) | ![fig05c](lect04/lect04-fig05c.png) |
 
 
 ## MEDIAN FILTER

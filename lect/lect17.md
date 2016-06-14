@@ -83,7 +83,7 @@ $$
 $$
 \begin{align*}
 g_p(t)&=g_a(t)p(t)\\
-=\sum_{n=-\infty}^{\infty}{g_a(nT)\delta(t-nT)}
+&=\sum_{n=-\infty}^{\infty}{g_a(nT)\delta(t-nT)}
 \end{align*}
 $$
 - Can be rewritten as:
@@ -101,7 +101,7 @@ $$
 -\frac{1}{2}\Omega_t\leq\Omega\leq\frac{1}{2}\Omega_T
 $$
 is called the __baseband__ or __Nyquist band__.
-- So, if $$\Omega$ is twice the highest frequency, there will be no aliasing (*i.e.* no disturbance to the baseband spectrum) and the original signal can be recovered exactly by passing the sampled signal through an ideal lowpass filter with a gain of $$T$$ and a cutoff frequency greater than the maximum frequency of the original signal and less than $$\Omega_T$$ __minus the maximum original frequency__.
+- So, if $$\Omega$$ is twice the highest frequency, there will be no aliasing (*i.e.* no disturbance to the baseband spectrum) and the original signal can be recovered exactly by passing the sampled signal through an ideal lowpass filter with a gain of $$T$$ and a cutoff frequency greater than the maximum frequency of the original signal and less than $$\Omega_T$$ __minus the maximum original frequency__.
 
 
 ## SAMPLING RATE ALTERATION

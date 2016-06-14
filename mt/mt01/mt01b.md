@@ -71,7 +71,7 @@ $$
 __Fundamental Period__: What is the fundamental period of the signal:
 $$
 x[n]=2\cos{\left(1.4\pi{n}\right)}-\sin{\left(1.2\pi{n}\right)}+\cos{\left(0.5\pi{n}\right)}
-$$ 
+$$
 
 List the frequencies
 $$

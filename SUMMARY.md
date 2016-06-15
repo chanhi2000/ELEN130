@@ -74,6 +74,7 @@
 * [lect15](lect/lect16.md)
 * [lect16](lect/lect16.md)
 * [lect17](lect/lect17.md)
+* [fprep](mt/fprep.md)
 * [hw01](hw/hw01.md)
 * [hw02](hw/hw02.md)
 * [hw03](hw/hw03.md)

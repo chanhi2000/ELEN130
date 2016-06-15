@@ -1,0 +1,62 @@
+# fprep
+
+## FINAL REVIEW: MATERIAL
+- ### More filter design
+	- All-Pass filters: design, magnitude, phase
+	- Impact of filter on a signal (lower frequencies vs. higher frequencies)
+- ### Filter Design Structures and Realization Factors 
+	- Tapped Delay Line (Direct Form)
+	- Transpose of structures
+	- IIR designs — direct form I and direct form II
+	- Interpreting other designs, lattices, etc.
+	- Cascading: Series and Parallel
+	- Algebraic Stability Test 
+		- Triangle of stability
+- ### Windowing
+	- What the choice of M does to a filter
+	- Integral Square Error minimizing
+	- Impact of windowing: Gibbs Phenomenon 
+	- Window specifications
+	- Other windows that can be used 
+		- Rectangular (standard)
+		- Hanning
+		- Hamming
+		- Blackman
+	- Goals of window selection (narrower transition band, better stop-band)
+- ### Specification based design
+	- Tolerance definitions
+	- Bilinear Transformation
+		- Use to take known analog filters and create digital filters from them
+		- Was important to preserve stability (left-hand of s-plane -> inside unit circle on z-plane) 
+		- .$$j\Omega$$ axis of $$s$$-plane $$\leftrightarrow$$ unit circle of $$z$$-plane
+		- Maps $$s\leftrightarrow{z}$$ and  $$\Omega\leftrightarrow\omega$$
+		- Aside during this lecture: IIR cannot have linear phase
+- ### IIR filters
+	- Butterworth
+	- Chebyshev I 
+	- Chebyshev II 
+	- Elliptic
+	- Properties of each
+	- Pole-zero plots of each
+	- Using MATLAB to design IIR filters
+	- `*ord` command
+	- High pass, bandpass, bandstop
+	- Frequency mapping (how to apply $$s$$-domain and $$z$$-domain frequency mappings)
+- ### FIR equiripple design
+	- __Advantage__: linear phase
+	- Parks-McClellan needed — `firpm`
+	- `firpmord`
+	- MATLAB from HW
+- ### Multirate DSP
+	- Sampling chain review: anti-aliasing filter, A/D, filter, D/A, anti-imaging filter
+	- Benefits of rate conversion being done digitally
+	- Limitations of rate conversion being done digitally
+	- Upsampling
+	- Downsampling
+	- Frequency domain impact of upsampling and downsampling, necessary filters, aliasing concerns, etc.
+	- Interpolation techniques and efficient implementation 
+	- A-D conversion: Quantization and Coding
+	- Quantization error
+- ### Misc:
+	- Frequency resolution
+	- Areas of concern and tradeoffs
